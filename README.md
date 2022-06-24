@@ -58,6 +58,16 @@ Computes previousy published generality indices for an interaction matrix (or ve
 
 2.  abun -> vector. It contains the resource abundances of the columns of the interaction matrix.
 
+### (3) wcfun
+
+Computes the Wc index of generality proposed by Pierotti et al. (2017) for an interaction matrix (or vector) and its resource abundance vector.
+
+#### Arguments
+
+1.  data -> matrix. The original interaction matrix with consumers in rows and resources in columns.
+
+2.  abun -> vector. It contains the resource abundances of the columns of the interaction matrix.
+
 ## Acknowledgements
 
 We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Natalya Zapata-Mesa, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about ecological networks and niche indices that inspired us to carry out this study. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior, convocatoria 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 3.4-8151/15037 and 3.2-BRA/1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the [Stack Overflow](https://stackoverflow.com) community, where we solve most of our coding dilemmas.
