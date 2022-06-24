@@ -19,9 +19,9 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 See further info in the respective sections.
 
 1. Code (folder) -> Folder containing the scripts to calculate the indices of generality used in the manuscript.
-1.1. AlphaPDIfun.R -> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
-1.2. genfun.R -> script of the `genfun` function for calculating traditional generality indices.
-1.3. wcfun -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
+    -1.1. AlphaPDIfun.R -> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
+    -1.2. genfun.R -> script of the `genfun` function for calculating traditional generality indices.
+    -1.3. wcfun -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
 
 2. Figures (folder) -> Folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
 2.1. Figure2.R -> script to reproduce the unedited version of Figure 2.  It requires the `alpha_PDI`, `genfun` and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
