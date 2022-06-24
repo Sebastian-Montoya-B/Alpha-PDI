@@ -38,31 +38,31 @@ R code provided in this repository can be used to quantify generality of species
 2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
 3.  Use the scripts Figure_2, Figure_3, Figure_4, and Figure_5 to reproduce the figures and analyses of Montoya-Bustamante et al. *in prep.*
 
-### (1) alpha_PDI
+## (1) alpha_PDI
 
 Computes alpha PDI for an interaction matrix (or vectior) and its resource abundance vector.
 
-#### Arguments
+### Arguments
 
 1.  data -> matrix. The original interaction matrix with consumers in rows and resources in columns.
 
 2.  abun -> vector. It contains the resource abundances of the columns of the interaction matrix.
 
-### (2) genfun
+## (2) genfun
 
 Computes previousy published generality indices for an interaction matrix (or vector) and its resource abundance vector.
 
-#### Arguments
+### Arguments
 
 1.  data -> matrix. The original interaction matrix with consumers in rows and resources in columns.
 
 2.  abun -> vector. It contains the resource abundances of the columns of the interaction matrix.
 
-### (3) wcfun
+## (3) wcfun
 
 Computes the Wc index of generality proposed by Pierotti et al. (2017) for an interaction matrix (or vector) and its resource abundance vector.
 
-#### Arguments
+### Arguments
 
 1.  data -> matrix. The original interaction matrix with consumers in rows and resources in columns.
 
