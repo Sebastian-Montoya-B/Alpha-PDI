@@ -36,21 +36,21 @@ R code provided in this repository can be used to quantify generality of species
 
 1.
 
-## (1) AlphaPDIfun
+### (1) AlphaPDIfun
 
 Computes alpha PDI for an interaction matrix (or vectior) and its resource abundance vector.
 
-### Arguments
+#### Arguments
 
 1.  data -> matrix. The original interaction matrix with consumers in rows and resources in columns.
 
 2.  abun -> vector. It contains the resource abundances of the columns of the interaction matrix.
 
-## (2) genfun
+### (2) genfun
 
 Computes previousy published generality indices for an interaction matrix (or vector) and its resource abundance vector.
 
-### Arguments
+#### Arguments
 
 1.  data -> matrix. The original interaction matrix with consumers in rows and resources in columns.
 
