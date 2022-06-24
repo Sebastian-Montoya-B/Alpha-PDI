@@ -19,7 +19,7 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 See further info in the respective sections.
 
 1. Code (folder) -> Folder containing the scripts to calculate the indices of generality used in the manuscript.
-   * AlphaPDIfun.R -> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
+   * alpha_PDI.R -> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
    * genfun.R -> script of the `genfun` function for calculating traditional generality indices.
    * wcfun -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
 
@@ -34,9 +34,11 @@ R code provided in this repository can be used to quantify generality of species
 
 ## Instructions
 
-1.
+1.  Open the `AlphaPDI.Rproj` file.
+2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
+3.  Use the scripts Figure_2, Figure_3, Figure_4, and Figure_5 to reproduce the figures and analyses of Montoya-Bustamante et al. *in prep.*
 
-### (1) AlphaPDIfun
+### (1) alpha_PDI
 
 Computes alpha PDI for an interaction matrix (or vectior) and its resource abundance vector.
 
