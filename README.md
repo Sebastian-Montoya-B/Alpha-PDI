@@ -24,9 +24,9 @@ See further info in the respective sections.
    * wcfun -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
 
 2. Figures (folder) -> Folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
-2.1. Figure2.R -> script to reproduce the unedited version of Figure 2.  It requires the `alpha_PDI`, `genfun` and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
-2.2. Figure3.R -> script to reproduce the unedited version of Figure 3.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
-2.3. FigureSup.R -> script to reproduce Figures S1 to S36 of the supplementary material.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+   * Figure2.R -> script to reproduce the unedited version of Figure 2.  It requires the `alpha_PDI`, `genfun` and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
+   * Figure3.R -> script to reproduce the unedited version of Figure 3.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+   * FigureSup.R -> script to reproduce Figures S1 to S36 of the supplementary material.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
 
 ## Functionality and origin
 
