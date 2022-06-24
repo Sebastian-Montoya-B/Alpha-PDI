@@ -22,7 +22,7 @@ See further info in the respective sections.
 
 ## Functionality and origin
 
-R code provided in this repository can be used to quantify generality species in consumer-resource interactions.
+R code provided in this repository can be used to quantify generality of species in consumer-resource interactions.
 
 ## Instructions
 
