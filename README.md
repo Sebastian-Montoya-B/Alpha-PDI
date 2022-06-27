@@ -21,12 +21,17 @@ See further info in the respective sections.
 1. Code (folder) -> Folder containing the scripts to calculate the indices of generality used in the manuscript.
    * alpha_PDI.R -> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
    * genfun.R -> script of the `genfun` function for calculating traditional generality indices.
-   * wcfun -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
+   * wcfun.R -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
 
 2. Figures (folder) -> Folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
    * Figure2.R -> script to reproduce the unedited version of Figure 2.  It requires the `alpha_PDI`, `genfun` and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
    * Figure3.R -> script to reproduce the unedited version of Figure 3.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
    * FigureSup.R -> script to reproduce Figures S1 to S36 of the supplementary material.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+   
+3. Data (folder) -> Folder containing the theoretical data used for the analyses and figures.
+   *Vectors1.RDS ->
+   *Matrices1.RDS -> Set of 7200 matrices
+   *Vectors2.RDS ->
 
 ## Functionality and origin
 
@@ -77,10 +82,12 @@ We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. R
 1.  Blüthgen, N., Menzel, F., & Blüthgen, N. (2006). Measuring specialization in species interaction networks. BMC Ecology, 6, 9. <https://doi.org/10.1186/1472-6785-6-9>
 2.  Feinsinger, P., Spears, E., & Poole, R. (1981). A Simple Measure of Niche. Ecology, 62(1), 27–32.
 3.  Fort, H., Vázquez, D. P., & Lan, B. L. (2016). Abundance and generalisation in mutualistic networks: Solving the chicken-and-egg dilemma. Ecology Letters, 19(1), 4–11. <https://doi.org/10.1111/ele.12535>
-4.  Hurlbert, S. (1978). The Measurement of Niche Overlap and Some Relatives. Ecology, 59(1), 67–77. <https://www.jstor.org/stable/1936632>
-5.  Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. In prep. A new index to estimate ecological generalization in consumer-resource interactions.
-6.  Petraitis, P. S. (1979). Likelihood Measures of Niche Breadth and Overlap. Ecology, 60(4), 703–710.
-7.  Pierotti, M. E. R., Martín-Fernández, J. A., & Barceló-Vidal, C. (2017). The peril of proportions: robust niche indices for categorical data. Methods in Ecology and Evolution, 8(2), 223–231. <https://doi.org/10.1111/2041-210X.12656>
-8. Poisot, T., Canard, E., Mouquet, N., & Hochberg, M. E. (2012). A comparative study of ecological specialization estimators. Methods in Ecology and Evolution, 3(3), 537–544. <https://doi.org/10.1111/j.2041-210X.2011.00174.x>
-9. Schoener, T. W. (1974). Some Methods for Calculating Competition Coefficients from Resource-Utilization Spectra. The American Naturalist, 108(961), 332–340. <https://doi.org/10.1086/282911>
-10. Smith, E. P. (1982). Niche breadth, resource availability, and inference. Ecology, 63(6), 1675–1681. <https://doi.org/10.2307/1940109>
+4.  Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a challenge for quantifying specialization and network structure : lessons from a quantitative niche model. Oikos, 502–513. <https://doi.org/10.1111/oik.02256>
+5.  Hurlbert, S. (1978). The Measurement of Niche Overlap and Some Relatives. Ecology, 59(1), 67–77. <https://www.jstor.org/stable/1936632>
+6.  Manly, B. F. J., McDondald, L. L., Thomas, D. L., McDonald, T. L., & Erickson, W. P. (2002). Resource Selection by Animals (Second). Springer Netherlands. <https://doi.org/10.1007/0-306-48151-0>
+7.  Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. In prep. A new index to estimate ecological generalization in consumer-resource interactions.
+8.  Petraitis, P. S. (1979). Likelihood Measures of Niche Breadth and Overlap. Ecology, 60(4), 703–710.
+9.  Pierotti, M. E. R., Martín-Fernández, J. A., & Barceló-Vidal, C. (2017). The peril of proportions: robust niche indices for categorical data. Methods in Ecology and Evolution, 8(2), 223–231. <https://doi.org/10.1111/2041-210X.12656>
+10. Poisot, T., Canard, E., Mouquet, N., & Hochberg, M. E. (2012). A comparative study of ecological specialization estimators. Methods in Ecology and Evolution, 3(3), 537–544. <https://doi.org/10.1111/j.2041-210X.2011.00174.x>
+11. Schoener, T. W. (1974). Some Methods for Calculating Competition Coefficients from Resource-Utilization Spectra. The American Naturalist, 108(961), 332–340. <https://doi.org/10.1086/282911>
+12. Smith, E. P. (1982). Niche breadth, resource availability, and inference. Ecology, 63(6), 1675–1681. <https://doi.org/10.2307/1940109>
