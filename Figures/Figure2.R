@@ -169,11 +169,11 @@ abline(coef = c(0,1), lwd=1.5)
 text(x=0.09,y=0.98, label= expression(1 - italic("d'")), cex=1.3)
 
 ###gen
-plot(y=lisObv$g[1:l5],x=lisExv$g[1:l5], col=colw[3], pch=21, bg=alpha(colw[3],0.4), cex=0.7,
+plot(y=lisObv$gen[1:l5],x=lisExv$gen[1:l5], col=colw[3], pch=21, bg=alpha(colw[3],0.4), cex=0.7,
      ylab="Estimated value", xlab="Expected value", xlim=c(0,1), ylim=c(0,1), yaxt="n")
 axis(2, labels=F)
-points(y=lisObv$g[(l5+1):l10],x=lisExv$g[(l5+1):l10],col=colw[2],pch=23, bg=alpha(colw[2],0.4),cex=0.7)
-points(y=lisObv$g[(l10+1):l50],x=lisExv$g[(l10+1):l50],col=colw[1], pch=22,bg=alpha(colw[1],0.4),cex=0.7)
+points(y=lisObv$gen[(l5+1):l10],x=lisExv$gen[(l5+1):l10],col=colw[2],pch=23, bg=alpha(colw[2],0.4),cex=0.7)
+points(y=lisObv$gen[(l10+1):l50],x=lisExv$gen[(l10+1):l50],col=colw[1], pch=22,bg=alpha(colw[1],0.4),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
 text(x=0.07,y=0.98, label=expression(italic(gen)), cex=1.3)
 
