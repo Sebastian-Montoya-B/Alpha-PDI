@@ -112,7 +112,7 @@ genfun<-function(data, abun){
   eq<-seq(1,nrow(data))
   
 
-    summ<-as.data.frame(cbind(Consumer=eq,Bs=besest, "B'"=beprimast, W=wpetst, PS=pesest, FT=feitst,  "1-d'"=nd, g=ngst))
+    summ<-as.data.frame(cbind(Consumer=eq,Bs=besest, "B'"=beprimast, W=wpetst, PS=pesest, FT=feitst,  "1-d'"=nd, gen=ngst))
   
   return(summ)
   
