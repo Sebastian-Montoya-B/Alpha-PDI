@@ -34,6 +34,11 @@ source("Code/wcfun.R")
 ## Load matrices of vectors generated using the quantitative niche model of Fründ et al. (2016)
 mat1<-readRDS("Data/matrices1.RDS") 
 
+## For each consumer in mat1 there are three vectors: 
+##   (1) the resource abundance distribution ($res_abun),
+##   (2) the true preferences ($preference), 
+##   (3) the current pattern of resource use ($current),
+
 # 2. CALCULATING
 
 
