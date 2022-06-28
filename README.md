@@ -18,12 +18,13 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 
 See further info in the respective sections.
 
-1. Code (folder) -> folder containing the scripts to calculate the indices of generality used in the manuscript.
+1. Code (folder) -> folder containing the scripts to calculate the indices of generality and other analyses used in the manuscript.
    * alpha_PDI.R -> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
    * genfun.R -> script of the `genfun` function for calculating traditional generality indices.
    * wcfun.R -> script of the `wcfun` function for calculating Pierotti et al (2017) index of generality.
+   * Generality_correlations.R -> script to reproduce the Spearman correlations for used the assessment of the relation between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
 
-2. Data (folder) -> folder containing the theoretical data used for the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016)
+2. Data (folder) -> folder containing the theoretical data used for the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
    * vectors1.RDS -> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually form 0 to 1.
    * matrices1.RDS -> list of vectors of resource use for 7200 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and a random trait matching. Vectors are organized in matrices of five consumers.
    * samp_vectors_even.RDS.RDS -> list of vectors of resource use for 3600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and a random trait matching.
@@ -31,11 +32,10 @@ See further info in the respective sections.
    
 3. Figures (folder) -> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
    * Figure2.R -> script to reproduce the unedited version of Figure 2.  It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
-   * Figure3.R -> script to reproduce the unedited version of Figure 3.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+   * Figure3.R -> script to reproduce the unedited version of Figure 3, and its associated analysis.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
    * FigureSup.R -> script to reproduce Figures S1 to S36 of the supplementary material.  It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
    
-4. Statistical analyses
-   * Generality_correlations.R -> script to reproduce the Spearman correlations for used the assessment of the relation between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
+
 
 ## Functionality and origin
 
