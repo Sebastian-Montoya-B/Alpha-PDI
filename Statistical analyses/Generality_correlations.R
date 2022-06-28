@@ -25,7 +25,7 @@
 
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
-lisEv<-readRDS("Vectors1.RDS")
+lisEv<-readRDS("vectors1.RDS")
 
 # 2. CALCULATING
 
