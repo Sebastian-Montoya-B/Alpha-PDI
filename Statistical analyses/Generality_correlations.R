@@ -47,4 +47,4 @@ cor.test(spen, tt2$W, method="spearman", exact=F) # W
 cor.test(spen, tt2$PS, method="spearman", exact=F) # PS
 cor.test(spen, tt2$FT, method="spearman", exact=F) # FT
 cor.test(spen, tt2$`1-d'`, method="spearman", exact=F) #1-d'
-cor.test(spen, tt2$g, method="spearman", exact=F) #gen
+cor.test(spen, tt2$gen, method="spearman", exact=F) #gen
