@@ -11,8 +11,9 @@
 #### alpha_PDI function:
 
 
-alpha_PDI<-function(data, q){
+alpha_PDI<-function(data, abun){
   
+  q<-abun
   
   if (class(data)[1]!="matrix"){
     data<-matrix(data, ncol=length(data))
