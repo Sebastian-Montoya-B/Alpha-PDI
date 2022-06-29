@@ -80,7 +80,7 @@ genfun<-function(data, abun){
     return(as.vector(ft))
   }
   
-  #####----Fort et al. (2016) g----
+  #####----Fort et al. (2016) gen----
   
   generalization<-function(data, abun){
     gener<-1-bipartite::dfun(data, abuns=abun)$d/log(sum(data))
