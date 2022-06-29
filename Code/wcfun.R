@@ -2,6 +2,7 @@
 #### We only compiled it into a single function
 
 #### See README for further info
+#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
 
 #### This script sets the wcfun function for further calculations.
 
