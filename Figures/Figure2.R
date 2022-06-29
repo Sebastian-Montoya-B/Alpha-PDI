@@ -25,8 +25,10 @@
 if (!require(zCompositions)) install.packages("zCompositions")
 if (!require(bipartite)) install.packages("bipartite")
 if (!require(scales)) install.packages("scales")
+if (!require(dplyr)) install.packages("dplyr")
 
 library(scales)
+library(dplyr)
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
 source("Code/wcfun.R")
