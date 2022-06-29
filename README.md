@@ -23,6 +23,7 @@ See further info in the respective sections.
     -   genfun.R -\> script of the `genfun` function for calculating the other generality indices used in our study.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
     -   Generality_correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
+    -   using_example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
 2.  Data (folder) -\> folder containing the theoretical data used in the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
     -   vectors1.RDS -\> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually from 0 to 1.
     -   matrices1.RDS -\> list of vectors of resource use for 7,200 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching. Vectors are organized in matrices of five consumers.
