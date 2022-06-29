@@ -1,35 +1,29 @@
+################################################################################
 #### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
 
 #### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
 ####          Boris R. Krasnov, Marco A. R. Mello
 
-#### See README for further info 
-#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
-
-#### This script reproduces the Spearman correlation for the
-#    Assessment of the relation between the specialization parameter 
-#    and the indices of generality.
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
 
 
-#_______________________________________________________________________________
+### This script reproduces the Spearman correlations calculated between the
+### specialization parameter and the generality indices.
 
 
-############### SUMMARY ###############
+######################### 1. SETTINGS ##########################################
 
-#           1. SETTING
-#           2. CALCULATING
-
-#######################################
-
-# 1. SETTING
 
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
 lisEv<-readRDS("vectors1.RDS")
 
-# 2. CALCULATING
 
-#    2.1. Calculating generality
+######################### 2. CALCULATIONS ######################################
+
+##  2.1. Generality 
 
 tt<-lapply(lisEv, function(x){lapply(x, function(x){alpha_PDI(t(x$preference), rep(1,NROW(x$preference)), corrected=F)})})
 tt<-unlist(tt)
@@ -38,7 +32,7 @@ tt2<-lapply(lisEv, function(x){lapply(x, function(x){genfun(t(x$preference*100),
 tt2<-dplyr::bind_rows(tt2)
 
 
-#    2.1. Calculating Spearman correlations between generality and the specialization parameter
+## 2.1. Spearman correlations between generality and the specialization parameter
 
 cor.test(spen, tt, method="spearman", exact=F) # alpha PDI
 cor.test(spen, tt2$Bs, method="spearman", exact=F) # Bs

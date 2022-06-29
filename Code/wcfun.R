@@ -1,19 +1,25 @@
-#### Most part of this script was created by Pierotti et al. (2017).
-#### We only compiled it into a single function
+################################################################################
+#### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
 
-#### See README for further info
-#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+#### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
+####          Boris R. Krasnov, Marco A. R. Mello
 
-#### This script sets the wcfun function for further calculations.
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
 
-#### wcfun function:
+
+### Most of this code was written by Pierotti et al. (2017).
+### We added some new parts and synthesized the code to a single function.
+### This script sets the wcfun function for further calculations.
 
 
 wcfun<-function(data, abun){
   require(zCompositions)
   
   abun<-abun/sum(abun)
-  ####----- Pierotti et al. (2017) Wc ------
+
+  # Pierotti et al. (2017) Wc
   
   fndAit<-function(x,y){
     # x,y: two vector of counts
@@ -81,3 +87,12 @@ wcfun<-function(data, abun){
   
   return(nwc)
 }
+
+
+###################### REFERENCES ##############################################
+
+
+# Pierotti, M. E. R., Martín-Fernández, J. A., & Barceló-Vidal, C. (2017). The
+# peril of proportions: robust niche indices for categorical data. Methods in
+# Ecology and Evolution, 8(2), 223–231. 
+# doi: https://doi.org/10.1111/2041-210X.12656

@@ -24,12 +24,14 @@ See further info in the respective sections.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
     -   Generality_correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   using_example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
+
 2.  Data (folder) -\> folder containing the theoretical data used in the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
     -   vectors1.RDS -\> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually from 0 to 1.
     -   matrices1.RDS -\> list of vectors of resource use for 7,200 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching. Vectors are organized in matrices of five consumers.
     -   samp_vectors_even.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
     -   samp_vectors_uneven.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching.
     -   vectors432.RDS -\> list of vectors of resource use for 432 consumers. Vectors were generated using using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
+
 3.  Figures (folder) -\> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
     -   Figure2.R -\> script to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
     -   Figure3.R -\> script to reproduce the unedited version of Figure 3, and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
@@ -95,12 +97,14 @@ We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. R
 
 -   Blüthgen, N., Menzel, F., & Blüthgen, N. (2006). Measuring specialization in species interaction networks. BMC Ecology, 6, 9. <https://doi.org/10.1186/1472-6785-6-9>
 -   Feinsinger, P., Spears, E., & Poole, R. (1981). A Simple Measure of Niche. Ecology, 62(1), 27–32.
+-   Felix, G. M., Pinheiro, R. B. P., Poulin, R., Krasnov, B. R., & Mello, M. A. R. (2022). The compound topology of host–parasite networks is explained by the integrative hypothesis of specialization. Oikos, 2022(1). <https://doi.org/10.1111/oik.08462%3C/div>
 -   Fort, H., Vázquez, D. P., & Lan, B. L. (2016). Abundance and generalisation in mutualistic networks: Solving the chicken-and-egg dilemma. Ecology Letters, 19(1), 4–11. <https://doi.org/10.1111/ele.12535>
--   Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a challenge for quantifying specialization and network structure : lessons from a quantitative niche model. Oikos, 502–513. <https://doi.org/10.1111/oik.02256>
+-   Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a challenge for quantifying specialization and network structure: lessons from a quantitative niche model. Oikos, 502–513. <https://doi.org/10.1111/oik.02256>
 -   Hurlbert, S. (1978). The Measurement of Niche Overlap and Some Relatives. Ecology, 59(1), 67–77. <https://www.jstor.org/stable/1936632>
 -   Manly, B. F. J., McDondald, L. L., Thomas, D. L., McDonald, T. L., & Erickson, W. P. (2002). Resource Selection by Animals (Second). Springer Netherlands. <https://doi.org/10.1007/0-306-48151-0>
 -   Petraitis, P. S. (1979). Likelihood Measures of Niche Breadth and Overlap. Ecology, 60(4), 703–710.
 -   Pierotti, M. E. R., Martín-Fernández, J. A., & Barceló-Vidal, C. (2017). The peril of proportions: robust niche indices for categorical data. Methods in Ecology and Evolution, 8(2), 223–231. <https://doi.org/10.1111/2041-210X.12656>
+-   Pinheiro, R. B. P., Felix, G. M. F., Dormann, C. F., & Mello, M. A. R. (2019). A new model explaining the origin of different topologies in interaction networks. Ecology,100(9), e02796. <https://doi.org/10.1002/ecy.2796%3C/div>
 -   Poisot, T., Canard, E., Mouquet, N., & Hochberg, M. E. (2012). A comparative study of ecological specialization estimators. Methods in Ecology and Evolution, 3(3), 537–544. <https://doi.org/10.1111/j.2041-210X.2011.00174.x>
 -   Schoener, T. W. (1974). Some Methods for Calculating Competition Coefficients from Resource-Utilization Spectra. The American Naturalist, 108(961), 332–340. <https://doi.org/10.1086/282911>
 -   Smith, E. P. (1982). Niche breadth, resource availability, and inference. Ecology, 63(6), 1675–1681. <https://doi.org/10.2307/1940109>

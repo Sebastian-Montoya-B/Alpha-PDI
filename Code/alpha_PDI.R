@@ -1,14 +1,15 @@
+################################################################################
 #### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
 
 #### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
 ####          Boris R. Krasnov, Marco A. R. Mello
 
-#### See README for further info
-#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
 
-#### This script sets the alpha_PDI function for further calculations.
 
-#### alpha_PDI function:
+### This script sets the alpha_PDI function for further calculations.
 
 
 alpha_PDI<-function(data, abun){
@@ -40,7 +41,8 @@ alpha_PDI<-function(data, abun){
 
   aPDImaxFind <- function(x, q) {
     #For the given number of observations find the maximum possible value of aPDI
-    #This function is similar to the one used in the bipartite package (Dormann et al. 2008) to find dmin and calculate d'
+    #This function is similar to the one used in the bipartite package
+    # (Dormann et al. 2008) to find dmin and calculate d'.
     expec <- floor(q * (sum(x)))
     restuse <- sum(x) - sum(expec)
     x.new <- expec

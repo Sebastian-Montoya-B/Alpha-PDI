@@ -1,13 +1,16 @@
+################################################################################
 #### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
 
-#### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, Boris R. Krasnov, Marco A. R. Mello
+#### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
+####          Boris R. Krasnov, Marco A. R. Mello
 
-#### See README for further info
-#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
 
-#### This script sets the genfun function for further calculations.
 
-#### genfun function:
+### This script sets the genfun function for further calculations.
+
 
 genfun<-function(data, abun){
   
