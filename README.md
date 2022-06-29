@@ -46,7 +46,7 @@ R code provided in this repository was designed to quantify the generality of sp
 
 ## (1) alpha_PDI
 
-Computes alpha PDI for an interaction matrix (or vectior) and its resource abundance vector.
+Computes *alpha PDI* for an interaction matrix (or vectior) and its resource abundance vector.
 
 ### Arguments
 
@@ -66,7 +66,7 @@ Computes the other generality indices calculated in our study for an interaction
 
 ## (3) wcfun
 
-Computes the Wc index of generality proposed by Pierotti et al. (2017) for an interaction matrix (or vector) and its resource abundance vector.
+Computes the *Wc* index of generality proposed by Pierotti et al. (2017) for an interaction matrix (or vector) and its resource abundance vector.
 
 ### Arguments
 
