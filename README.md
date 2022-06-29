@@ -57,6 +57,8 @@ Computes *alpha PDI* for an interaction matrix (or vectior) and its resource abu
 
 2.  abun -\> vector. It contains the resource abundances of the columns of the interaction matrix.
 
+3. corrected -\> logical. If "TRUE" it calculates alpha PDI corrected by the maximum possible value given the total number of interactions of the consumer. 
+
 ## (2) genfun
 
 Computes the other generality indices calculated in our study for an interaction matrix (or vector) and its resource abundance vector.
