@@ -4,6 +4,7 @@
 ####          Boris R. Krasnov, Marco A. R. Mello
 
 #### See README for further info
+#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
 
 #### This script sets the alpha_PDI function for further calculations.
 
