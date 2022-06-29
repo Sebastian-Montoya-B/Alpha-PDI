@@ -50,7 +50,7 @@ Computes alpha PDI for an interaction matrix (or vectior) and its resource abund
 
 ### Arguments
 
-1.  data -\> matrix. The original interaction matrix with consumers in the rows and resources in the columns.
+1.  data -\> matrix or vector. The original interaction matrix (or vector) with consumers in the rows and resources in the columns.
 
 2.  abun -\> vector. It contains the resource abundances of the columns of the interaction matrix.
 
@@ -60,7 +60,7 @@ Computes the other generality indices calculated in our study for an interaction
 
 ### Arguments
 
-1.  data -\> matrix. The original interaction matrix with consumers in rows and resources in columns.
+1.  data -\> matrix or vector. The original interaction matrix (or vector) with consumers in rows and resources in columns.
 
 2.  abun -\> vector. It contains the resource abundances of the columns of the interaction matrix.
 
