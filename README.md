@@ -24,12 +24,16 @@ See further info in each section.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
     -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
+
+
 2.  Data (folder) -\> folder containing the theoretical data used in the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
     -   vectors1.RDS -\> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually from 0 to 1.
     -   matrices1.RDS -\> list of vectors of resource use for 7,200 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching. Vectors are organized in matrices of five consumers.
     -   samp_vectors_even.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
     -   samp_vectors_uneven.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching.
     -   vectors432.RDS -\> list of vectors of resource use for 432 consumers. Vectors were generated using using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
+
+
 3.  Figures (folder) -\> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
     -   Figure2.R -\> script to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
     -   Figure3.R -\> script to reproduce the unedited version of Figure 3, and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.

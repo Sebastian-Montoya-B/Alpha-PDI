@@ -9,9 +9,10 @@
 ################################################################################
 
 
+### This script sets the wcfun function for further calculations.
+
 ### Most of this code was written by Pierotti et al. (2017).
 ### We added some new parts and synthesized the code to a single function.
-### This script sets the wcfun function for further calculations.
 
 
 wcfun<-function(data, abun){

@@ -36,7 +36,6 @@ if(!require(corrgram)){
   library(corrgram)
 }
 
-
 ## 1.3. Source the functions.
 source("Code/alpha_PDI.R") # αPDI
 source("Code/genfun.R") # other common generality indices
@@ -130,8 +129,10 @@ wcfun(data, abun) #Only works for matrices. May not work for some matrices.
 correlations <- cbind(indices, aPDIcor$corrected_aPDI)
 names <- colnames(correlations)
 colnames(correlations) <- c((names[1:(length(names)-1)]), "aPDI")
+correlations <- correlations[,-1]
+correlations
 
-corrgram(correlations[,-1],
+corrgram(correlations,
          cor.method = "pearson",
          lower.panel = panel.cor,
          upper.panel = panel.shade,

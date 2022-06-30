@@ -99,10 +99,8 @@ genfun<-function(data, abun){
   nft<-FT(data, abun)
   nd<-1-dfun(data, abuns = abun)$dprime
   ng<-generalization(data, abun) 
-  
 
-
-  
+    
   minq<-min(abun/sum(abun))
   mind<-1-log(1/minq)/log(sum(data))
   
@@ -116,9 +114,34 @@ genfun<-function(data, abun){
   eq<-seq(1,nrow(data))
   
 
-    summ<-as.data.frame(cbind(Consumer=eq,Bs=besest, "B'"=beprimast, W=wpetst, PS=pesest, FT=feitst,  "1-d'"=nd, gen=ngst))
+    summ<-as.data.frame(cbind(Consumer=eq,Bs=besest, 
+                              "B'"=beprimast, W=wpetst, PS=pesest, FT=feitst,
+                              "1-d'"=nd, gen=ngst))
   
   return(summ)
   
 }  
 
+
+###################### REFERENCES ##############################################
+
+
+# Feinsinger, P., Spears, E., & Poole, R. (1981). A Simple Measure of Niche. 
+# Ecology, 62(1), 27–32. https://www.jstor.org/stable/1936664
+
+# Fort, H., Vázquez, D. P., & Lan, B. L. (2016). Abundance and generalisation
+# in mutualistic networks: Solving the chicken-and-egg dilemma. Ecology Letters,
+# 19(1), 4–11. http://dx.doi.org/10.1111/ele.12535
+
+# Hurlbert, S. (1978). The Measurement of Niche Overlap and Some Relatives.
+# Ecology, 59(1), 67–77. Retrieved from https://www.jstor.org/stable/1936632
+
+# Petraitis, P. S. (1979). Likelihood Measures of Niche Breadth and Overlap.
+# Ecology, 60(4), 703–710. https://doi.org/10.2307/1936607
+
+# Schoener, T. W. (1974). Some Methods for Calculating Competition Coefficients
+# from Resource-Utilization Spectra. The American Naturalist, 108(961), 332–340.
+# http://dx.doi.org/10.1086/282911
+
+# Smith, E. P. (1982). Niche breadth, resource availability, and inference. 
+# Ecology, 63(6), 1675–1681. http://dx.doi.org/10.2307/1940109
