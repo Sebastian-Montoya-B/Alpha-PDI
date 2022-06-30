@@ -23,6 +23,7 @@ rm(list= ls())
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
 lisEv<-readRDS("Data/vectors1.RDS")
+spen<-c(0.5,1, seq(2,60,by=2)) #Specialization parameter used to generate lisEv
 
 
 ######################### 2. CALCULATIONS ######################################
