@@ -22,7 +22,7 @@ See further info in each section.
     -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of generality.
     -   genfun.R -\> script of the `genfun` function for calculating the other generality indices used in our study.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
-    -   Generality_correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
+    -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
 2.  Data (folder) -\> folder containing the theoretical data used in the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
     -   vectors1.RDS -\> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually from 0 to 1.
@@ -45,7 +45,7 @@ The R code provided in this repository was designed to quantify the generality o
 
 1.  Open the file `AlphaPDI.Rproj`.
 2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
-3.  Use the scripts Generality_correlations.R, Figure2.R, Figure3.R, and FigureSup.R to reproduce the respective figures and analyses of our paper.
+3.  Use the scripts correlations.R, Figure2.R, Figure3.R, and FigureSup.R to reproduce the respective figures and analyses of our paper.
 
 ### 2. If you want to make a quick test of our analysis or apply it to your own data:
 
