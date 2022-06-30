@@ -103,7 +103,7 @@ aPDIcor
 
 # For each consumer, you get a list with three vectors:
 # (1) $corrected_aPDI: The value of αPDI corrected by the maximum possible
-#                      value ($corrected_aPDI/$max_aPDI).
+#                      value ($raw_aPDI/$max_aPDI).
 # (2) $raw_aPDI: Uncorrected value of αPDI.
 # (3) $max_aPDI: Maximum possible value of αPDI given the total 
 #                number of interactions made by the consumer.
