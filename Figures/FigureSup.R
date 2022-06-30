@@ -1,42 +1,40 @@
+################################################################################
 #### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
 
 #### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
-#             Boris R. Krasnov, Marco A. R. Mello
+####          Boris R. Krasnov, Marco A. R. Mello
 
-#### See README for further info 
-#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
-
-#### This script reproduces Figure S1 to S36.
-
-
-#_______________________________________________________________________________
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
 
 
-############### SUMMARY ###############
+### This script reproduces Figures S1 to S36.
 
-#           1. SETTING
-#           2. CREATING FUNCTIONS
-#           4. CALCULATING
-#           5. PLOTTING AND EXPORTING
 
-#######################################
+######################### 1. SETTINGS ##########################################
 
-# 1. SETTING
 
+## Clean the environment.
+rm(list= ls())
+
+## Source the functions
 source("Code/alpha_PDI.R")
-lisEv<-readRDS("Data/vectors432.RDS")
+lisEv<-readRDS("Data/vectors432.RDS") #See README for further details
 
 ## For each consumer in lisEv there are five vectors: 
-##   (1) the resource abundance distribution ($res_abun),
-##   (2) the true preferences ($preference), 
-##   (3) the current pattern of resource use ($current),
-##   (4) the observed pattern of resource use in a case with 10^6 observations ($large), and
+##   (1) the resource abundance distribution ($res_abun)
+##   (2) the true preferences ($preference) 
+##   (3) the current pattern of resource use ($current)
+##   (4) the observed pattern of resource use in a case with 10^6 observations ($large)
 ##   (5) the observed pattern of resource use in a case with 100 observations ($small)
 ## Here we will focus on the $large vector
 
-# 2. CREATING FUNCTIONS
 
-# 2.1. Sampling simulation function
+######################### 2. ADDITIONAL FUNCTIONS ##############################
+
+
+## Sampling simulation function
 
 samp.sim<-function(prob, n.obs, n.rep){
   
@@ -59,9 +57,9 @@ samp.sim<-function(prob, n.obs, n.rep){
 }
 
 
-
-# 2.2. Function to find the minimum number of observations needed for an accurate estimation
-#      This function is based on Fründ et al. (2016)
+## Function to find the minimum number of observations needed for an accurate
+## estimation.
+## This function is based on Fründ et al. (2016).
 
 findmin<-function(corr.apdi, expected, accuracy=0.05){
   
@@ -79,35 +77,42 @@ findmin<-function(corr.apdi, expected, accuracy=0.05){
   return(nsat)
 }
 
-# 4. CALCULATING
 
-# 4.1. Simulate the sampling process for each consumer
+######################### 3. CALCULATIONS #####################################
+
+
+## Simulate the sampling process for each consumer.
 n.rep<-10
 n.obs<-100
 fga<-lapply(lisEv, function(x){lapply(x, function(x){samp.sim(x$large,n.obs,n.rep)})})
 
-# 4.2. Calculate alpha PDI for each step of the sampling process
-#      This calculation may take several hours based on the 
-#      number of repetitions and observations used. For the current repetitions and observations
-#      it took up to 6 hours in a PC with the following specifications:
-#      Windows 10 with AMD A12 2.70GHz, RAM 12 GB 
+## Calculate alpha PDI for each step of the sampling process.
+## This calculation may take several hours based on the number of repetitions
+## and observations used. For the current repetitions and observations it took
+## up to 6 hours in a PC with the following specifications:
+## Windows 10, AMD A12 2.70GHz, 12 GB RAM. 
+
+respp<-lapply(fga, function(x){
+  lapply(x, function(x){
+    apply(x, 3, function(x){
+      alpha_PDI(x[-1,],rep(10, NCOL(x)))$corrected_aPDI})})})
 
 
-respp<-lapply(fga, function(x){lapply(x, function(x){apply(x, 3, function(x){alpha_PDI(x[-1,],rep(10, NCOL(x)))$corrected_aPDI})})})
-
-
-
-# 4.3. Calculate expected values based on a vector of 10^6 observations ($large)
-lisEexv<-lapply(lisEv, function(x){lapply(x, function(x){alpha_PDI(t(x$large), rep(1,NROW(x$large)))$raw_aPDI})})
+## Calculate expected values based on a vector of 10^6 observations ($large)
+lisEexv<-lapply(lisEv, function(x){
+  lapply(x, function(x){
+    alpha_PDI(t(x$large), rep(1,NROW(x$large)))$raw_aPDI})})
 lisEexv<-unlist(lisEexv)
 
 
-# 5. PLOTTING AND EXPORTING
+######################### 4. PLOTTING #########################################
+
+
 colw<-c("#00ceff", "#078ab5","#004c6d")
 
 for (i in 1:length(respp)){
   
-  svg(filename=paste0("FigSup", i, ".png"), width=8, height=9)
+  svg(filename=paste0("Figures/FigSup", i, ".svg"), width=8, height=9)
   layout(matrix(c(13,1,2,3,13,4,5,6,13,7,8,9,13,10,11,12,13,14,14,14), byrow=T, ncol=4), 
          widths=c(10,30,30,30), heights=c(22,22,22,22,12))
   layout.show(14)
@@ -139,10 +144,3 @@ for (i in 1:length(respp)){
   dev.off()
 }
 
-
-
-
-
-
-
-      

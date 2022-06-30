@@ -1,50 +1,64 @@
+################################################################################
 #### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
 
 #### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
-#             Boris R. Krasnov, Marco A. R. Mello
+####          Boris R. Krasnov, Marco A. R. Mello
 
-#### See README for further info 
-#    https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
-
-#### This script reproduces Figure 2.
-
-
-#_______________________________________________________________________________
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
 
 
-############### SUMMARY ###############
+### This script reproduces Figure 2.
 
-#           1. SETTING
-#           2. CALCULATING
-#           3. PLOTTING AND EXPORTING
 
-#######################################
+######################### 1. SETTINGS ##########################################
 
-# 1. SETTING
 
-if (!require(zCompositions)) install.packages("zCompositions")
-if (!require(bipartite)) install.packages("bipartite")
-if (!require(scales)) install.packages("scales")
-if (!require(dplyr)) install.packages("dplyr")
+## Clean the environment.
+rm(list= ls())
 
-library(scales)
-library(dplyr)
+## Check the required packages, install them if necessary, and load them.
+if(!require(zCompositions)){
+  install.packages("zCompositions")
+  library(zCompositions)
+}
+
+if(!require(bipartite)){
+  install.packages("bipartite")
+  library(bipartite)
+}
+
+if(!require(scales)){
+  install.packages("scales")
+  library(scales)
+}
+
+if(!require(dplyr)){
+  install.packages("dplyr")
+  library(dplyr)
+}
+
+## Source the functions.
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
 source("Code/wcfun.R")
 
-## Load matrices of vectors generated using the quantitative niche model of Fründ et al. (2016)
+## Load a list of matrices and vectors generated using the quantitative niche
+## model of Fründ et al. (2016)
 mat1<-readRDS("Data/matrices1.RDS") 
 
-## For each consumer in mat1 there are three vectors: 
-##   (1) the resource abundance distribution ($res_abun),
-##   (2) the true preferences ($preference), 
-##   (3) the current pattern of resource use ($current),
+## For each consumer in mat1 there are four vectors/matrices: 
+##   (1) the consumer abundance distribution ($con_abun)
+##   (2) the resource abundance distribution ($res_abun)
+##   (3) the true preferences ($preference) 
+##   (4) the current resource use pattern ($current).
 
-# 2. CALCULATING
+
+######################### 2. CALCULATIONS ######################################
 
 
-## Calculating alpha PDI and other indices
+## Calculating αPDI and other indices
 exv<-NULL
 obv<-NULL
 lisExv<-NULL
@@ -92,16 +106,16 @@ for (i in 1:length(mat1)){
 
 lisExvwc<-unlist(lisExvwc)
 lisObvwc<-unlist(lisObvwc)
-## Depending on your data, some zeros may not be replaced using zCompositions,
-#  see error in zCompositions https://stats.stackexchange.com/questions/477663/error-with-the-geometric-bayesian-multiplicative-replacement-of-count-zeros-with
+## Depending on your data, some zeros may not be replaced using zCompositions.
+#  See error in zCompositions https://stats.stackexchange.com/questions/477663/error-with-the-geometric-bayesian-multiplicative-replacement-of-count-zeros-with
 
 
-# 3. PLOTTING AND EXPORTING
+######################### 3. PLOTTING ##########################################
 
 
 colw<-c("#00ceff", "#078ab5","#004c6d")
 
-svg(filename="Fig2.svg", width=8, height=9)
+svg(filename="Figures/Figure2.svg", width=8, height=9)
 par(mar= c(4,2,2,1),las=1)
 layout(matrix(seq(1,9), ncol=3, byrow=T))
 layout.show(9)
@@ -192,6 +206,5 @@ points(y=lisObvwc[(l5+1):l10],x=lisExvwc[(l5+1):l10], xlim=c(0,1), ylim=c(0,1), 
 points(y=lisObvwc[(l10+1):l50],x=lisExvwc[(l10+1):l50],xlim=c(0,1), ylim=c(0,1), col=colw[1], pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
 text(x=0.07,y=0.98, label=expression(italic(Wc)), cex=1.3)
-
 
 dev.off()
