@@ -16,22 +16,20 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 
 ## List of folders and files
 
-See further info in the respective sections.
+See further info in each section.
 
-1.  Code (folder) -\> folder containing the scripts to calculate the indices of generality and other analyses used in our study.
-    -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the alpha PDI index of generality.
+1.  Code (folder) -\> folder containing the scripts to calculate the generality indices and other analyses performed in our paper.
+    -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of generality.
     -   genfun.R -\> script of the `genfun` function for calculating the other generality indices used in our study.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
     -   Generality_correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
-    -   using_example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
-
+    -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
 2.  Data (folder) -\> folder containing the theoretical data used in the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
     -   vectors1.RDS -\> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually from 0 to 1.
     -   matrices1.RDS -\> list of vectors of resource use for 7,200 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching. Vectors are organized in matrices of five consumers.
     -   samp_vectors_even.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
     -   samp_vectors_uneven.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching.
     -   vectors432.RDS -\> list of vectors of resource use for 432 consumers. Vectors were generated using using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
-
 3.  Figures (folder) -\> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
     -   Figure2.R -\> script to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
     -   Figure3.R -\> script to reproduce the unedited version of Figure 3, and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
@@ -39,17 +37,24 @@ See further info in the respective sections.
 
 ## Functionality and origin
 
-R code provided in this repository was designed to quantify the generality of species in consumer-resource interactions. It can also be used to quantify the generality of nodes in any consumer-resource network, given that the general assumptions explained in our study are met.
+The R code provided in this repository was designed to quantify the generality of species in consumer-resource interactions. Our analysis can also be used to quantify the generality of nodes in any consumer-resource network, given that the main assumptions explained in our paper are met. Therefore, read our paper carefully before using the functions presented here.
 
 ## Instructions
 
-1.  Open the `AlphaPDI.Rproj` file.
+### 1. If you want to study our analysis in detail:
+
+1.  Open the file `AlphaPDI.Rproj`.
 2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
-3.  Use the scripts Generality_correlations.R, Figure2.R, Figure3.R, and FigureSup.R to reproduce the figures and analyses of Montoya-Bustamante et al. *in prep.*
+3.  Use the scripts Generality_correlations.R, Figure2.R, Figure3.R, and FigureSup.R to reproduce the respective figures and analyses of our paper.
+
+### 2. If you want to make a quick test of our analysis or apply it to your own data:
+
+1.  Open the file `example.R`, which contains a **turorial**.
+2.  Follow the instructions given in the tutorial.
 
 ## (1) alpha_PDI
 
-Computes *alpha PDI* for an interaction matrix (or vectior) and its resource abundance vector.
+Computes **αPDI** for an interaction matrix (or vectior) and its resource abundance vector.
 
 ### Arguments
 
@@ -57,7 +62,7 @@ Computes *alpha PDI* for an interaction matrix (or vectior) and its resource abu
 
 2.  abun -\> vector. It contains the resource abundances of the columns of the interaction matrix.
 
-3. corrected -\> logical. If "TRUE" it calculates alpha PDI corrected by the maximum possible value given the total number of interactions of the consumer. 
+3.  corrected -\> logical. If "TRUE" it calculates alpha PDI corrected by the maximum possible value given the total number of interactions of the consumer.
 
 ## (2) genfun
 
@@ -82,6 +87,12 @@ Computes the *Wc* index of generality proposed by Pierotti et al. (2017) for an 
 ## Acknowledgements
 
 We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Natalya Zapata-Mesa, Nico Blüthgen, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about ecological networks and niche indices that inspired us to carry out this study. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior, convocatoria 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 3.4-8151/15037 and 3.2-BRA/1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the [Stack Overflow](https://stackoverflow.com) community, where we solve most of our coding dilemmas.
+
+
+## Feedback
+
+If you have any questions, corrections, or suggestions, please feel free to open an [issue](https://github.com/Sebastian-Montoya-B/Alpha-PDI/issues) or make a [pull request](https://github.com/Sebastian-Montoya-B/Alpha-PDI/pulls).
+
 
 ## Reference
 

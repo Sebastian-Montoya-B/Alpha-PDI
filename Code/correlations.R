@@ -15,13 +15,17 @@
 
 ######################### 1. SETTINGS ##########################################
 
+## 1.1 Clean the environment.
+rm(list= ls())
 
+## 1.2 Source the functions.
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
-lisEv<-readRDS("vectors1.RDS")
+lisEv<-readRDS("Data/vectors1.RDS")
 
 
 ######################### 2. CALCULATIONS ######################################
+
 
 ##  2.1. Generality 
 
