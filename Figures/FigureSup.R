@@ -9,7 +9,9 @@
 ################################################################################
 
 
-### This script reproduces Figures S1 to S36.
+### This script reproduces a series of figures of the process to find a minimal
+### number of observations needed for an accurate estimate of αPDI. They include
+### Figures S1 to S9 of the Appendix S1.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -147,8 +149,8 @@ colw<-c("#00ceff", "#078ab5","#004c6d")
 
 for (i in 1:length(respp)){
   
-  #svg(filename=paste0("Figures/Supplement/FigSup", i, ".svg"), width=8, height=9)
-  png(filename=paste0("Figures/Exported/FigSup", i, ".png"), width=4000, height=4600, res=600)
+  
+  png(filename=paste0("Figures/Exported/Sampling_simulation_figures/FigSup", i, ".png"), width=4000, height=4600, res=600)
   layout(matrix(c(13,15,15,15,13,1,2,3,13,4,5,6,13,7,8,9,13,10,11,12,13,14,14,14), byrow=T, ncol=4), 
          widths=c(10,30,30,30), heights=c(10,20,20,20,20,10))
   layout.show(15)

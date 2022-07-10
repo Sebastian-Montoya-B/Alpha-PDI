@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figure 4, and Figures S37-40
+### This script reproduces Figure 4, and Figures S10 to S12 of the Appendix S1.
 
 
 ######################### 1. SETTINGS ##########################################
