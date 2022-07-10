@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figure 4
+### This script reproduces Figure 4, and Figures S37-40
 
 
 ######################### 1. SETTINGS ##########################################
@@ -60,7 +60,8 @@ length(results)
 n.inter<-lapply(consumers, rowSums)
 length(n.inter)
 
-## 2.2. Proportion of generalists, specialists, and data deficient in each network
+## 2.2. Proportion of generalists, specialists, and consumers 
+##      with few observations in each network
 
 suff.inter<-lapply(n.inter, function (x){which(x>=100)})
 
@@ -69,19 +70,20 @@ for (i in 1:length(results)){
   suff.res[[i]]<-results[[i]][suff.inter[[i]]]
 }
 
-por.gen<-NULL
-por.spe<-NULL
-por.left<-NULL
+por.gen<-NULL # generalists
+por.spe<-NULL # specialists
+por.left<-NULL # few observations
 for (i in 1:length(suff.res)){
   # % of generalists
   por.gen[[i]]<-length(which(suff.res[[i]]>0.5))/length(results[[i]])
   # % of specialists
   por.spe[[i]]<-length(which(suff.res[[i]]<0.5))/length(results[[i]])
-  # % of consumers without enough observations (data deficient)
+  # % of consumers without enough observations
   por.left[[i]]<-1-(por.gen[[i]]+por.spe[[i]])
 }
 
-obs.per<-cbind(Generalists=unlist(por.gen),Specialists=unlist(por.spe), Dada_def=unlist(por.left))
+obs.per<-cbind(Generalists=unlist(por.gen),Specialists=unlist(por.spe), 
+               few_obs=unlist(por.left))
 row.names(obs.per)<-names(results)
 obs.per
 
@@ -92,7 +94,8 @@ gen_fleas<-alpha_PDI(consumers$Turkmenistan,
                      resources$Turkmenistan)$corrected_aPDI
 
 
-write.csv(cbind(aPDI=gen_fleas,obs=rowSums(consumers$Turkmenistan)), "Turkmenistan_aPDI.csv")
+## write.csv(cbind(aPDI=gen_fleas,obs=rowSums(consumers$Turkmenistan)),
+##           "Turkmenistan_aPDI.csv")
 ######################### 3. PLOTTING ##########################################
 
 
@@ -168,15 +171,12 @@ V(imat)$shape <- c("circle", "rhombus")[V(imat)$type+1]
 
 E(imat)$width <- log(E(imat)$weight/5000)
 
-#vlabs<-rep(NA, length(V(imat)$size))
-#vlabs[which(rowSums(consumers$Turkmenistan)<100)]<-"U"
-
 colfunc <- colorRampPalette(c("#00918d", "#ffffff","#df4f00"))
 legend_image <- as.raster(matrix(colfunc(20), nrow=1))
 
 ## 3.2. Exporting Figure 4
 
-png(filename="Figure4.png", width=6000, height=4000, res=600)
+png(filename="Figures/Exported/Figure4.png", width=6000, height=4000, res=600)
 
 layout(matrix(c(1,1,2,3,5,4),ncol=2, byrow=T), width = c(1,1),height = c(1,5,1))
 
@@ -219,7 +219,7 @@ dev.off()
 
 ## 3.3. Plotting Figure S37
 
-png(filename="FigempS37.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigempS37.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(21,1,2,3,4,21,5,6,7,8,21,9,10,11,12,21,13,14,15,16,21,17,18,19,20,21,22,22,22,22),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
@@ -242,7 +242,7 @@ dev.off()
 
 ## 3.4. Plotting Figure S38
 
-png(filename="FigempS38.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigempS38.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(21,1,2,3,4,21,5,6,7,8,21,9,10,11,12,21,13,14,15,16,21,17,18,19,20,21,22,22,22,22),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
@@ -266,7 +266,7 @@ dev.off()
 
 ## 3.5. Plotting Figure S39
 
-png(filename="FigempS39.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigempS39.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(21,1,2,3,4,21,5,6,7,8,21,9,10,11,12,21,13,14,15,16,21,17,18,19,20,21,22,22,22,22),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
@@ -291,7 +291,7 @@ dev.off()
 
 ## 3.6. Plotting Figure S40
 
-png(filename="FigempS40.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigempS40.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(17,1,2,3,4,17,5,6,7,8,17,9,10,11,12,17,13,14,15,16,17,18,18,18,18,17,18,18,18,18),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
