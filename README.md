@@ -24,6 +24,7 @@ See further info in each section.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
     -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
+    -	QNM.R -\> script of the quantitative niche model of Fründ et al. (2016) and functions to generate the analized theoretical vectors.
 
 
 2.  Data (folder) -\> folder containing empirical data used in the analyses and figures.
