@@ -46,7 +46,7 @@ The R code provided in this repository was designed to quantify the generality o
 
 1.  Open the file `AlphaPDI.Rproj`.
 2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
-3.  Use the files `correlations.R`, `Figure2.R`, `Figure3.R`, and `FigureSup.R` to reproduce the respective figures and analyses of our paper.
+3.  Use the files `correlations.R`, `Figure2.R`, `Figure3.R`, `Figure4.R`, and `FigureSup.R` to reproduce the respective figures and analyses of our paper.
 
 ### 2. If you want to make a quick test of our analysis or apply it to your own data:
 
@@ -101,11 +101,9 @@ If you have any questions, corrections, or suggestions, please feel free to open
 
 ## Source repos
 
-[ihsmodel](https://github.com/pinheirorbp/ihsmodel)
+[Quantitative niche model](https://github.com/JochenFruend/Defaunation_SeedDispersalWebs)
 
-[Restricted-Null-Model](https://github.com/gabrielmfelix/Restricted-Null-Model)
 
-[nestedness](https://github.com/pinheirorbp/nestedness)
 
 ## Source studies
 
