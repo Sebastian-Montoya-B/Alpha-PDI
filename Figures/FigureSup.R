@@ -20,7 +20,39 @@ rm(list= ls())
 
 ## Source the functions
 source("Code/alpha_PDI.R")
-lisEv<-readRDS("Data/vectors432.RDS") #See README for further details
+source("Code/QNM.R")
+
+## Generate the 432 vectors using the quantitative niche model of 
+## Fründ et al. (2016)
+
+Nbee <- 1
+nsim<-12 # Repetitions
+MaUn<-NULL
+MaEv<-NULL
+spen<-c(seq(0.1, 60, length=12)) # Specialization parameter
+length(spen)
+lisUn<-NULL
+lisEv<-NULL
+spelisUn<-NULL
+spelisEv<-NULL
+counter<-1
+lisnam<-NULL
+for (Nplant in c(5, 10, 50)){ # Number of potential resources
+  
+  for (spe in spen){
+    
+    for (i in 1:nsim){
+      
+      MaEv[[i]]<-gen_even(Nbee,Nplant, spe,minsamp=100,maxsamp=1000000, samp=T, make="random")
+      
+    }
+    lisnam[[counter]]<-Nplant
+    
+    lisEv[[counter]]<-MaEv
+    counter<-counter+1
+  }
+
+}
 
 ## For each consumer in lisEv there are five vectors: 
 ##   (1) the resource abundance distribution ($res_abun)
@@ -162,4 +194,11 @@ for (i in 1:length(respp)){
 
 
 
+###################### REFERENCES ##############################################
+
+
+## Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a 
+## challenge for quantifying specialization and network structure: lessons 
+## from a quantitative niche model. Oikos, 502–513. 
+## doi: https://doi.org/10.1111/oik.02256
 

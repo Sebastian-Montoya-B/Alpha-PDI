@@ -26,12 +26,40 @@ if(!require(scales)){
 
 ## Source the functions.
 source("Code/alpha_PDI.R")
+source("Code/QNM.R")
 
-## Load the list of vectors generated using even resource abundance distributions.
-lisEv <- readRDS("Data/samp_vectors_even.RDS") 
+## Generate the list of vectors with even (lisEv) and uneven (lisUn) resource 
+## abundance distributions, using the quantitative niche model of 
+## Fründ et al. (2016)
 
-## Load the list of vectors generated using uneven resource abundance distributions.
-lisUn <- readRDS("Data/samp_vectors_uneven.RDS") 
+Nbee <- 1 # number of consumers. If > 1 it will generate matrices.
+nsim<-2
+MaUn<-NULL
+MaEv<-NULL
+spen<-c(seq(0.1, 60, by=0.1)) # Specialization parameter
+length(spen)
+lisUn<-NULL
+lisEv<-NULL
+spelisUn<-NULL
+spelisEv<-NULL
+counter<-1
+lisnam<-NULL
+for (Nplant in c(5, 10, 50)){ # Number of potential resources
+  
+  for (spe in spen){
+    
+    for (i in 1:nsim){
+      MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=T,minsamp=100,maxsamp=1000000, make="random" )
+      MaEv[[i]]<-gen_even(Nbee,Nplant, spe,minsamp=100,maxsamp=1000000, samp=T, make="random")
+      
+    }
+    lisnam[[counter]]<-Nplant
+    lisUn[[counter]]<-MaUn
+    lisEv[[counter]]<-MaEv
+    counter<-counter+1
+  }
+
+}
 
 ## For each consumer in lisEv and lisUn there are five vectors: 
 ##   (1) the resource abundance distribution ($res_abun)
@@ -86,8 +114,8 @@ cor.test(lisUexv2,lisUexvs2)#0.98
 
 colw<-c("#00ceff", "#078ab5","#004c6d")
 
-svg(filename="Figures/Figure3.svg", width=8, height=7)
-x11()
+svg(filename="Figures/Exported/Figure3.svg", width=8, height=7)
+
 
 par(mar= c(4,2,2,1),las=1)
 layout(matrix(c(1,2,3,4), ncol=2, byrow=T))
@@ -111,3 +139,12 @@ points(x=lisUexv2[(l10+1):l50],y=lisUexvs2[(l10+1):l50],col=colw[1],
 abline(coef = c(0,1), lwd=1.5)
 
 dev.off()
+
+
+###################### REFERENCES ##############################################
+
+
+## Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a 
+## challenge for quantifying specialization and network structure: lessons 
+## from a quantitative niche model. Oikos, 502–513. 
+## doi: https://doi.org/10.1111/oik.02256

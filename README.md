@@ -26,12 +26,9 @@ See further info in each section.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
 
 
-2.  Data (folder) -\> folder containing the theoretical data used in the analyses and figures. Data were generated using the "quantitative niche model" of Fründ et al. (2016).
-    -   vectors1.RDS -\> list of vectors of resource use for 32 consumers and 51 potential resources. Vectors were generated with even resource abundance distributions, the specialization parameter varying from low (0.5) to high (60), and trait matching varying gradually from 0 to 1.
-    -   matrices1.RDS -\> list of vectors of resource use for 7,200 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching. Vectors are organized in matrices of five consumers.
-    -   samp_vectors_even.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
-    -   samp_vectors_uneven.RDS -\> list of vectors of resource use for 3,600 consumers. Vectors were generated using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), uneven resource abundance distributions, and random trait matching.
-    -   vectors432.RDS -\> list of vectors of resource use for 432 consumers. Vectors were generated using using a variable number of potential resources (5, 10, and 50), with the specialization parameter varying from low (0.5) to high (60), even resource abundance distributions, and random trait matching.
+2.  Data (folder) -\> folder containing empirical data used in the analyses and figures.
+    -   Fleas.RDS -\> list of 74 matrices of interactions between fleas and mammals.
+    -   resource_abundances.RDS -\> list of 74 vectors of resource abundance distribution (mammal abundance) for each matrix in Fleas.RDS.
 
 
 3.  Figures (folder) -\> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.

@@ -45,8 +45,8 @@ source("Code/genfun.R")
 source("Code/wcfun.R")
 source("Code/QNM.R")
 
-## Load a list of matrices and vectors generated using the quantitative niche
-## model of Fründ et al. (2016)
+## Generate a list of matrices and vectors generated using the quantitative 
+## niche model of Fründ et al. (2016)
 
 Nbee <- 5
 nsim<-1
@@ -60,7 +60,7 @@ spelisUn<-NULL
 spelisEv<-NULL
 counter<-1
 lisnam<-NULL
-for (Nplant in c(5, 10, 50)){
+for (Nplant in c(5, 10, 50)){ # Number of potential resources
   
   for (spe in spen){
     
@@ -239,3 +239,12 @@ abline(coef = c(0,1), lwd=1.5)
 text(x=0.07,y=0.98, label=expression(italic(Wc)), cex=1.3)
 
 dev.off()
+
+
+###################### REFERENCES ##############################################
+
+
+## Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a 
+## challenge for quantifying specialization and network structure: lessons 
+## from a quantitative niche model. Oikos, 502–513. 
+## doi: https://doi.org/10.1111/oik.02256
