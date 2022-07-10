@@ -9,9 +9,9 @@
 ################################################################################
 
 
-### This script reproduces a series of figures of the process to find a minimal
-### number of observations needed for an accurate estimate of αPDI. They include
-### Figures S1 to S9 of the Appendix S1.
+### This script reproduces the series of figures used for process of finding a 
+### minimal number of observations needed for an accurate estimate of αPDI. 
+### They include Figures S1 to S9 of the Appendix S1.
 
 
 ######################### 1. SETTINGS ##########################################
