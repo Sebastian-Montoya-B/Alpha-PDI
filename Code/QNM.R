@@ -154,7 +154,7 @@ gen_even<-function(Nbee, Nplant,spe,samp=F,minsamp=5,maxsamp=1000, make=c("rando
     web_p <- makeweb2(specpar=spe, Nbee, Nplant)
   }
   
-  web_current <- make_trueweb(web_p, plantabun=plantabun, beeabun=beeabun)
+  web_current <- make_currentweb(web_p, plantabun=plantabun, beeabun=beeabun)
   
   if (samp==T){
     web_smallsamp <- sampleweb(web_current, obsperbee=minsamp, method='perweb')
@@ -185,7 +185,7 @@ gen_uneven<-function(Nbee, Nplant, spe,samp=F, minsamp=5,maxsamp=1000, make=c("r
     web_p <- makeweb2(specpar=spe, Nbee, Nplant)
   }
   
-  web_current <- make_trueweb(web_p, plantabun=plantabun, beeabun=beeabun) 
+  web_current <- make_currentweb(web_p, plantabun=plantabun, beeabun=beeabun) 
 
   if (samp==T){
     web_smallsamp <- sampleweb(web_current, obsperbee=minsamp, method='perweb')

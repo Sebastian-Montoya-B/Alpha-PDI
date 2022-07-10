@@ -43,10 +43,39 @@ if(!require(dplyr)){
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
 source("Code/wcfun.R")
+source("Code/QNM.R")
 
 ## Load a list of matrices and vectors generated using the quantitative niche
 ## model of Fründ et al. (2016)
-mat1<-readRDS("Data/matrices1.RDS") 
+
+Nbee <- 5
+nsim<-1
+MaUn<-NULL
+MaEv<-NULL
+spen<-c(seq(0.1, 60, by=0.1)) #Specialization parameter
+length(spen)
+lisUn<-NULL
+lisEv<-NULL
+spelisUn<-NULL
+spelisEv<-NULL
+counter<-1
+lisnam<-NULL
+for (Nplant in c(5, 10, 50)){
+  
+  for (spe in spen){
+    
+    for (i in 1:nsim){
+      MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=F, make="random" )
+      
+    }
+    lisnam[[counter]]<-Nplant
+    lisUn[[counter]]<-MaUn
+    counter<-counter+1
+  }
+
+}
+
+mat1<-lisUn
 
 ## For each consumer in mat1 there are four vectors/matrices: 
 ##   (1) the consumer abundance distribution ($con_abun)
@@ -107,7 +136,9 @@ for (i in 1:length(mat1)){
 lisExvwc<-unlist(lisExvwc)
 lisObvwc<-unlist(lisObvwc)
 ## Depending on your data, some zeros may not be replaced using zCompositions.
-#  See error in zCompositions https://stats.stackexchange.com/questions/477663/error-with-the-geometric-bayesian-multiplicative-replacement-of-count-zeros-with
+## Error in if (any(X2[i, z] > colmins[z])) { : 
+## missing value where TRUE/FALSE needed
+## See error in https://stats.stackexchange.com/questions/477663/error-with-the-geometric-bayesian-multiplicative-replacement-of-count-zeros-with
 
 
 ######################### 3. PLOTTING ##########################################
@@ -115,7 +146,7 @@ lisObvwc<-unlist(lisObvwc)
 
 colw<-c("#00ceff", "#078ab5","#004c6d")
 
-svg(filename="Figures/Figure2.svg", width=8, height=9)
+svg(filename="Figures/Exported/Figure2.svg", width=8, height=9)
 par(mar= c(4,2,2,1),las=1)
 layout(matrix(seq(1,9), ncol=3, byrow=T))
 layout.show(9)
