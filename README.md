@@ -35,7 +35,8 @@ See further info in each section.
 3.  Figures (folder) -\> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
     -   Figure2.R -\> script to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
     -   Figure3.R -\> script to reproduce the unedited version of Figure 3, and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
-    -   FigureSup.R -\> script to reproduce Figures S1 to S36 of the supplementary material. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+    -   Figure4.R -\> script to reproduce Figure 4, and Figures S10 to S12. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+    -   FigureSup.R -\> script to reproduce the series of figures used for the process of finding a minimal number of observations needed for an accurate estimate of αPDI. They include Figures S1 to S9 of the Appendix S1. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
 
 ## Functionality and origin
 
