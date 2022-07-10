@@ -217,9 +217,9 @@ rasterImage(legend_image, 0, 0, 1,1)
 dev.off()
 
 
-## 3.3. Plotting Figure S37
+## 3.3. Plotting Figure S10
 
-png(filename="Figures/Exported/FigempS37.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigureS10.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(21,1,2,3,4,21,5,6,7,8,21,9,10,11,12,21,13,14,15,16,21,17,18,19,20,21,22,22,22,22),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
@@ -240,9 +240,9 @@ text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
 
 dev.off()
 
-## 3.4. Plotting Figure S38
+## 3.4. Plotting Figure S11
 
-png(filename="Figures/Exported/FigempS38.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigureS11.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(21,1,2,3,4,21,5,6,7,8,21,9,10,11,12,21,13,14,15,16,21,17,18,19,20,21,22,22,22,22),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
@@ -264,9 +264,9 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
 dev.off()
 
-## 3.5. Plotting Figure S39
+## 3.5. Plotting Figure S12
 
-png(filename="Figures/Exported/FigempS39.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigureS12.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(21,1,2,3,4,21,5,6,7,8,21,9,10,11,12,21,13,14,15,16,21,17,18,19,20,21,22,22,22,22),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
@@ -289,9 +289,9 @@ text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
 dev.off()
 
 
-## 3.6. Plotting Figure S40
+## 3.6. Plotting Figure S13
 
-png(filename="Figures/Exported/FigempS40.png", width=4000, height=4600, res=600)
+png(filename="Figures/Exported/FigureS13.png", width=4000, height=4600, res=600)
 par(las=1, mar=c(2,2,2,2))
 layout(matrix(c(17,1,2,3,4,17,5,6,7,8,17,9,10,11,12,17,13,14,15,16,17,18,18,18,18,17,18,18,18,18),
               ncol=5, byrow = T), widths=c(10,45/2,45/2,45/2,45/2), heights=c(18,18,18,18,18,10))
