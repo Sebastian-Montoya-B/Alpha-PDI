@@ -98,6 +98,7 @@ respp<-lapply(fga, function(x){
       alpha_PDI(x[-1,],rep(10, NCOL(x)))$corrected_aPDI})})})
 
 
+
 ## Calculate expected values based on a vector of 10^6 observations ($large)
 lisEexv<-lapply(lisEv, function(x){
   lapply(x, function(x){
