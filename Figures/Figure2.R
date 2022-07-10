@@ -241,10 +241,3 @@ text(x=0.07,y=0.98, label=expression(italic(Wc)), cex=1.3)
 dev.off()
 
 
-###################### REFERENCES ##############################################
-
-
-## Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a 
-## challenge for quantifying specialization and network structure: lessons 
-## from a quantitative niche model. Oikos, 502–513. 
-## doi: https://doi.org/10.1111/oik.02256

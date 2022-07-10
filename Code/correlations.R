@@ -16,14 +16,44 @@
 ######################### 1. SETTINGS ##########################################
 
 
-## 1.1 Clean the environment.
+## 1.1. Clean the environment
 rm(list= ls())
 
-## 1.2 Source the functions.
+## 1.2. Source the functions
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
-lisEv<-readRDS("Data/vectors1.RDS") #See README for details
-spen<-c(0.5,1, seq(2,60,by=2)) #Specialization parameter used to generate lisEv
+source("Code/QNM.R")
+
+## 1.3. Generate vectors using the quantitative niche model of 
+## Fründ et al. (2016)
+
+Nbee <- 1
+nsim<-1
+MaUn<-NULL
+MaEv<-NULL
+spen<-c(seq(0.1, 60, by=0.1)) # Specialization parameter
+length(spen)
+lisUn<-NULL
+lisEv<-NULL
+spelisUn<-NULL
+spelisEv<-NULL
+counter<-1
+lisnam<-NULL
+Nplant<-51 # Fixed number of resources
+for (spe in spen){
+  
+  for (i in 1:nsim){
+    
+    MaEv[[i]]<-gen_even(Nbee,Nplant, spe,samp=F, make="spread")
+    
+  }
+  lisnam[[counter]]<-Nplant
+  
+  lisEv[[counter]]<-MaEv
+  counter<-counter+1
+}
+
+
 
 
 ######################### 2. CALCULATIONS ######################################
