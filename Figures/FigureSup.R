@@ -106,16 +106,19 @@ lisEexv<-unlist(lisEexv)
 
 
 ######################### 4. PLOTTING #########################################
+n.res <- c(rep(5,12), rep(10,12), rep(50,12))
+spe.par <- rep(round(c(seq(0.1, 60, length=12)), digits=1),3)
 
 
 colw<-c("#00ceff", "#078ab5","#004c6d")
 
 for (i in 1:length(respp)){
   
-  svg(filename=paste0("Figures/FigSup", i, ".svg"), width=8, height=9)
-  layout(matrix(c(13,1,2,3,13,4,5,6,13,7,8,9,13,10,11,12,13,14,14,14), byrow=T, ncol=4), 
-         widths=c(10,30,30,30), heights=c(22,22,22,22,12))
-  layout.show(14)
+  #svg(filename=paste0("Figures/Supplement/FigSup", i, ".svg"), width=8, height=9)
+  png(filename=paste0("Figures/Supplement/FigSup", i, ".png"), width=4000, height=4600, res=600)
+  layout(matrix(c(13,15,15,15,13,1,2,3,13,4,5,6,13,7,8,9,13,10,11,12,13,14,14,14), byrow=T, ncol=4), 
+         widths=c(10,30,30,30), heights=c(10,20,20,20,20,10))
+  layout.show(15)
   par(mar=c(2,3,1,1), las=1)
  
   for (j in 1:length(respp[[i]])){
@@ -136,11 +139,26 @@ for (i in 1:length(respp)){
     }
     
   }
-  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.5, y=0.55, labels=expression("Estimated generality   "*alpha*italic(PDI)), srt=90, cex=1.6)
+  par(mar=c(1,1,1,1))
+  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
+       type="n", bty="n")
+  text(x=0.5, y=0.55, labels=
+         expression("Estimated generality   "*alpha*italic(PDI)[Corrected]), 
+       srt=90, cex=1.6)
   
-  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.5, y=0.5, labels="Sampling intensity (number of observations)", cex=1.6)
+  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
+       type="n", bty="n")
+  text(x=0.5, y=0.5, labels=
+         "Sampling intensity (number of observations)", cex=1.6)
+  
+  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
+       type="n", bty="n")
+  text(x=0.5, y=0.5, labels=
+         paste0("Number of resources = ",
+                n.res[i],"; Specialization parameter = ",spe.par[i]), cex=1.6)
   dev.off()
 }
+
+
+
 
