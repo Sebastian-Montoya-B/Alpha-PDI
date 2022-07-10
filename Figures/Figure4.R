@@ -184,8 +184,8 @@ layout(matrix(c(1,1,2,3,5,4),ncol=2, byrow=T), width = c(1,1),height = c(1,5,1))
 par(mar=c(0,0,0,0))
 plot(y=c(0,1),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '')
 text(x=c(0.23,0.78), y=0.5, cex=2,
-     labels=c("(I)\nPercentage of consumers in each network",
-              "(II)\nTurkmenistan network"))
+     labels=c("(A)\nPercentage of consumers in each network",
+              "(B)\nTurkmenistan network"))
 
 ### 3.2.2. Second plot
 par(mar=c(3,2,1,2))
@@ -196,7 +196,7 @@ TernaryPlot(alab="Consumers\nwith few observations \u2192", blab="Generalists \u
 TernaryPoints(obs.per[,c(3,2,1)], pch=16, cex=1.6,
               col="black", bg=alpha("black",0.7))
 
-TernaryText( c(0.365,1-(0.365+0.35), 0.35)  , labels="(II)\u2192", cex=1.5)
+TernaryText( c(0.365,1-(0.365+0.35), 0.35)  , labels="(B)\u2192", cex=1.5)
 
 
 ### 3.2.3. Third plot
