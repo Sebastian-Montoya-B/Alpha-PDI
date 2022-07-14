@@ -9,19 +9,17 @@
 ################################################################################
 
 
-
-################################################################################
-#####          THE QUANTITATIVE NICHE MODEL (Fründ et al. 2016)           ######
-################################################################################
-
-
 ## This script creates the functions used to generate the theoretical matrices
 ## used in our analyses.
 
-### Most of this code was written by Fründ et al. (2016).
+### Most of this code was written by Fründ et al. (2016), who used it to create
+### their quantitative niche model.
 ### We added some new parts and synthesized the code.
 
-## 1. makeweb function:
+
+######################## 1. makeweb function ###################################
+
+
 ## A function to generate true preference vectors for a given specialization
 ## parameter (specpar), number of consumers (Nbee) and resources (Nplant), and
 ## a selected shape for the true generalization curve (nicheshape).
@@ -58,7 +56,10 @@ makeweb <- function(specpar = 1, Nbee=4, Nplant=4, nicheshape="normal",
   web
 }
 
-## 2. get_skewabuns function:
+
+######################## 2. get_skewabuns function #############################
+
+
 ## A function to generate resource abundance distributions based on a log-normal
 ## distribution. It excludes 0 and Inf values.
 get_skewabuns <- function(myN, abun_mean=10, abun_sdlog=1.5){
@@ -67,7 +68,10 @@ get_skewabuns <- function(myN, abun_mean=10, abun_sdlog=1.5){
   abun * abun_mean / mean(abun)
 }
 
-## 3. make_currentweb function:
+
+######################## 3. make_currentweb function ###########################
+
+
 ## A function to generate the vectors (or matrices) of current patterns of 
 ## resource use. It requieres the true preference vector (web_p), the resource 
 ## abundance distribution (plantabun), and the consumer abundance distribution 
@@ -77,7 +81,10 @@ make_currentweb <- function(web_p, plantabun, beeabun){
   web_p * web_relabun
 }
 
-## 4. sampleweb function:
+
+######################## 4. sampleweb function #################################
+
+
 ## A function to simulate the process of sampling from a vector (or matrix) of 
 ## the current pattern of resource use. It requieres te vector of current 
 ## pattern of resource use (web), and the number of observations (obsperbee).
@@ -112,9 +119,10 @@ sampleweb <- function(web,obsperbee=NULL,method='perbee'){
   sampledweb
 }
 
-################################################################################
 
-## 5. makeweb2 function:
+######################## 5. makeweb2 function ##################################
+
+
 ## A function to generate true preference vectors for a given specialization
 ## parameter (specpar), number of consumers (con) and resources (res), for a
 ## normal-shaped true generalization curve. Unlike the makeweb function that 
@@ -131,7 +139,10 @@ makeweb2 <- function(specpar = 1, con=2, res=4){
   web
 }
 
-## 6. gen_even function:
+
+######################## 6. gen_even function ##################################
+
+
 ## It compiles all the previous generated functions to generate vectors 
 ## (or matrices) of resource use assuming an even resource abundance 
 ## distribution. The output is a list with the resource abundance distribution
@@ -167,7 +178,10 @@ gen_even<-function(Nbee, Nplant,spe,samp=F,minsamp=5,maxsamp=1000, make=c("rando
   return(sim_spec)
 }
 
-## 7. gen_uneven function:
+
+######################## 7. gen_uneven function ################################
+
+
 ## It compiles all the previous generated functions to generate vectors 
 ## (or matrices) of resource use assuming an uneven resource abundance 
 ## distribution. The output is a list with the resource abundance distribution
@@ -199,7 +213,7 @@ gen_uneven<-function(Nbee, Nplant, spe,samp=F, minsamp=5,maxsamp=1000, make=c("r
 }
 
 
-###################### REFERENCES ##############################################
+######################## REFERENCES ############################################
 
 
 ## Fründ, J., Mccann, K. S., & Williams, N. M. (2016). Sampling bias is a 

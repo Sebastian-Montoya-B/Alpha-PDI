@@ -18,46 +18,46 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 
 See further info in each section.
 
-1.  Code (folder) -\> folder containing the scripts to calculate the generality indices and other analyses performed in our paper.
+1.  Code (folder) -\> folder containing the scripts used to calculate the generality indices and reproduce other analyses performed in our paper.
     -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of generality.
     -   genfun.R -\> script of the `genfun` function for calculating the other generality indices used in our study.
-    -   wcfun.R -\> script of the `wcfun` function for calculating the Pierotti et al (2017) index of generality.
+    -   wcfun.R -\> script of the `wcfun` function for calculating the Wc index of generality (Pierotti et al. 2017).
     -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
-    -	QNM.R -\> script of the quantitative niche model of Fründ et al. (2016) and functions to generate the analized theoretical vectors.
+    -	QNM.R -\> script of the quantitative niche model by Fründ et al. (2016) and functions to generate the analized theoretical vectors.
 
 
-2.  Data (folder) -\> folder containing empirical data used in the analyses and figures.
-    -   Fleas.RDS -\> list of 74 matrices of interactions between fleas and mammals.
+2.  Data (folder) -\> folder containing the empirical data used in the analyses and figures.
+    -   Fleas.RDS -\> list of 74 matrices of flea-mammal interactions.
     -   resource_abundances.RDS -\> list of 74 vectors of resource abundance distribution (mammal abundance) for each matrix in Fleas.RDS.
 
 
-3.  Figures (folder) -\> folder containing the scripts to reproduce the unedited versions of the figures in the manuscript and supplementary material.
-    -   Figure2.R -\> script to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to create and export the figure.
-    -   Figure3.R -\> script to reproduce the unedited version of Figure 3, and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
-    -   Figure4.R -\> script to reproduce Figure 4, and Figures S10 to S12. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
-    -   FigureSup.R -\> script to reproduce the series of figures used for the process of finding a minimal number of observations needed for an accurate estimate of αPDI. They include Figures S1 to S9 of the Appendix S1. It requires the `alpha_PDI` function. Follow the sequence given in the script to create and export the figure.
+3.  Figures (folder) -\> folder containing the scripts used to reproduce the unedited versions of the figures presented in the manuscript and supplementary material.
+    -   Figure2.R -\> script used to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to plot and export the figure.
+    -   Figure3.R -\> script used to reproduce the unedited version of Figure 3 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   Figure4.R -\> script used to reproduce Figure 4 and Figures S10 to S12. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   FigureSup.R -\> script used to reproduce the series of figures used for finding the minimum number of observations needed for an accurate estimation of αPDI. They include Figures S1 to S9 of the Appendix S1. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
 
 ## Functionality and origin
 
-The R code provided in this repository was designed to quantify the generality of species in consumer-resource interactions. Our analysis can also be used to quantify the generality of nodes in any consumer-resource network, given that the main assumptions explained in our paper are met. Therefore, read our paper carefully before using the functions presented here.
+The R code provided in this repository was designed to quantify the generality of species in consumer-resource interactions. Our analysis can also be used to quantify the generality of nodes in any consumer-resource network, given that the main assumptions explained in our paper are met. Therefore, read our paper carefully before using the functions provided here.
 
 ## Instructions
 
 ### 1. If you want to study our analysis in detail:
 
 1.  Open the file `AlphaPDI.Rproj`.
-2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
-3.  Use the files `correlations.R`, `Figure2.R`, `Figure3.R`, `Figure4.R`, and `FigureSup.R` to reproduce the respective figures and analyses of our paper.
+2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them by creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
+3.  Use the files `correlations.R`, `Figure2.R`, `Figure3.R`, `Figure4.R`, and `FigureSup.R` to reproduce the respective figures and analyses presented in our paper.
 
 ### 2. If you want to make a quick test of our analysis or apply it to your own data:
 
-1.  Open the file `example.R`, which contains a **turorial**.
+1.  Open the file `example.R`, which contains a **tutorial**.
 2.  Follow the instructions given in the tutorial.
 
 ## (1) alpha_PDI
 
-Computes **αPDI** for an interaction matrix (or vectior) and its resource abundance vector.
+Computes **αPDI** for an interaction matrix (or vector) and its resource abundance vector.
 
 ### Arguments
 
@@ -83,13 +83,13 @@ Computes the *Wc* index of generality proposed by Pierotti et al. (2017) for an 
 
 ### Arguments
 
-1.  data -\> matrix. The original interaction matrix with consumers in rows and resources in columns.
+1.  data -\> matrix. The original interaction matrix with consumers in the rows and resources in the columns.
 
 2.  abun -\> vector. It contains the resource abundances of the columns of the interaction matrix.
 
 ## Acknowledgements
 
-We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Natalya Zapata-Mesa, Nico Blüthgen, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about ecological networks and niche indices that inspired us to carry out this study. We also thank Jochen Fründ for his recomendations on using the quantitative niche model, and Daniela Arenas for helping us with mammal taxonomy. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior, convocatoria 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 3.4-8151/15037 and 3.2-BRA/1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the [Stack Overflow](https://stackoverflow.com) community, where we solve most of our coding dilemmas.
+We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Natalya Zapata-Mesa, Nico Blüthgen, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about ecological networks and generality indices that inspired us to carry out this study. Special thanks go to Jochen Fründ for his recommendations on using his quantitative niche model, and Daniela Arenas for helping us with mammal taxonomy. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 3.4-8151/15037 and 3.2-BRA/1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the Stack Overflow community (https://stackoverflow.com/), where we solve most of our coding dilemmas.
 
 
 ## Feedback
@@ -99,12 +99,12 @@ If you have any questions, corrections, or suggestions, please feel free to open
 
 ## Reference
 
--   Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. In prep. A new index to estimate ecological generalization in consumer-resource interactions. *In prep*.
+-   Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. A new index to estimate ecological generalization in consumer-resource interactions. *In prep*.
+
 
 ## Source repos
 
 [Quantitative niche model](https://github.com/JochenFruend/Defaunation_SeedDispersalWebs)
-
 
 
 ## Source studies

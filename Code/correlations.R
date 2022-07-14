@@ -16,15 +16,15 @@
 ######################### 1. SETTINGS ##########################################
 
 
-## 1.1. Clean the environment
+## Clean the environment
 rm(list= ls())
 
-## 1.2. Source the functions
+## Source the functions
 source("Code/alpha_PDI.R")
 source("Code/genfun.R")
 source("Code/QNM.R")
 
-## 1.3. Generate vectors using the quantitative niche model of 
+## Generate vectors using the quantitative niche model of 
 ## Fründ et al. (2016)
 
 Nbee <- 1
@@ -59,7 +59,7 @@ for (spe in spen){
 ######################### 2. CALCULATIONS ######################################
 
 
-##  2.1. Generality 
+##  Generality 
 
 tt<-lapply(lisEv, function(x){
   lapply(x, function(x){
@@ -75,7 +75,7 @@ tt2<-lapply(lisEv, function(x){
 tt2<-dplyr::bind_rows(tt2)
 
 
-## 2.1. Spearman correlations between generality indices and the
+## Spearman correlations between generality indices and the
 ## specialization parameter
 
 # Plot the correlations

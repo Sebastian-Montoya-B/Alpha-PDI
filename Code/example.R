@@ -17,10 +17,10 @@
 ######################### 1. SETTINGS ##########################################
 
 
-## 1.1 Clean the environment.
+## Clean the environment.
 rm(list= ls())
 
-## 1.2. Check the required packages, install them if necessary, and load them.
+## Check the required packages, install them if necessary, and load them.
 if(!require(zCompositions)){
   install.packages("zCompositions")
   library(zCompositions)
@@ -36,12 +36,12 @@ if(!require(corrgram)){
   library(corrgram)
 }
 
-## 1.3. Source the functions.
+## Source the functions.
 source("Code/alpha_PDI.R") # αPDI
 source("Code/genfun.R") # other common generality indices
 source("Code/wcfun.R") # generality of Pierotti et al. (2017)
 
-## 1.4. Create a random data set or load your own data.
+## Create a random data set or load your own data.
 # In this example we create a random data set.
 # If you prefer to build the object "data" using your own data, your data
 # must correspond to a vector of resource use, which contains either raw
@@ -84,7 +84,7 @@ str(abun)
 ######################### 2. CALCULATIONS ######################################
 
 
-## 2.1. Alpha PDI.
+## Alpha PDI.
 
 # Run the function alpha_PDI with the argument "corrected = F" to calculate the
 # raw version of the index.
@@ -111,12 +111,12 @@ aPDIcor
 # If αPDI > 0.5 the consumer is a generalist.
 
 
-## 2.2. Other common indices of generality
+## Other common indices of generality
 
 indices <- genfun(data, abun)
 indices
 
-## 2.3. Wc: Generality of Pierotti et al. (2017)
+## Wc: Generality of Pierotti et al. (2017)
 
 wcfun(data, abun) #Only works for matrices. May not work for some matrices.
 
