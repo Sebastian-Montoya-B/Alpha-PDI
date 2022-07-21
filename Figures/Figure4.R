@@ -195,7 +195,7 @@ TernaryPlot(alab="Consumers\nwith few observations \u2192", blab="Generalists \u
             grid.minor.lines = 1, grid.minor.lty = "dotted")
 TernaryPoints(obs.per[,c(3,1,2)], pch=16, cex=1.6,
               col="black", bg=alpha("black",0.7))
-TernaryText(c(0.355,1-(0.355+0.295), 0.295) , labels=expression(""%<-%"(B)"), cex=1.3, col="red")
+TernaryText(c(0.355,1-(0.355+0.295), 0.295) , labels=expression(""%<-%"(B)"), cex=1.4, col="red")
 
 
 ### 3.2.3. Third plot
