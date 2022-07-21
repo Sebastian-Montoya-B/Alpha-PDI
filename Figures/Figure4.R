@@ -63,7 +63,7 @@ length(n.inter)
 ## 2.2. Proportion of generalists, specialists, and consumers 
 ##      with few observations in each network
 
-suff.inter<-lapply(n.inter, function (x){which(x>=100)})
+suff.inter<-lapply(n.inter, function (x){which(x>=80)})
 
 suff.res<-NULL
 for (i in 1:length(results)){
@@ -94,8 +94,8 @@ gen_fleas<-alpha_PDI(consumers$Turkmenistan,
                      resources$Turkmenistan)$corrected_aPDI
 
 
-## write.csv(cbind(aPDI=gen_fleas,obs=rowSums(consumers$Turkmenistan)),
-##           "Turkmenistan_aPDI.csv")
+ #write.csv(cbind(aPDI=gen_fleas,obs=rowSums(consumers$Turkmenistan)),
+  #         "Turkmenistan_aPDI.csv")
 ######################### 3. PLOTTING ##########################################
 
 
@@ -163,7 +163,7 @@ colores<-c("#00918d","#51a4a0","#7cb7b4","#a4cac8","#cadddc","#f1f1f1",
 V(imat)$color = V(imat)$type
 V(imat)$color[which(V(imat)$color==FALSE)]<-colores[frame_col$color.group]
 V(imat)$color = gsub(TRUE,"gray",V(imat)$color)
-V(imat)$color[which(rowSums(consumers$Turkmenistan)<100)]<-alpha("#658c1f",0.7)## Consumers with less than 100 interactions
+V(imat)$color[which(rowSums(consumers$Turkmenistan)<80)]<-alpha("#658c1f",0.7)## Consumers with less than 100 interactions
 V(imat)$size<-V(imat)$type
 V(imat)$size[which(V(imat)$size==FALSE)]<-rep(9,nrow(frame_col))
 V(imat)$size[which(V(imat)$size==TRUE)]<-log(resources$Turkmenistan)
@@ -193,10 +193,9 @@ TernaryPlot(alab="Consumers\nwith few observations \u2192", blab="Generalists \u
             clab="\u2190 Specialists", lab.col=c("#658c1f","#df4f00","#00918d"),
             grid.lines = 4, lab.cex=1.8, axis.cex=1.2,
             grid.minor.lines = 1, grid.minor.lty = "dotted")
-TernaryPoints(obs.per[,c(3,2,1)], pch=16, cex=1.6,
+TernaryPoints(obs.per[,c(3,1,2)], pch=16, cex=1.6,
               col="black", bg=alpha("black",0.7))
-
-TernaryText( c(0.365,1-(0.365+0.35), 0.35)  , labels="(B)\u2192", cex=1.5)
+TernaryText(c(0.355,1-(0.355+0.295), 0.295) , labels=expression(""%<-%"(B)"), cex=1.3, col="red")
 
 
 ### 3.2.3. Third plot
@@ -228,7 +227,7 @@ for (i in 1:20){
   plot(results[[i]], n.inter[[i]], xlim=c(0,1), xlab="", ylab="", 
        main=names(results)[i], cex.main=0.9, xaxp=c(0,1,2))
   abline(v=0.5, lty=2)
-  abline(h=100, lty=2)
+  abline(h=80, lty=2)
   
 }
 
@@ -253,7 +252,7 @@ for (i in 21:40){
   plot(results[[i]], n.inter[[i]], xlim=c(0,1), xlab="", ylab="", 
        main=names(results)[i], cex.main=0.9, xaxp=c(0,1,2))
   abline(v=0.5, lty=2)
-  abline(h=100, lty=2)
+  abline(h=80, lty=2)
   
 }
 
@@ -277,7 +276,7 @@ for (i in 41:60){
   plot(results[[i]], n.inter[[i]], xlim=c(0,1), xlab="", ylab="", 
        main=names(results)[i], cex.main=0.9, xaxp=c(0,1,2))
   abline(v=0.5, lty=2)
-  abline(h=100, lty=2)
+  abline(h=80, lty=2)
   
 }
 
@@ -302,7 +301,7 @@ for (i in 61:74){
   plot(results[[i]], n.inter[[i]], xlim=c(0,1), xlab="", ylab="", 
        main=names(results)[i], cex.main=0.9, xaxp=c(0,1,2))
   abline(v=0.5, lty=2)
-  abline(h=100, lty=2)
+  abline(h=80, lty=2)
   
 }
 
