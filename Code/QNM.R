@@ -178,7 +178,6 @@ gen_even<-function(Nbee, Nplant,spe,samp=F,minsamp=5,maxsamp=1000, make=c("rando
   return(sim_spec)
 }
 
-
 ######################## 7. gen_uneven function ################################
 
 
@@ -200,11 +199,97 @@ gen_uneven<-function(Nbee, Nplant, spe,samp=F, minsamp=5,maxsamp=1000, make=c("r
   }
   
   web_current <- make_currentweb(web_p, plantabun=plantabun, beeabun=beeabun) 
-
+  
   if (samp==T){
     web_smallsamp <- sampleweb(web_current, obsperbee=minsamp, method='perweb')
     web_largesamp <- sampleweb(web_current, obsperbee=maxsamp, method='perweb')
     sim_spec<-list(res_abun=plantabun, preference=web_p, current=web_current, small=web_smallsamp, large=web_largesamp)
+  } else{
+    sim_spec<-list(res_abun=plantabun, preference=web_p, current=web_current)
+  }
+}
+
+
+######################## 8. gen_even2 function ##################################
+
+
+## It compiles all the previous generated functions to generate vectors 
+## (or matrices) of resource use assuming an even resource abundance 
+## distribution. The output is a list with the resource abundance distribution
+## used ($res_abnun), the true preference vector ($preference), and the vector 
+## of the current pattern of resource use $current. If samp=T, the output list
+## will also contain observed patterns of resource use vectors of two sizes, 
+## $small and $large, based on minsamp and maxsamp number of observations, 
+## respectively.
+
+gen_even2<-function(Nbee, Nplant,spe,samp=F,minsamp=5,maxsamp=1000, make=c("random", "spread")){
+  
+  # for even webs:
+  beeabun <- rep(10, Nbee) 
+  plantabun <- rep(10, Nplant) 
+  
+  
+  if (make=="random"){
+    web_p <- makeweb(specpar=spe, Nbee, Nplant) 
+  } else if (make=="spread"){
+    web_p <- makeweb2(specpar=spe, Nbee, Nplant)
+  }
+  
+  web_current <- make_currentweb(web_p, plantabun=plantabun, beeabun=beeabun)
+  
+  if (samp==T){
+    web_smallsamp1 <- sampleweb(web_current, obsperbee=minsamp[1], method='perweb')
+    web_smallsamp2 <- sampleweb(web_current, obsperbee=minsamp[2], method='perweb')
+    web_smallsamp3 <- sampleweb(web_current, obsperbee=minsamp[3], method='perweb')
+    web_smallsamp4 <- sampleweb(web_current, obsperbee=minsamp[4], method='perweb')
+    web_largesamp <- sampleweb(web_current, obsperbee=maxsamp, method='perweb')
+    sim_spec<-list(res_abun=plantabun, preference=web_p, 
+                   current=web_current, small10=web_smallsamp1, 
+                   small50=web_smallsamp2, small80=web_smallsamp3, 
+                   small100=web_smallsamp4, 
+                   large=web_largesamp)
+  } else{
+    sim_spec<-list(res_abun=plantabun, preference=web_p, current=web_current)
+  }
+  
+  return(sim_spec)
+}
+
+
+
+######################## 9. gen_uneven2 function ################################
+
+
+## It compiles all the previous generated functions to generate vectors 
+## (or matrices) of resource use assuming an uneven resource abundance 
+## distribution. The output is a list with the resource abundance distribution
+## used ($res_abnun), the true preference vector ($preference), and the vector 
+## of the current pattern of resource use $current. If samp=T, the output list
+## will also contain sampled vectors of two sizes, $small and $large, based on
+## minsamp and maxsamp number of observations, respectively.
+gen_uneven2<-function(Nbee, Nplant, spe,samp=F, minsamp=c(10,50,80,100),maxsamp=1000, make=c("random", "spread")){
+  
+  beeabun <- rep(10, Nbee)
+  plantabun <- get_skewabuns(Nplant)
+  if (make=="random"){
+    web_p <- makeweb(specpar=spe, Nbee, Nplant) 
+  } else if (make=="spread"){
+    web_p <- makeweb2(specpar=spe, Nbee, Nplant)
+  }
+  
+  web_current <- make_currentweb(web_p, plantabun=plantabun, beeabun=beeabun) 
+  
+  if (samp==T){
+    web_smallsamp1 <- sampleweb(web_current, obsperbee=minsamp[1], method='perweb')
+    web_smallsamp2 <- sampleweb(web_current, obsperbee=minsamp[2], method='perweb')
+    web_smallsamp3 <- sampleweb(web_current, obsperbee=minsamp[3], method='perweb')
+    web_smallsamp4 <- sampleweb(web_current, obsperbee=minsamp[4], method='perweb')
+    web_largesamp <- sampleweb(web_current, obsperbee=maxsamp, method='perweb')
+    sim_spec<-list(res_abun=plantabun, preference=web_p, 
+                   current=web_current, small10=web_smallsamp1, 
+                   small50=web_smallsamp2, small80=web_smallsamp3, 
+                   small100=web_smallsamp4, 
+                   large=web_largesamp)
   } else{
     sim_spec<-list(res_abun=plantabun, preference=web_p, current=web_current)
   }
