@@ -195,10 +195,12 @@ points(x=lisEexv[(l5+1):l10],y=lisEexvs10[(l5+1):l10],col=colw[2],
 points(x=lisEexv[(l10+1):l50],y=lisEexvs10[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisEexv~lisEexvs10), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs10)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisEexv - lisEexvs10)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #10
 plot(x=lisUexv2[1:l5],y=lisUexvs2_10[1:l5], col=colw[3], pch=21, 
@@ -212,10 +214,12 @@ points(x=lisUexv2[(l5+1):l10],y=lisUexvs2_10[(l5+1):l10],col=colw[2],
 points(x=lisUexv2[(l10+1):l50],y=lisUexvs2_10[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisUexv2~lisUexvs2_10), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_10)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisUexv2-lisUexvs2_10)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #11
 
@@ -231,11 +235,12 @@ points(x=lisEexv[(l5+1):l10],y=lisEexvs50[(l5+1):l10],col=colw[2],
 points(x=lisEexv[(l10+1):l50],y=lisEexvs50[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
-
+abline(lm(lisEexv~lisEexvs50), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs50)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisEexv - lisEexvs50)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #12
 
@@ -250,10 +255,12 @@ points(x=lisUexv2[(l5+1):l10],y=lisUexvs2_50[(l5+1):l10],col=colw[2],
 points(x=lisUexv2[(l10+1):l50],y=lisUexvs2_50[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisUexv2~lisUexvs2_50), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_50)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisUexv2-lisUexvs2_50)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #13
 
@@ -269,10 +276,12 @@ points(x=lisEexv[(l5+1):l10],y=lisEexvs80[(l5+1):l10],col=colw[2],
 points(x=lisEexv[(l10+1):l50],y=lisEexvs80[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisEexv~lisEexvs80), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs80)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisEexv - lisEexvs80)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #14
 
@@ -287,10 +296,12 @@ points(x=lisUexv2[(l5+1):l10],y=lisUexvs2_80[(l5+1):l10],col=colw[2],
 points(x=lisUexv2[(l10+1):l50],y=lisUexvs2_80[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisUexv2~lisUexvs2_80), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_80)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisUexv2-lisUexvs2_80)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #15
 
@@ -307,13 +318,15 @@ points(x=lisEexv[(l5+1):l10],y=lisEexvs100[(l5+1):l10],col=colw[2],
 points(x=lisEexv[(l10+1):l50],y=lisEexvs100[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisEexv~lisEexvs100), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs100)$estimate, digits=2)
 if (r==1){
   r<-0.99
 }
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisEexv - lisEexvs100)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #16
 
@@ -329,10 +342,12 @@ points(x=lisUexv2[(l5+1):l10],y=lisUexvs2_100[(l5+1):l10],col=colw[2],
 points(x=lisUexv2[(l10+1):l50],y=lisUexvs2_100[(l10+1):l50],col=colw[1],
        pch=22,bg=alpha(colw[1],0.5),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
+abline(lm(lisUexv2~lisUexvs2_100), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_100)$estimate, digits=2)
 r2<-round(r^2, digits=2)
-text(x=0.15, y=0.95, labels=bquote(rho == .(r)), cex=1.2)
-text(x=0.15, y=0.8, labels=bquote("r"^2 == .(r2)), cex=1.2)
+md<-round(mean(abs(lisUexv2-lisUexvs2_100)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~~~"r"^2 == .(r2)),pos=4, cex=1.2)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 #17
 par(mar=c(0,0,0,0))
