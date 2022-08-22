@@ -181,11 +181,11 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.7, labels="100",  cex=1.6)
 
 #9
-par(mar= c(3.4,4,0,1),las=1,cex.lab=1, mgp=c(2.3,0.5,0))
+par(mar= c(3.4,4,0,1),las=1,cex.lab=1, mgp=c(2.1,0.5,0))
 
 plot(x=lisEexv[1:l5],y=lisEexvs10[1:l5], col=colw[3], pch=21,
      bg=alpha(colw[3],0.5), cex=0.7, 
-     ylab="Observed generality",
+     ylab="Observed\ndegree of generalization",
      xlab="", xlim=c(0,1), ylim=c(0,1),xaxp=c(0,1,2), yaxp=c(0,1,2),
      yaxt="n", xaxt="n")
 axis(2, at=seq(0,1, length=5), labels=c("0.0","","0.5","","1.0"))
@@ -225,7 +225,7 @@ text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 plot(x=lisEexv[1:l5],y=lisEexvs50[1:l5], col=colw[3], pch=21,
      bg=alpha(colw[3],0.5), cex=0.7, 
-     ylab="Observed generality",
+     ylab="Observed\ndegree of generalization",
      xlab="", xlim=c(0,1), ylim=c(0,1),xaxp=c(0,1,2), yaxp=c(0,1,2),
      yaxt="n", xaxt="n")
 axis(2, at=seq(0,1, length=5), labels=c("0.0","","0.5","","1.0"))
@@ -266,7 +266,7 @@ text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 plot(x=lisEexv[1:l5],y=lisEexvs80[1:l5], col=colw[3], pch=21,
      bg=alpha(colw[3],0.5), cex=0.7, 
-     ylab="Observed generality",
+     ylab="Observed\ndegree of generalization",
      xlab="", xlim=c(0,1), ylim=c(0,1),xaxp=c(0,1,2), yaxp=c(0,1,2),
      yaxt="n", xaxt="n")
 axis(2, at=seq(0,1, length=5), labels=c("0.0","","0.5","","1.0"))
@@ -307,8 +307,8 @@ text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 plot(x=lisEexv[1:l5],y=lisEexvs100[1:l5], col=colw[3], pch=21,
      bg=alpha(colw[3],0.5), cex=0.7, 
-     ylab="Observed generality",
-     xlab=expression("Expected generality"),
+     ylab="Observed\ndegree of generalization",
+     xlab=expression("Expected degree of generalization"),
      xlim=c(0,1), ylim=c(0,1),xaxp=c(0,1,2), yaxp=c(0,1,2),
      yaxt="n", xaxt="n")
 axis(2, at=seq(0,1, length=5), labels=c("0.0","","0.5","","1.0"))
@@ -332,7 +332,7 @@ text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
 
 plot(x=lisUexv2[1:l5],y=lisUexvs2_100[1:l5], col=colw[3], pch=21, 
      bg=alpha(colw[3],0.5), cex=0.7, ylab="", 
-     xlab=expression("Expected generality"), 
+     xlab=expression("Expected degree of generalization"), 
      xlim=c(0,1), ylim=c(0,1),xaxp=c(0,1,2), yaxp=c(0,1,2),
      yaxt="n", xaxt="n")
 axis(2, at=seq(0,1, length=5), labels=c("","","","",""))
