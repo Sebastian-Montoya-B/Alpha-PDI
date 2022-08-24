@@ -10,7 +10,7 @@
 
 
 ### This script reproduces the Spearman correlations calculated between the
-### specialization parameter and the generality indices.
+### specialization parameter and the generalization indices.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -59,7 +59,7 @@ for (spe in spen){
 ######################### 2. CALCULATIONS ######################################
 
 
-##  Generality 
+##  Generalization 
 
 tt<-lapply(lisEv, function(x){
   lapply(x, function(x){
@@ -75,7 +75,7 @@ tt2<-lapply(lisEv, function(x){
 tt2<-dplyr::bind_rows(tt2)
 
 
-## Spearman correlations between generality indices and the
+## Spearman correlations between generalization indices and the
 ## specialization parameter
 
 # Plot the correlations

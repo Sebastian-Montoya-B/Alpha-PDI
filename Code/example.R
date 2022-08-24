@@ -38,8 +38,8 @@ if(!require(corrgram)){
 
 ## Source the functions.
 source("Code/alpha_PDI.R") # αPDI
-source("Code/genfun.R") # other common generality indices
-source("Code/wcfun.R") # generality of Pierotti et al. (2017)
+source("Code/genfun.R") # other common generalization indices
+source("Code/wcfun.R") # generalization of Pierotti et al. (2017)
 
 ## Create a random data set or load your own data.
 # In this example we create a random data set.
@@ -111,12 +111,12 @@ aPDIcor
 # If αPDI > 0.5 the consumer is a generalist.
 
 
-## Other common indices of generality
+## Other common indices of generalization
 
 indices <- genfun(data, abun)
 indices
 
-## Wc: Generality of Pierotti et al. (2017)
+## Wc: Generalization of Pierotti et al. (2017)
 
 wcfun(data, abun) #Only works for matrices. May not work for some matrices.
 
@@ -124,7 +124,7 @@ wcfun(data, abun) #Only works for matrices. May not work for some matrices.
 ######################### 3. CORRELATIONS ######################################
 
 
-## Check the correlations between all generality indices calculated in
+## Check the correlations between all generalization indices calculated in
 ## this example.
 correlations <- cbind(indices, aPDIcor$corrected_aPDI)
 names <- colnames(correlations)
