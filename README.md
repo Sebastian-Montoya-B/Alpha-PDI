@@ -19,7 +19,7 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 See further info in each section.
 
 1.  Code (folder) -\> folder containing the scripts used to calculate the generalization indices and reproduce other analyses performed in our paper.
-    -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of geenralization.
+    -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of generalization.
     -   genfun.R -\> script of the `genfun` function for calculating the other generalization indices used in our study.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Wc index of generalization (Pierotti et al. 2017).
     -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generalization. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
