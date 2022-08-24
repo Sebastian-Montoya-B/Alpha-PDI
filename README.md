@@ -40,7 +40,7 @@ See further info in each section.
 
 ## Functionality and origin
 
-The R code provided in this repository was designed to quantify the generality of species in consumer-resource interactions. Our analysis can also be used to quantify the generality of nodes in any consumer-resource network, given that the main assumptions explained in our paper are met. Therefore, read our paper carefully before using the functions provided here.
+The R code provided in this repository was designed to quantify the degree of generalization of species in consumer-resource interactions. Our analysis can also be used to quantify the degree of generalization of nodes in any consumer-resource network, given that the main assumptions explained in our paper are met. Therefore, read our paper carefully before using the functions provided here.
 
 ## Instructions
 
