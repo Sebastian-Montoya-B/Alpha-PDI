@@ -18,11 +18,11 @@ Disclaimer: You may use this script freely for commercial or non-commercial purp
 
 See further info in each section.
 
-1.  Code (folder) -\> folder containing the scripts used to calculate the generality indices and reproduce other analyses performed in our paper.
-    -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of generality.
-    -   genfun.R -\> script of the `genfun` function for calculating the other generality indices used in our study.
-    -   wcfun.R -\> script of the `wcfun` function for calculating the Wc index of generality (Pierotti et al. 2017).
-    -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generality. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
+1.  Code (folder) -\> folder containing the scripts used to calculate the generalization indices and reproduce other analyses performed in our paper.
+    -   alpha_PDI.R -\> script of the `alpha_PDI` function for calculating the **αPDI** index of geenralization.
+    -   genfun.R -\> script of the `genfun` function for calculating the other generalization indices used in our study.
+    -   wcfun.R -\> script of the `wcfun` function for calculating the Wc index of generalization (Pierotti et al. 2017).
+    -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generalization. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
     -	QNM.R -\> script of the quantitative niche model by Fründ et al. (2016) and functions to generate the analized theoretical vectors.
 
@@ -34,7 +34,7 @@ See further info in each section.
 
 3.  Figures (folder) -\> folder containing the scripts used to reproduce the unedited versions of the figures presented in the manuscript and supplementary material.
     -   Figure2.R -\> script used to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to plot and export the figure.
-    -   Figure3.R -\> script used to reproduce the unedited version of Figure 3 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   Figure3.R -\> script used to reproduce Figure 3 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
     -   Figure4.R -\> script used to reproduce Figure 4 and Figures S10 to S12. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
     -   FigureSup.R -\> script used to reproduce the series of figures used for finding the minimum number of observations needed for an accurate estimation of αPDI. They include Figures S1 to S9 of the Appendix S1. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
 
@@ -69,7 +69,7 @@ Computes **αPDI** for an interaction matrix (or vector) and its resource abunda
 
 ## (2) genfun
 
-Computes the other generality indices calculated in our study for an interaction matrix (or vector) and its resource abundance vector.
+Computes the other indices of generalization calculated in our study for an interaction matrix (or vector) and its resource abundance vector.
 
 ### Arguments
 
@@ -79,7 +79,7 @@ Computes the other generality indices calculated in our study for an interaction
 
 ## (3) wcfun
 
-Computes the *Wc* index of generality proposed by Pierotti et al. (2017) for an interaction matrix (or vector) and its resource abundance vector.
+Computes the *Wc* index of generalization proposed by Pierotti et al. (2017) for an interaction matrix (or vector) and its resource abundance vector.
 
 ### Arguments
 
@@ -89,7 +89,7 @@ Computes the *Wc* index of generality proposed by Pierotti et al. (2017) for an 
 
 ## Acknowledgements
 
-We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Natalya Zapata-Mesa, Nico Blüthgen, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about ecological networks and generality indices that inspired us to carry out this study. Special thanks go to Jochen Fründ for his recommendations on using his quantitative niche model, and Daniela Arenas for helping us with mammal taxonomy. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 3.4-8151/15037 and 3.2-BRA/1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the Stack Overflow community (https://stackoverflow.com/), where we solve most of our coding dilemmas.
+We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Natalya Zapata-Mesa, Nico Blüthgen, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about ecological networks and generalization indices that inspired us to carry out this study. Special thanks go to Jochen Fründ for his recommendations on using his quantitative niche model, and Daniela Arenas for helping us with mammal taxonomy. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 3.4-8151/15037 and 3.2-BRA/1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the Stack Overflow community (https://stackoverflow.com/), where we solve most of our coding dilemmas.
 
 
 ## Feedback
