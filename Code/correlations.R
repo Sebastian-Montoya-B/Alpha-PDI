@@ -79,7 +79,7 @@ tt2<-dplyr::bind_rows(tt2)
 ## specialization parameter
 
 # Plot the correlations
-par(mfrow = c(2,4), mar = c(5, 4, 1, 1))
+par(mfrow = c(2,4), mar = c(5, 4, 1, 1), las=1)
 plot(spen, tt, xlab = NA, ylab = "αPDI")
 plot(spen, tt2$Bs, xlab = NA, ylab = "Bs")
 plot(spen, tt2$`B'`, xlab = NA, ylab = "B'")
