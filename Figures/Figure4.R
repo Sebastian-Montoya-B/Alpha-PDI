@@ -209,7 +209,7 @@ plot(imat,vertex.label.cex=1,vertex.color = V(imat)$color,
 par(mar=c(2,2,2,2))
 
 plot(y=c(0,2),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '', 
-     cex.main=2.2 ,main = expression(alpha*italic(PDI[Corrected])))
+     cex.main=2.2 ,main = expression(alpha*italic(PDI)*"’"))
 text(x=seq(0,1,l=3), y =1.5 , labels = seq(0,1,l=3), cex=1.5)
 rasterImage(legend_image, 0, 0, 1,1)
 
@@ -235,7 +235,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.55, labels="Number of observations", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
+text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
 
 dev.off()
 
@@ -260,7 +260,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.55, labels="Number of observations", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
+text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
 dev.off()
 
 ## 3.5. Plotting Figure S12
@@ -284,7 +284,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.55, labels="Number of observations", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
+text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
 dev.off()
 
 
@@ -313,6 +313,6 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.65, labels="Number of observations", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.95, labels=expression(alpha*italic(PDI[Corrected])), cex=1.6)
+text(x=0.5, y=0.95, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
 dev.off()
 
