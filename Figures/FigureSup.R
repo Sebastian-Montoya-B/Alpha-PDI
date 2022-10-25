@@ -178,7 +178,7 @@ for (i in 1:length(respp)){
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
        type="n", bty="n")
   text(x=0.5, y=0.55, labels=
-         expression("Estimated degree of generalization   "*"("*alpha*italic(PDI)[Corrected]*")"), 
+         expression("Estimated degree of generalization   "*"("*alpha*italic(PDI)*"’)"), 
        srt=90, cex=1.6)
   
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
