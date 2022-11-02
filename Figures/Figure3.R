@@ -202,8 +202,10 @@ abline(lm(lisEexv~lisEexvs10), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs10)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs10)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisEexv - lisEexvs10)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #10
 
@@ -222,8 +224,10 @@ abline(lm(lisUexv2~lisUexvs2_10), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_10)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_10)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisUexv2-lisUexvs2_10)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #11
 
@@ -243,8 +247,10 @@ abline(lm(lisEexv~lisEexvs50), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs50)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs50)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisEexv - lisEexvs50)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #12
 
@@ -263,8 +269,10 @@ abline(lm(lisUexv2~lisUexvs2_50), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_50)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_50)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisUexv2-lisUexvs2_50)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #13
 
@@ -284,8 +292,10 @@ abline(lm(lisEexv~lisEexvs80), lty=2, lwd=1.5)
 r<-round(cor.test(lisEexv,lisEexvs80)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs80)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisEexv - lisEexvs80)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #14
 
@@ -304,8 +314,10 @@ abline(lm(lisUexv2~lisUexvs2_80), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_80)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_80)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisUexv2-lisUexvs2_80)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #15
 
@@ -329,8 +341,10 @@ if (r==1){
 }
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs100)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisEexv - lisEexvs100)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #16
 
@@ -350,8 +364,10 @@ abline(lm(lisUexv2~lisUexvs2_100), lty=2, lwd=1.5)
 r<-round(cor.test(lisUexv2,lisUexvs2_100)$estimate, digits=2)
 r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_100)), digits=2)
-text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1.2)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1.2)
+mxd<-round(max(abs(lisUexv2-lisUexvs2_100)), digits=2)
+text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
+text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #17
 par(mar=c(0,0,0,0))
