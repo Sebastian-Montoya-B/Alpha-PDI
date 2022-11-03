@@ -189,7 +189,7 @@ text(x=c(0.23,0.78), y=0.5, cex=2,
 
 ### 3.2.2. Second plot
 par(mar=c(3,2,1,2))
-TernaryPlot(alab="Consumers\nwith few observations \u2192", blab="Generalists \u2192", 
+TernaryPlot(alab="Consumers\nwith less than 80 observations \u2192", blab="Generalists \u2192", 
             clab="\u2190 Specialists", lab.col=c("#658c1f","#df4f00","#00918d"),
             grid.lines = 4, lab.cex=1.8, axis.cex=1.2,
             grid.minor.lines = 1, grid.minor.lty = "dotted")
