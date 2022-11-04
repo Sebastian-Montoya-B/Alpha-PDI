@@ -204,8 +204,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs10)), digits=2)
 mxd<-round(max(abs(lisEexv - lisEexvs10)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #10
 
@@ -226,8 +226,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_10)), digits=2)
 mxd<-round(max(abs(lisUexv2-lisUexvs2_10)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #11
 
@@ -249,8 +249,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs50)), digits=2)
 mxd<-round(max(abs(lisEexv - lisEexvs50)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #12
 
@@ -271,8 +271,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_50)), digits=2)
 mxd<-round(max(abs(lisUexv2-lisUexvs2_50)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #13
 
@@ -294,8 +294,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs80)), digits=2)
 mxd<-round(max(abs(lisEexv - lisEexvs80)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #14
 
@@ -316,8 +316,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_80)), digits=2)
 mxd<-round(max(abs(lisUexv2-lisUexvs2_80)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #15
 
@@ -343,8 +343,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisEexv - lisEexvs100)), digits=2)
 mxd<-round(max(abs(lisEexv - lisEexvs100)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #16
 
@@ -366,8 +366,8 @@ r2<-round(r^2, digits=2)
 md<-round(mean(abs(lisUexv2-lisUexvs2_100)), digits=2)
 mxd<-round(max(abs(lisUexv2-lisUexvs2_100)), digits=2)
 text(x=-0.05, y=0.95, labels=bquote(rho == .(r)~~~"r"^2 == .(r2)),pos=4, cex=1)
-text(x=-0.05, y=0.8, labels=bquote("MD" == .(md)), pos=4, cex=1)
-text(x=-0.05, y=0.65, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
+text(x=-0.05, y=0.85, labels=bquote("MD" == .(md)), pos=4, cex=1)
+text(x=-0.05, y=0.75, labels=bquote("MX" == .(mxd)), pos=4, cex=1)
 
 #17
 par(mar=c(0,0,0,0))
