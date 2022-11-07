@@ -184,7 +184,7 @@ for (i in 1:length(respp)){
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
        type="n", bty="n")
   text(x=0.5, y=0.5, labels=
-         "Sampling intensity (number of observations)", cex=1.6)
+         "Sampling intensity (total number of recorded interactions)", cex=1.6)
   
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
        type="n", bty="n")
