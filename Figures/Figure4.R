@@ -232,7 +232,7 @@ for (i in 1:20){
 }
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.55, labels="Number of observations", srt=90, cex=1.6)
+text(x=0.5, y=0.55, labels="Total number of recorded interactions", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
 text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
@@ -257,7 +257,7 @@ for (i in 21:40){
 }
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.55, labels="Number of observations", srt=90, cex=1.6)
+text(x=0.5, y=0.55, labels="Total number of recorded interactions", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
 text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
@@ -281,7 +281,7 @@ for (i in 41:60){
 }
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.55, labels="Number of observations", srt=90, cex=1.6)
+text(x=0.5, y=0.55, labels="Total number of recorded interactions", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
 text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
@@ -310,7 +310,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.65, labels="Number of observations", srt=90, cex=1.6)
+text(x=0.5, y=0.65, labels="Total number of recorded interactions", srt=90, cex=1.6)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
 text(x=0.5, y=0.95, labels=expression(alpha*italic(PDI)*"’"), cex=1.6)
