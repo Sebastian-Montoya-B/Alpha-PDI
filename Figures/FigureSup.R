@@ -189,7 +189,7 @@ for (i in 1:length(respp)){
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), 
        type="n", bty="n")
   text(x=0.5, y=0.5, labels=
-         paste0("Number of resources = ",
+         paste0("Potential resources = ",
                 n.res[i],"; Specialization parameter = ",spe.par[i]), cex=1.6)
   dev.off()
 }
