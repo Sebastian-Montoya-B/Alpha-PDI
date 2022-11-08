@@ -133,7 +133,7 @@ l50<-length(lisEexv)
 
 ######################### 3. PLOTTING ##########################################
 
-x11()
+
 colw<-c("#00ceff", "#078ab5","#004c6d")
 png(filename="Figures/Exported/Figure3.png", width=4600, height=2600, res=600)
 #svg(filename="Figures/Exported/Figure3.svg", width=8, height=7)
@@ -166,7 +166,7 @@ text(x=0.575, y=0.5, labels="Uneven", cex=1.4,srt=90)
 
 #4
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.55, labels="Sampling intensity\n(Number of observations per consumer)", cex=1.6)
+text(x=0.5, y=0.55, labels="Sampling intensity\n(Total number of recorded interactions)", cex=1.6)
 
 
 #5
