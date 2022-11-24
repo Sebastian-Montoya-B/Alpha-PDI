@@ -10,7 +10,7 @@
 
 
 ### A tutorial with an example to help you use the alpha_PDI, genfun, and wcfun
-### functions. If you want to aplly this analysis to your own data, follow the
+### functions. If you want to apply this analysis to your own data, follow the
 ### same formats of the data frames and vectors used in this example.
 
 
@@ -36,6 +36,11 @@ if(!require(corrgram)){
   library(corrgram)
 }
 
+if(!require(bootstrap)){
+  install.packages("bootstrap")
+  library(bootstrap)
+}
+
 ## Source the functions.
 source("Code/alpha_PDI.R") # αPDI
 source("Code/genfun.R") # other common generalization indices
@@ -56,7 +61,7 @@ data
 class(data)
 str(data)
 
-# Visualize your data as smooth niche lines.
+# Visualize your data as smooth generalization/specialization lines.
 data2 <- as.data.frame(t(data))
 plot(data2$Consumer1, type = "p",
      col = "white",
@@ -109,6 +114,28 @@ aPDIcor
 
 # If αPDI < 0.5 the consumer is a specialist.
 # If αPDI > 0.5 the consumer is a generalist.
+
+
+
+# You can also obtain 95% confidence intervals for αPDI'
+
+
+lisp<-as.list(as.data.frame(t(data)))
+colnames(data)<-seq(1,ncol(data))
+listeja<-lapply(lisp, function(x){rep(colnames(data),x)})
+
+bootfun<- function(x){
+  new_data<-as.vector(table(factor(x,levels=1:ncol(data))))
+  asim<-alpha_PDI(new_data, abun)$corrected_aPDI
+  return(asim)
+}
+
+bootsCI<-lapply(listeja, function(y){bcanon(y,  nboot=1000, theta=bootfun, alpha=c(0.025, 0.975))$confpoints[,2]})
+boot_results<-as.data.frame(do.call(rbind, bootsCI))
+colnames(boot_results)<- c("CI(0.25)", "CI(97.5)")
+
+boot_results<-cbind("aPDI'"=aPDIcor$corrected_aPDI, boot_results)
+boot_results
 
 
 ## Other common indices of generalization
