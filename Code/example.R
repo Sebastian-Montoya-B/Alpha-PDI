@@ -99,25 +99,25 @@ aPDIraw
 
 # Use the function alpha_PDI with the argument "corrected = T" to calculate the
 # raw version of the index together with its values corrected by the maximum 
-# possible value given the number of interactions. The corrected version of
-# αPDI cannot be calculated if your data are not counts (integers).
+# possible value given the number of interactions (αPDI').
+# αPDI' cannot be calculated if your data are not counts (integers).
 
 aPDIcor <- alpha_PDI(data, abun, corrected = T) 
 aPDIcor
 
 # For each consumer, you get a list with three vectors:
 # (1) $corrected_aPDI: The value of αPDI corrected by the maximum possible
-#                      value ($raw_aPDI/$max_aPDI).
+#                      value ($raw_aPDI/$max_aPDI), that is αPDI'.
 # (2) $raw_aPDI: Uncorrected value of αPDI.
 # (3) $max_aPDI: Maximum possible value of αPDI given the total 
 #                number of interactions made by the consumer.
 
-# If αPDI < 0.5 the consumer is a specialist.
-# If αPDI > 0.5 the consumer is a generalist.
+# If αPDI' < 0.5 the consumer is a specialist.
+# If αPDI' > 0.5 the consumer is a generalist.
 
 
 
-# You can also obtain 95% confidence intervals for αPDI'
+# You can also obtain 95% confidence intervals for αPDI' using BCa bootstrapping
 
 
 lisp<-as.list(as.data.frame(t(data)))
@@ -155,7 +155,7 @@ wcfun(data, abun) #Only works for matrices. May not work for some matrices.
 ## this example.
 correlations <- cbind(indices, aPDIcor$corrected_aPDI)
 names <- colnames(correlations)
-colnames(correlations) <- c((names[1:(length(names)-1)]), "aPDI")
+colnames(correlations) <- c((names[1:(length(names)-1)]), "aPDI'")
 correlations <- correlations[,-1]
 correlations
 
