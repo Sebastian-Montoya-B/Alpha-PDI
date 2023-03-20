@@ -14,6 +14,9 @@
 
 genfun<-function(data, abun){
   
+  if (class(data)[1]!="matrix"){
+    data<-matrix(data, ncol=length(data))
+  }
   
   require(bipartite)
   
