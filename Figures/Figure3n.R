@@ -36,8 +36,9 @@ Nbee <- 1 # number of consumers. If > 1 it will generate matrices.
 nsim<-2
 MaUn<-NULL
 MaEv<-NULL
-spen<-c(seq(1/10000000000, 50, length=200)) # Specialization parameter
+#spen<-c(seq(1/10000000000, 50, length=200)) # Specialization parameter
 #spen<-sfsmisc::lseq(0.0000001, 60, length=200)
+spen<-c(seq(0.1, 60, by=0.1))
 length(spen)
 lisUn<-NULL
 lisEv<-NULL
@@ -50,8 +51,8 @@ for (Nplant in c(5, 10, 50)){ # Number of potential resources
   for (spe in spen){
     
     for (i in 1:nsim){
-      MaUn[[i]]<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,80,100),maxsamp=10000, make="random" )
-      MaEv[[i]]<-gen_even2(Nbee,Nplant, spe,minsamp=c(10,50,80,100),maxsamp=10000, samp=T, make="random")
+      MaUn[[i]]<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,80,100),maxsamp=1000, make="random" )
+      MaEv[[i]]<-gen_even2(Nbee,Nplant, spe,minsamp=c(10,50,80,100),maxsamp=1000, samp=T, make="random")
       
     }
     lisnam[[counter]]<-Nplant
@@ -73,7 +74,7 @@ for (Nplant in c(5, 10, 50)){ # Number of potential resources
 ##   (8) the observed pattern of resource use in a case with 100 observations ($small100)
 
 ######################### 2. CALCULATIONS ######################################
-
+lisEv[1]
 
 lisEexv<-lapply(lisEv, function(x){
   lapply(x, function(x){
