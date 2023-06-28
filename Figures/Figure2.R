@@ -146,7 +146,8 @@ lisObvwc<-unlist(lisObvwc)
 
 colw<-c("#00ceff", "#078ab5","#004c6d")
 
-svg(filename="Figures/Exported/Figure2.svg", width=8, height=9)
+#svg(filename="Figures/Exported/Figure2.svg", width=8, height=9)
+png(filename="Figures/Exported/Figure2.png", width=4600, height=3600, res=600)
 par(mar= c(4,2,2,1),las=1)
 layout(matrix(seq(1,9), ncol=3, byrow=T))
 layout.show(9)
@@ -178,8 +179,8 @@ plot(y=lisObv$`B'`[1:l5],x=lisExv$`B'`[1:l5], col=colw[3], pch=21, bg=alpha(colw
      ylab="Estimated value", xlab="", xlim=c(0,1), ylim=c(0,1), yaxt="n", xaxt="n")
 axis(2, labels=F)
 axis(1, labels=F)
-points(y=lisObv$`B'`[l5+1:l10],x=lisExv$`B'`[l5+1:l10],col=colw[2],pch=23, bg=alpha(colw[2],0.4),cex=0.7)
-points(y=lisObv$`B'`[l10+1:l50],x=lisExv$`B'`[l10+1:l50],col=colw[1], pch=22,bg=alpha(colw[1],0.4),cex=0.7)
+points(y=lisObv$`B'`[(l5+1):l10],x=lisExv$`B'`[(l5+1):l10],col=colw[2],pch=23, bg=alpha(colw[2],0.4),cex=0.7)
+points(y=lisObv$`B'`[(l10+1):l50],x=lisExv$`B'`[(l10+1):l50],col=colw[1], pch=22,bg=alpha(colw[1],0.4),cex=0.7)
 abline(coef = c(0,1), lwd=1.5)
 text(x=0.07,y=0.98, label=expression(italic("B'")), cex=1.3)
 
