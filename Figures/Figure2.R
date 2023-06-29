@@ -52,7 +52,8 @@ Nbee <- 5
 nsim<-1
 MaUn<-NULL
 MaEv<-NULL
-spen<-c(seq(0.1, 60, by=0.1)) #Specialization parameter
+spen<-c(seq(0.1, 60, by=0.5)) #Specialization parameter
+#spen<-c(seq(0.1, 60, length=20)) #Specialization parameter
 length(spen)
 lisUn<-NULL
 lisEv<-NULL
@@ -76,7 +77,7 @@ for (Nplant in c(5, 10, 50)){ # Number of potential resources
 }
 
 mat1<-lisUn
-
+length(mat1)
 ## For each consumer in mat1 there are four vectors/matrices: 
 ##   (1) the consumer abundance distribution ($con_abun)
 ##   (2) the resource abundance distribution ($res_abun)
