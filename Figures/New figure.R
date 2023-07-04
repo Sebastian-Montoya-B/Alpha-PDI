@@ -169,20 +169,20 @@ msqerrorfun<-function(error){
 colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
 expec_col<-colfunc(10)
 
-colorin<-function(expected){
+#colorin<-function(expected){
 
-  expec_vec_col<- ifelse(expected>0.9, expec_col[1],
-                             ifelse(expected>0.8, expec_col[2],
-                                    ifelse(expected>0.7, expec_col[3],
-                                           ifelse(expected>0.6,  expec_col[4],
-                                                  ifelse(expected>0.5,  expec_col[5],
-                                                         ifelse(expected>0.4,  expec_col[6],
-                                                                ifelse(expected>0.3,  expec_col[7],
-                                                                       ifelse(expected>0.2,  expec_col[8],
-                                                                              ifelse(expected>0.1,  expec_col[9], expec_col[10]
-                                                                                     )))))))))
-  return(expec_vec_col)
-}
+#  expec_vec_col<- ifelse(expected>0.9, expec_col[1],
+ #                            ifelse(expected>0.8, expec_col[2],
+  #                                  ifelse(expected>0.7, expec_col[3],
+   #                                        ifelse(expected>0.6,  expec_col[4],
+    #                                              ifelse(expected>0.5,  expec_col[5],
+     #                                                    ifelse(expected>0.4,  expec_col[6],
+      #                                                          ifelse(expected>0.3,  expec_col[7],
+       #                                                                ifelse(expected>0.2,  expec_col[8],
+        #                                                                      ifelse(expected>0.1,  expec_col[9], expec_col[10]
+         #                                                                            )))))))))
+  #return(expec_vec_col)
+#}
 
 #colorin(lisObv$aPDI)
 
@@ -225,6 +225,7 @@ if (TRUE){
   points(x=x_xit, y=c(error1$R5,error1$R10,error1$R50),
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   msqe<-round(apply(as.matrix(error1), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -246,6 +247,7 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   msqe<-round(apply(as.matrix(errorBS), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -270,6 +272,7 @@ if (TRUE){
   
   
   msqe<-round(apply(as.matrix(errorBprime), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -292,6 +295,7 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   msqe<-round(apply(as.matrix(errorW), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -313,6 +317,7 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   msqe<-round(apply(as.matrix(errorPS), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -335,6 +340,7 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   msqe<-round(apply(as.matrix(errorFT), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -357,6 +363,7 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   msqe<-round(apply(as.matrix(errord), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -378,6 +385,7 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   msqe<-round(apply(as.matrix(errorgen), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -402,6 +410,7 @@ if (TRUE){
   
   errorWc<-na.omit(errorWc) ## Wc may me unable to estimate the value for some consumers, and it will produce NAs
   msqe<-round(apply(as.matrix(errorWc), 2, msqerrorfun),2)
+  msqe<-sprintf(msqe, fmt='%#.2f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -434,7 +443,7 @@ if (TRUE){
   
   
   legend_image <- as.raster(rev(colfunc(20)))
-  grid.raster(legend_image, width=0.05, height = 0.8, x = unit(0.92, "npc"))
+  grid.raster(legend_image, width=0.04, height = 0.8, x = unit(0.93, "npc"))
   par(xpd=T)
   abline(v=-0.2, lty=3)
   text(y=c(-0.02,1.03), x =0.7 , labels = c(0.01, "50.0"), cex=1)
