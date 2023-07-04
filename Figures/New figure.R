@@ -63,7 +63,7 @@ if (T) {
   MaUn<-NULL
   MaEv<-NULL
   #spen<-c(seq(0.1, 60, by=0.5))
-  #spen<-lseq(0.01, 50, length =100)#Specialization parameter
+  #spen<-lseq(0.01, 50, length =200)#Specialization parameter
   spen<-seq(0.01, 50, length=200)
   #spen<-c(seq(0.1, 60, length=20)) #Specialization parameter
   length(spen)
