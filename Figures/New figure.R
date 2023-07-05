@@ -57,38 +57,38 @@ source("Code/QNM.R")
 
 ## Generate a list of matrices and vectors generated using the quantitative 
 ## niche model of Fründ et al. (2016)
-if (T) {
-  Nbee <- 5
-  nsim<-1
-  MaUn<-NULL
-  MaEv<-NULL
+#if (T) {
+#  Nbee <- 5
+#  nsim<-1
+#  MaUn<-NULL
+#  MaEv<-NULL
   #spen<-c(seq(0.1, 60, by=0.5))
   #spen<-lseq(0.01, 50, length =200)#Specialization parameter
-  spen<-seq(0.01, 50, length=200)
+#  spen<-seq(0.01, 50, length=200)
   #spen<-c(seq(0.1, 60, length=20)) #Specialization parameter
-  length(spen)
-  lisUn<-NULL
-  lisEv<-NULL
-  spelisUn<-NULL
-  spelisEv<-NULL
-  counter<-1
-  lisnam<-NULL
-  for (Nplant in c(5, 10, 50)){ # Number of potential resources
+#  length(spen)
+#  lisUn<-NULL
+#  lisEv<-NULL
+#  spelisUn<-NULL
+#  spelisEv<-NULL
+#  counter<-1
+#  lisnam<-NULL
+#  for (Nplant in c(5, 10, 50)){ # Number of potential resources
     
-    for (spe in spen){
+#    for (spe in spen){
       
-      for (i in 1:nsim){
-        MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=F, make="random" )
+#      for (i in 1:nsim){
+#        MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=F, make="random" )
         
-      }
-      lisnam[[counter]]<-Nplant
-      lisUn[[counter]]<-MaUn
-      counter<-counter+1
-    }
+#      }
+#      lisnam[[counter]]<-Nplant
+#      lisUn[[counter]]<-MaUn
+#      counter<-counter+1
+#    }
     
-  }
-  mat1<-lisUn
-}
+#  }
+#  mat1<-lisUn
+#}
 
 
 
@@ -100,6 +100,7 @@ if (T) {
 
 
 ######################### 2. CALCULATIONS ######################################
+mat1<-readRDS("Data/sim_data.rds")
 
 if (T) {
   ## Calculating αPDI and other indices
@@ -161,13 +162,14 @@ if (T) {
 ######################### 3. PLOTTING ##########################################
 
 
-spar<-rep(rep(spen, each=Nbee), 3)
+#spar<-rep(rep(spen, each=Nbee), 3)
 
 msqerrorfun<-function(error){
   return(sum((error)^2)/length(error))
 }
-colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
-expec_col<-colfunc(10)
+
+#colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
+#expec_col<-colfunc(10)
 
 #colorin<-function(expected){
 
@@ -188,6 +190,8 @@ expec_col<-colfunc(10)
 
 png(filename="Figures/Exported/Figure2.2.png", width=5000, height=3600, res=600)
 if (TRUE){
+  spen<-length(mat1)/3
+  Nbee<-ncol(mat1[[1]][[1]]$preference)
   par(mar= c(2,3,1,0),las=1, xpd=F)
   layout(matrix(c(14,14,14,14,12,
                   11,1,2,3,12,
@@ -210,7 +214,8 @@ if (TRUE){
   
   x_xit<-c(x1_xit,x2_xit,x3_xit)
   colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
-  spar_col<-as.raster(matrix(colfunc(length(spen)), nrow=1))
+  #colfunc<- colour_ramp(c("#df4f00","#f1f1f1","#00918d"))
+  spar_col<-as.raster(matrix(colfunc(spen), nrow=1))
   spar_col<-rep(rep(spar_col, each=Nbee), 3)
   #legend_image <- as.raster(matrix(colfunc(20), nrow=1))
   
@@ -223,16 +228,16 @@ if (TRUE){
   boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$aPDI)
   points(x=x_xit, y=c(error1$R5,error1$R10,error1$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
-  msqe<-round(apply(as.matrix(error1), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
+  msqe<-round(apply(as.matrix(error1), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   par(new=T)
-  boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), col=alpha("gray",0))
+  boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###Bs
@@ -244,10 +249,10 @@ if (TRUE){
   boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic(B[s])), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$Bs)
   points(x=x_xit, y=c(errorBS$R5,errorBS$R10,errorBS$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
-  msqe<-round(apply(as.matrix(errorBS), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorBS), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -255,7 +260,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic(B[s])), col=alpha("gray",0))
+  boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic(B[s])) , border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   
@@ -268,11 +273,11 @@ if (TRUE){
   boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B'")), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$`B'`)
   points(x=x_xit, y=c(errorBprime$R5,errorBprime$R10,errorBprime$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
   
-  msqe<-round(apply(as.matrix(errorBprime), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorBprime), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -280,7 +285,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B'")), col=alpha("gray",0))
+  boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B'")) , border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###W
@@ -292,17 +297,17 @@ if (TRUE){
   boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic(W)), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$W)
   points(x=x_xit, y=c(errorW$R5,errorW$R10,errorW$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
-  msqe<-round(apply(as.matrix(errorW), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorW), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   par(new=T)
-  boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic(W)), col=alpha("gray",0))
+  boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic(W)), border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###PS
@@ -314,10 +319,10 @@ if (TRUE){
   boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic(PS)), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$PS)
   points(x=x_xit, y=c(errorPS$R5,errorPS$R10,errorPS$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
-  msqe<-round(apply(as.matrix(errorPS), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorPS), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -325,7 +330,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic(PS)), col=alpha("gray",0))
+  boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic(PS)), border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###FT
@@ -337,10 +342,10 @@ if (TRUE){
   boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic(FT)), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$FT)
   points(x=x_xit, y=c(errorFT$R5,errorFT$R10,errorFT$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
-  msqe<-round(apply(as.matrix(errorFT), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorFT), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -348,7 +353,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic(FT)), col=alpha("gray",0))
+  boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic(FT)),border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###1-d
@@ -360,17 +365,17 @@ if (TRUE){
   boxplot(errord, ylim=c(-1,1), pch=8, xaxt="n", main=expression(1 - italic("d'")), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$`1-d`)
   points(x=x_xit, y=c(errord$R5,errord$R10,errord$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
-  msqe<-round(apply(as.matrix(errord), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errord), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=c(5,10,50))
   par(new=T)
-  boxplot(errord, ylim=c(-1,1), pch=8, xaxt="n", main=expression(1 - italic("d'")), col=alpha("gray",0))
+  boxplot(errord, ylim=c(-1,1), pch=8, xaxt="n", main=expression(1 - italic("d'")), border=alpha("black",0.4),  col=alpha("gray",0))
   par(new=F)
   
   ###gen
@@ -382,10 +387,10 @@ if (TRUE){
   boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic(gen)), col=alpha("gray",0))
   #spar_col<-colorin(lisExv$gen)
   points(x=x_xit, y=c(errorgen$R5,errorgen$R10,errorgen$R50),
-         bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.8)
   
-  msqe<-round(apply(as.matrix(errorgen), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorgen), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -393,7 +398,7 @@ if (TRUE){
   axis(2, at=seq(-1,1, length=5), labels=F)
   axis(1, at=c(1,2,3), labels=c(5,10,50))
   par(new=T)
-  boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic(gen)), col=alpha("gray",0))
+  boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic(gen)),border=alpha("black",0.4),  col=alpha("gray",0))
   par(new=F)
   
   ###Wc
@@ -409,8 +414,8 @@ if (TRUE){
          bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   
   errorWc<-na.omit(errorWc) ## Wc may me unable to estimate the value for some consumers, and it will produce NAs
-  msqe<-round(apply(as.matrix(errorWc), 2, msqerrorfun),2)
-  msqe<-sprintf(msqe, fmt='%#.2f')
+  msqe<-round(apply(as.matrix(errorWc), 2, msqerrorfun),3)
+  msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
@@ -418,7 +423,7 @@ if (TRUE){
   axis(2, at=seq(-1,1, length=5), labels=F)
   axis(1, at=c(1,2,3), labels=c(5,10,50))
   par(new=T)
-  boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic(Wc)), col=alpha("gray",0))
+  boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic(Wc)),border=alpha("black",0.4),  col=alpha("gray",0))
   par(new=F)
   
   ### X Label

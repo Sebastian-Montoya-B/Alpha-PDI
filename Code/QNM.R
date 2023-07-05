@@ -64,7 +64,8 @@ makeweb <- function(specpar = 1, Nbee=4, Nplant=4, nicheshape="normal",
 ## distribution. It excludes 0 and Inf values.
 get_skewabuns <- function(myN, abun_mean=10, abun_sdlog=1.5){
   abun <- qlnorm(seq(0, 1, length.out=myN+2), log(abun_mean), abun_sdlog)[-c(1,myN+2)] 
-  abun <- sort(abun, decr=TRUE)
+  #abun <- sort(abun, decr=TRUE)
+  abun<- sample(abun) # We added this line so the most abundant resource is not always the first
   abun * abun_mean / mean(abun)
 }
 
@@ -297,6 +298,44 @@ gen_uneven2<-function(Nbee, Nplant, spe,samp=F, minsamp=c(10,50,80,100),maxsamp=
   return(sim_spec)
 }
 
+
+######################## 10. gen_uneven3 function ################################
+
+
+## Almost the same as gen_uneven2. It was exclusively created to make networks so
+## we can calculate the Wc index. Instead of generating new resource abundance
+## distributions, it uses existing vectors of abundance (res_abun argument).
+
+gen_uneven3<-function(Nbee,Nplant,  spe,samp=F, minsamp=c(10,50,80,100),maxsamp=1000, make=c("random", "spread"),res_abun){
+  
+  beeabun <- rep(10, Nbee)
+  plantabun <- res_abun
+  #plantabun <- get_skewabuns(Nplant)
+  if (make=="random"){
+    web_p <- makeweb(specpar=spe, Nbee, Nplant) 
+  } else if (make=="spread"){
+    web_p <- makeweb2(specpar=spe, Nbee, Nplant)
+  }
+  
+  web_current <- make_currentweb(web_p, plantabun=plantabun, beeabun=beeabun) 
+  
+  if (samp==T){
+    web_smallsamp1 <- sampleweb(web_current, obsperbee=minsamp[1], method='perweb')
+    web_smallsamp2 <- sampleweb(web_current, obsperbee=minsamp[2], method='perweb')
+    web_smallsamp3 <- sampleweb(web_current, obsperbee=minsamp[3], method='perweb')
+    web_smallsamp4 <- sampleweb(web_current, obsperbee=minsamp[4], method='perweb')
+    web_largesamp <- sampleweb(web_current, obsperbee=maxsamp, method='perweb')
+    sim_spec<-list(res_abun=plantabun, preference=web_p, 
+                   current=web_current, small10=web_smallsamp1, 
+                   small50=web_smallsamp2, small80=web_smallsamp3, 
+                   small100=web_smallsamp4, 
+                   large=web_largesamp)
+  } else{
+    sim_spec<-list(res_abun=plantabun, preference=web_p, current=web_current)
+  }
+  
+  return(sim_spec)
+}
 
 ######################## REFERENCES ############################################
 
