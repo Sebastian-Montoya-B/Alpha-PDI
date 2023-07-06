@@ -129,6 +129,8 @@ for (i in 1: length(mat2)){
 }
 
 rere
+do.call(rbind, rere[1:(length(mat2)/3)])
+
 saveRDS(mat2, "Data/sim_data2.RDS")
 
 #####
@@ -150,46 +152,72 @@ if (T) {
   counter<-1
   lisnam<-NULL
   nres<-length(mat2)/3
-  volt<-1
-  ini<-1
-  for (Nplant in c(5, 15, 55)){ # Number of potential resources
+  #volt<-1
+  #ini<-1
+  #R<-c(5, 15, 55)
+  #for (Nplant in R){ # Number of potential resources
     
-    
-    for (spe in spen2){
+  ### 5 resources  
+  #for (spe in spen){
       
       
-        for (i in ini:(nres*volt)){
+        for (i in 1:(nres)){
           #MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=F, make="random" )
-          MaUn[[i]]<-gen_uneven3(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,80,100),
-                                 maxsamp=1000, make="random", res_abun = rere[[i]] )
+          MaUn[[i]]<-gen_uneven3(Nbee,Nplant=5, spen[[i]], samp=T,minsamp=c(10,5,8,10),
+                                 maxsamp=10, make="random", res_abun = rere[[i]] )
         }
     
       
-      lisnam[[counter]]<-Nplant
-      lisUn[[counter]]<-MaUn
-      counter<-counter+1
-      ini<-(nres*volt)+1
-      volt<-volt+1
+      #lisnam[[counter]]<-Nplant
+      #lisUn[[counter]]<-MaUn
+      #counter<-counter+1
+      #ini<-(nres*volt)+1
+      #volt<-volt+1
+    #}
+    
+  #}
+  mat3_5<-lisUn
+  
+  for (spe in spen){
+    
+    
+    for (i in (nres+1):(nres*2)){
+      #MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=F, make="random" )
+      MaUn[[i]]<-gen_uneven3(Nbee,Nplant=15, spe, samp=T,minsamp=c(10,50,80,100),
+                             maxsamp=1000, make="random", res_abun = rere[[i]] )
     }
     
+    
+    lisnam[[counter]]<-Nplant
+    lisUn[[counter]]<-MaUn
+    counter<-counter+1
+    #ini<-(nres*volt)+1
+    #volt<-volt+1
   }
-  mat3<-lisUn
+  
+  #}
+  mat3_15<-lisUn
+  
+  for (spe in spen){
+    
+    
+    for (i in (nres*2+1):(nres*3)){
+      #MaUn[[i]]<-gen_uneven(Nbee,Nplant, spe, samp=F, make="random" )
+      MaUn[[i]]<-gen_uneven3(Nbee,Nplant=55, spe, samp=T,minsamp=c(10,50,80,100),
+                             maxsamp=1000, make="random", res_abun = rere[[i]] )
+    }
+    
+    
+    lisnam[[counter]]<-Nplant
+    lisUn[[counter]]<-MaUn
+    counter<-counter+1
+    #ini<-(nres*volt)+1
+    #volt<-volt+1
+  }
+  
+  #}
+  mat3_55<-lisUn
 }
 
-head(rere[[i]])
-rere[[6000]]
-length(rere)
-str(rere)
 
 
-gen_uneven3(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,80,100),
-            maxsamp=1000, make="random", res_abun = rere[[6000]] )
-is.vector(rere[[1]])
-class(rere[[1]])
-mat1[[1]]
-length(mat1)
-web_p <- makeweb(specpar=spe, Nbee, Nplant) 
-
-mat2[[1]]
-length(mat2)
-length(mat2[[2]][[1]])
