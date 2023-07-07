@@ -60,10 +60,10 @@ l50<-length(lisUexv2)
 
 
 
-summ_uneven<-data.frame(S10=lisUexvs2_10-lisUexv2, 
-                      S50=lisUexvs2_50-lisUexv2, 
-                      S80=lisUexvs2_80-lisUexv2,
-                      S100=lisUexvs2_100-lisUexv2, res=c(rep(5, l5),rep(10, l5), rep(50, l5)))
+summ_uneven<-data.frame(S10=lisUexv2_10-lisUexv2, 
+                      S50=lisUexv2_50-lisUexv2, 
+                      S80=lisUexv2_80-lisUexv2,
+                      S100=lisUexv2_100-lisUexv2, res=c(rep(5, l5),rep(10, l5), rep(50, l5)))
 
 x1_xit<-jitter(rep(1, l5), factor=6)
 x2_xit<-jitter(rep(2, l5), factor=6)
@@ -71,7 +71,7 @@ x3_xit<-jitter(rep(3, l5), factor=6)
 
 x_xit<-c(x1_xit,x2_xit,x3_xit)
 colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
-spar_col<-as.raster(matrix(colfunc(length(spen)), nrow=1))
+spar_col<-as.raster(matrix(colfunc(2000), nrow=1))
 spar_col<-rep(rep(spar_col, each=Nbee), 3)
 
 layout(matrix(c(1,2,3,4,
