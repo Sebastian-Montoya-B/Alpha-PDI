@@ -87,7 +87,7 @@ make_currentweb <- function(web_p, plantabun, beeabun){
 
 
 ## A function to simulate the process of sampling from a vector (or matrix) of 
-## the current pattern of resource use. It requieres te vector of current 
+## the current pattern of resource use. It requires the vector of current 
 ## pattern of resource use (web), and the number of observations (obsperbee).
 sampleweb <- function(web,obsperbee=NULL,method='perbee'){
   

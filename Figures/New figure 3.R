@@ -26,80 +26,31 @@ if(!require(scales)){
 
 ## Source the functions.
 source("Code/alpha_PDI.R")
-source("Code/QNM.R")
 
-## Generate the list of vectors with even (lisEv) and uneven (lisUn) resource 
-## abundance distributions, using the quantitative niche model of 
-## Fründ et al. (2016)
+## Load the data
+mat1<-readRDS("Data/sim_data.rds")
+mat2<-readRDS("Data/sim_data2.rds")
 
-Nbee <- 1 # number of consumers. If > 1 it will generate matrices.
-nsim<-1
-MaUn<-NULL
-MaEv<-NULL
-#spen<-c(seq(1/10000000000, 50, length=200)) # Specialization parameter
-#spen<-sfsmisc::lseq(0.0000001, 60, length=200)
-spen<-seq(0.01, 50, length=200)
-length(spen)
-lisUn<-NULL
-lisEv<-NULL
-spelisUn<-NULL
-spelisEv<-NULL
-counter<-1
-lisnam<-NULL
-for (Nplant in c(5, 10, 50)){ # Number of potential resources
-  
-  for (spe in spen){
-    
-    for (i in 1:nsim){
-      MaUn[[i]]<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,80,100),maxsamp=1000, make="random" )
-      #MaEv[[i]]<-gen_even2(Nbee,Nplant, spe,minsamp=c(10,50,80,100),maxsamp=1000, samp=T, make="random")
-      
-    }
-    lisnam[[counter]]<-Nplant
-    lisUn[[counter]]<-MaUn
-    #lisEv[[counter]]<-MaEv
-    counter<-counter+1
-  }
-  
-}
-
-## For each consumer in lisEv and lisUn there are eight vectors: 
-##   (1) the resource abundance distribution ($res_abun)
-##   (2) the true preferences ($preference)
-##   (3) the current pattern of resource use ($current)
-##   (4) the observed pattern of resource use in a case with 10^6 observations ($large)
-##   (5) the observed pattern of resource use in a case with 10 observations ($small10)
-##   (6) the observed pattern of resource use in a case with 50 observations ($small50)
-##   (7) the observed pattern of resource use in a case with 80 observations ($small80)
-##   (8) the observed pattern of resource use in a case with 100 observations ($small100)
 
 ######################### 2. CALCULATIONS ######################################
-lisEv[1]
+lisUn<-mat1
 if (T){
-  lisUexv2<-lapply(lisUn, function(x){
-    lapply(x, function(x){
-      alpha_PDI(t(x$large), x$res_abun)$corrected_aPDI})})
+
+  lisUexv2<-lapply(lisUn, function(x){ alpha_PDI(t(x$large), x$res_abun)$corrected_aPDI})
   lisUexv2<-unlist(lisUexv2)
   
-  lisUexvs2_10<-lapply(lisUn, function(x){
-    lapply(x, function(x){
-      alpha_PDI(t(x$small10), x$res_abun)$corrected_aPDI})})
-  lisUexvs2_10<-unlist(lisUexvs2_10)
+  lisUexv2_10<-lapply(lisUn, function(x){ alpha_PDI(t(x$small10), x$res_abun)$corrected_aPDI})
+  lisUexv2_10<-unlist(lisUexv2_10)
   
-  lisUexvs2_50<-lapply(lisUn, function(x){
-    lapply(x, function(x){
-      alpha_PDI(t(x$small50), x$res_abun)$corrected_aPDI})})
-  lisUexvs2_50<-unlist(lisUexvs2_50)
+  lisUexv2_50<-lapply(lisUn, function(x){ alpha_PDI(t(x$small50), x$res_abun)$corrected_aPDI})
+  lisUexv2_50<-unlist(lisUexv2_50)
   
-  lisUexvs2_80<-lapply(lisUn, function(x){
-    lapply(x, function(x){
-      alpha_PDI(t(x$small80), x$res_abun)$corrected_aPDI})})
-  lisUexvs2_80<-unlist(lisUexvs2_80)
+  lisUexv2_80<-lapply(lisUn, function(x){ alpha_PDI(t(x$small80), x$res_abun)$corrected_aPDI})
+  lisUexv2_80<-unlist(lisUexv2_80)
   
-  lisUexvs2_100<-lapply(lisUn, function(x){
-    lapply(x, function(x){
-      alpha_PDI(t(x$small100), x$res_abun)$corrected_aPDI})})
-  lisUexvs2_100<-unlist(lisUexvs2_100)
+  lisUexv2_100<-lapply(lisUn, function(x){ alpha_PDI(t(x$small100), x$res_abun)$corrected_aPDI})
+  lisUexv2_100<-unlist(lisUexv2_100)
+
 }
 
 
