@@ -156,7 +156,7 @@ if (TRUE){
   boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), col=alpha("gray",0))
 
   points(x=x_xit, y=c(error1$R5,error1$R10,error1$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   msqe<-round(apply(as.matrix(error1), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
@@ -177,7 +177,7 @@ if (TRUE){
   boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic(B[s])), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorBS$R5,errorBS$R10,errorBS$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorBS), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
@@ -201,7 +201,7 @@ if (TRUE){
   boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorBprime$R5,errorBprime$R10,errorBprime$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   
   msqe<-round(apply(as.matrix(errorBprime), 2, msqerrorfun),3)
@@ -225,7 +225,7 @@ if (TRUE){
   boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic(W)), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorW$R5,errorW$R10,errorW$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorW), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
@@ -247,7 +247,7 @@ if (TRUE){
   boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic(PS)), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorPS$R5,errorPS$R10,errorPS$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorPS), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
@@ -270,7 +270,7 @@ if (TRUE){
   boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic(FT)), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorFT$R5,errorFT$R10,errorFT$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorFT), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
@@ -293,7 +293,7 @@ if (TRUE){
   boxplot(errord, ylim=c(-1,1), pch=8, xaxt="n", main=expression(1 - italic("d'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errord$R5,errord$R10,errord$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errord), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
@@ -315,7 +315,7 @@ if (TRUE){
   boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic(gen)), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorgen$R5,errorgen$R10,errorgen$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorgen), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
@@ -339,7 +339,7 @@ if (TRUE){
   boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic(Wc)), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorWc$R5,errorWc$R10,errorWc$R50),
-         bg= alpha(spar_col,0.2), pch=21, col=alpha(spar_col,0.2), cex=0.6)
+         bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   errorWc<-na.omit(errorWc) ## Wc may me unable to estimate the value for some consumers, and it will produce NAs
   msqe<-round(apply(as.matrix(errorWc), 2, msqerrorfun),3)
