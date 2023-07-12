@@ -372,11 +372,41 @@ if (TRUE){
   plot(y=c(0,1),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main= "Specialization\nparameter",
        cex.main=1, ylim=c(0,1))
   legend_image <- as.raster(rev(colfunc(20)))
-  grid.raster(legend_image, width=0.04, height = 0.8, x = unit(0.93, "npc"))
+  grid.raster(legend_image, width=0.04, height = 0.8, x = unit(0.92, "npc"))
   par(xpd=T)
   abline(v=-0.2, lty=3)
-  text(y=c(-0.02,1.03), x =0.7 , labels = c(0.01, "3000"), cex=1)
+  text(y=c(-0.03,1.03), x =0.7 , labels = c(0.01, "3000"), cex=1)
   par(xpd=F)
+  
+  par(new=T, mar=c(38,5.2,5,0.5))
+  
+  x <- seq(-4, 4, length=1000)
+  y1 <- dnorm(x,0,0.1)/dnorm(c(0),0,0.1)
+  y1.5 <- dnorm(x,0,0.5)/dnorm(c(0),0,0.5)
+  y2 <- dnorm(x,0,1)/dnorm(c(0),0,1)
+  y2.5 <- dnorm(x,0,5)/dnorm(c(0),0,5)
+  y3 <- dnorm(x,0,20)/dnorm(c(0),0,20)
+  
+  plot(x,y1, type = "l", lwd = 1, xlab = "", ylab = "", ylim=c(0,max(y1)),
+       xaxt="n", yaxt="n",  cex=1.1, bty="l", col=colfunc(5)[5])
+  
+  par(new=T,mar=c(30,5.2,13,0.5))
+  plot(x,y1.5, type = "l", lwd = 1, xlab = "", ylab = "", ylim=c(0,max(y1.5)),
+       xaxt="n", yaxt="n", cex=1.1, bty="l", col=colfunc(5)[4])
+  
+  par(new=T,mar=c(21.5,5.2,21.5,0.5))
+  plot(x,y2, type = "l", lwd = 1.5, xlab = "", ylab = "", ylim=c(0,max(y2)),
+       xaxt="n", yaxt="n", cex=1.1, bty="l", col=colfunc(5)[3])
+  
+  par(new=T,mar=c(13,5.2,30,0.5))
+  plot(x,y2.5, type = "l", lwd = 1, xlab = "", ylab = "", ylim=c(0,max(y2.5)),
+       xaxt="n", yaxt="n",  cex=1.1, bty="l", col=colfunc(5)[2])
+  
+  par(new=T,mar=c(5,5.2,38,0.5))
+  plot(x,y3, type = "l", lwd = 1, xlab = "", ylab = "", ylim=c(0,max(y3)),
+       xaxt="n", yaxt="n",  cex=1.1, bty="l", col=colfunc(5)[[1]])
+  
+  par(new=F)
 
 }
 

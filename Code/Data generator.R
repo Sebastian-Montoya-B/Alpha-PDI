@@ -24,11 +24,6 @@ if(!require(zCompositions)){
   library(zCompositions)
 }
 
-if(!require(bipartite)){
-  install.packages("bipartite")
-  library(bipartite)
-}
-
 
 if(!require(emdbook)){
   install.packages("emdbook")
@@ -69,7 +64,7 @@ if (T) {
   for (Nplant in c(5, 15, 55)){ # Number of potential resources
     
     for (spe in spen){
-      MaUn<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,80,100),maxsamp=1000, make="spread" )
+      MaUn<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,100,500),maxsamp=1000, make="spread" )
 
       lisnam[[counter]]<-Nplant
       lisUn[[counter]]<-MaUn
@@ -84,10 +79,10 @@ if (T) {
   ##   (2) the true preferences ($preference)
   ##   (3) the current pattern of resource use ($current)
   ##   (4) the observed pattern of resource use in a case with 10^6 observations ($large)
-  ##   (5) the observed pattern of resource use in a case with 10 observations ($small10)
-  ##   (6) the observed pattern of resource use in a case with 50 observations ($small50)
-  ##   (7) the observed pattern of resource use in a case with 80 observations ($small80)
-  ##   (8) the observed pattern of resource use in a case with 100 observations ($small100)
+  ##   (5) the observed pattern of resource use in a case with 10 observations ($small1)
+  ##   (6) the observed pattern of resource use in a case with 50 observations ($small2)
+  ##   (7) the observed pattern of resource use in a case with 100 observations ($small3)
+  ##   (8) the observed pattern of resource use in a case with 500 observations ($small4)
   
   
   rere<- list()
@@ -107,7 +102,7 @@ if (T) {
   for (i in 1:(nres*3)){
     print(i)
     while(T){
-      newvec<-try(gen_uneven3(Nbee,Nplant=resvec[i], spen2[i], samp=T,minsamp=c(10,50,80,100),
+      newvec<-try(gen_uneven3(Nbee,Nplant=resvec[i], spen2[i], samp=T,minsamp=c(10,50,100,500),
                               maxsamp=1000, make="random", res_abun = rere[[i]]), silent=T)
       if(!is(newvec, "try-error")) break
     }

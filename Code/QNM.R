@@ -287,9 +287,9 @@ gen_uneven2<-function(Nbee, Nplant, spe,samp=F, minsamp=c(10,50,80,100),maxsamp=
     web_smallsamp4 <- sampleweb(web_current, obsperbee=minsamp[4], method='perweb')
     web_largesamp <- sampleweb(web_current, obsperbee=maxsamp, method='perweb')
     sim_spec<-list(res_abun=plantabun, preference=web_p, 
-                   current=web_current, small10=web_smallsamp1, 
-                   small50=web_smallsamp2, small80=web_smallsamp3, 
-                   small100=web_smallsamp4, 
+                   current=web_current, small1=web_smallsamp1, 
+                   small2=web_smallsamp2, small3=web_smallsamp3, 
+                   small4=web_smallsamp4, 
                    large=web_largesamp)
   } else{
     sim_spec<-list(res_abun=plantabun, preference=web_p, current=web_current)
