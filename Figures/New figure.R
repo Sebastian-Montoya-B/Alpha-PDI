@@ -63,6 +63,10 @@ mat2<-readRDS("Data/sim_data2.rds")
 
 if (T) {
   ## Calculating αPDI and other indices
+  ### The calculation of d' requires integers in order to estimate d_min.
+  ### Therefore, the $preference and $current vectors have been multiplied by 1000000.
+  ### Since indices work with proportions, this multiplication does not change
+  ### their results, but allows us to use d'.
   lisExv<-NULL
   lisObv<-NULL
   for (i in 1:length(mat1)){
@@ -70,8 +74,8 @@ if (T) {
       
       ap<-alpha_PDI(t((mat1[[i]]$preference)), rep(1,NROW(mat1[[i]]$preference)),corrected=F)
       at<-alpha_PDI(t((mat1[[i]]$current)), mat1[[i]]$res_abun, corrected=F)
-      gp<-genfun(t((mat1[[i]]$preference*100)), rep(1,NROW(mat1[[i]]$preference)))
-      gt<-genfun(t(mat1[[i]]$current*100), mat1[[i]]$res_abun)
+      gp<-genfun(t((mat1[[i]]$preference*1000000)), rep(1,NROW(mat1[[i]]$preference)))
+      gt<-genfun(t(mat1[[i]]$current*1000000), mat1[[i]]$res_abun)
 
     lisExv[[i]]<-cbind(gp, aPDI=ap)
     lisObv[[i]]<-cbind(gt, aPDI=at)
@@ -375,7 +379,7 @@ if (TRUE){
   grid.raster(legend_image, width=0.04, height = 0.8, x = unit(0.92, "npc"))
   par(xpd=T)
   abline(v=-0.2, lty=3)
-  text(y=c(-0.03,1.03), x =0.7 , labels = c(0.01, "3000"), cex=1)
+  text(y=c(-0.03,1.03), x =0.55 , labels = c(0.1, "60"), cex=1)
   par(xpd=F)
   
   par(new=T, mar=c(38,5.2,5,0.5))

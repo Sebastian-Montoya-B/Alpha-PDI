@@ -19,11 +19,6 @@
 rm(list= ls())
 
 ## Check the required packages, install them if necessary, and load them.
-if(!require(zCompositions)){
-  install.packages("zCompositions")
-  library(zCompositions)
-}
-
 
 if(!require(emdbook)){
   install.packages("emdbook")
@@ -41,9 +36,6 @@ if(!require(dplyr)){
 }
 
 ## Source the functions.
-source("Code/alpha_PDI.R")
-source("Code/genfun.R")
-source("Code/wcfun.R")
 source("Code/QNM.R")
 
 ## Generate a list of vectors using the quantitative niche model of 
@@ -54,7 +46,8 @@ if (T) {
   #nsim<-1
   MaUn<-NULL
   MaEv<-NULL
-  spen<-lseq(0.01, 3000, length =2000)# Specialization parameter
+  #spen<-lseq(0.01, 3000, length =2000)# Specialization parameter
+  spen<-lseq(0.1, 60, length =2000)# Specialization parameter
   lisUn<-NULL
   lisEv<-NULL
   spelisUn<-NULL
@@ -94,7 +87,7 @@ if (T) {
   ## Generating matrices for Wc calculation
   Nbee <- 20
   MaUn2<-NULL
-  spen2<-sample(lseq(0.01,100, length =2000), length(mat1), replace=T)
+  spen2<-sample(lseq(0.1,60, length =2000), length(mat1), replace=T)
   length(spen)
   nres<-length(mat1)/3
   resvec<-c(rep(5,nres),rep(15,nres),rep(55,nres))

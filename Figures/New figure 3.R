@@ -79,8 +79,8 @@ l50<-length(lisUexv2)
 
 summ_aPDI<-data.frame(S10=lisUexv2_10-lisUexv2, 
                       S50=lisUexv2_50-lisUexv2, 
-                      S100=lisUexv2_80-lisUexv2,
-                      S500=lisUexv2_100-lisUexv2, res=c(rep(5, l5),rep(15, l5), rep(55, l5)))
+                      S100=lisUexv2_100-lisUexv2,
+                      S500=lisUexv2_500-lisUexv2, res=c(rep(5, l5),rep(15, l5), rep(55, l5)))
 
 
 if (T){
@@ -162,7 +162,7 @@ if (T){
   
   
   ## aPDI'
-  boxplot(S10~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 obs.\n")
+  boxplot(S10~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
   axis(1, at=c(1,2,3), labels=F)
   abline(h=0, lty=2)
   points(summ_aPDI$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
@@ -183,7 +183,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S50~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 obs.\n")
+  boxplot(S50~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions\n")
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -205,7 +205,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S100~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 obs.\n")
+  boxplot(S100~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions\n")
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -227,7 +227,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S500~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 obs.\n")
+  boxplot(S500~res, data=summ_aPDI, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions\n")
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -450,7 +450,7 @@ if (T){
   grid.raster(legend_image, width=0.03, height = 0.8, x = unit(0.94, "npc"))
   par(xpd=T)
   abline(v=-0.2, lty=3)
-  text(y=c(-0.02,1.02), x =0.7 , labels = c(0.01, "3000"), cex=1)
+  text(y=c(-0.02,1.02), x =0.7 , labels = c(0.1, "60"), cex=1)
   par(xpd=F)
   par(new=T, mar=c(42.5,4.8,6,0.5))
   
