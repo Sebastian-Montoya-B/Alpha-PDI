@@ -57,7 +57,7 @@ if (T) {
   for (Nplant in c(5, 15, 55)){ # Number of potential resources
     
     for (spe in spen){
-      MaUn<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,100,500),maxsamp=1000, make="spread" )
+      MaUn<-gen_uneven2(Nbee,Nplant, spe, samp=T,minsamp=c(10,50,100,500),maxsamp=1000000, make="spread" )
 
       lisnam[[counter]]<-Nplant
       lisUn[[counter]]<-MaUn
@@ -96,7 +96,7 @@ if (T) {
     print(i)
     while(T){
       newvec<-try(gen_uneven3(Nbee,Nplant=resvec[i], spen2[i], samp=T,minsamp=c(10,50,100,500),
-                              maxsamp=1000, make="random", res_abun = rere[[i]]), silent=T)
+                              maxsamp=1000000, make="random", res_abun = rere[[i]]), silent=T)
       if(!is(newvec, "try-error")) break
     }
     MaUn2[[i]]<-newvec

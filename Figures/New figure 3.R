@@ -486,7 +486,7 @@ if (T){
   
   par(mar= c(0,0,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.535, y=0.5, labels=expression(alpha*italic(PDI)*"'"), cex=2)
+  text(x=0.535, y=0.5, labels=expression(alpha*italic("PDI'")), cex=2)
   
   ### aPDI main
   
@@ -498,7 +498,7 @@ if (T){
   
   par(mar= c(0,0,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.535, y=0.3, labels=expression(italic(Wc)), cex=2)
+  text(x=0.535, y=0.3, labels=expression(italic("Wc'")), cex=2)
   
 }
 

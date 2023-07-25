@@ -178,7 +178,7 @@ if (TRUE){
                       "R10"=lisObv$Bs[(l5+1):l10]-lisExv$Bs[(l5+1):l10],
                       "R50"=lisObv$Bs[(l10+1):l50]-lisExv$Bs[(l10+1):l50])
   
-  boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic(B[s])*"'"), col=alpha("gray",0))
+  boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("Bs'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorBS$R5,errorBS$R10,errorBS$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -192,7 +192,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic(B[s])*"'") , border=alpha("black",0.4), col=alpha("gray",0))
+  boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("Bs'")) , border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   
@@ -202,7 +202,7 @@ if (TRUE){
                           R10=lisObv$`B'`[(l5+1):l10]-lisExv$`B'`[(l5+1):l10],
                           R50=lisObv$`B'`[(l10+1):l50]-lisExv$`B'`[(l10+1):l50])
   
-  boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B'")), col=alpha("gray",0))
+  boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B''")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorBprime$R5,errorBprime$R10,errorBprime$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -217,7 +217,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B'")) , border=alpha("black",0.4), col=alpha("gray",0))
+  boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B''")) , border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###W
@@ -226,7 +226,7 @@ if (TRUE){
                      R10=lisObv$W[(l5+1):l10]-lisExv$W[(l5+1):l10], 
                      R50=lisObv$W[(l10+1):l50]-lisExv$W[(l10+1):l50])
   
-  boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic(W)*"'"), col=alpha("gray",0))
+  boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic("W'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorW$R5,errorW$R10,errorW$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -239,7 +239,7 @@ if (TRUE){
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   par(new=T)
-  boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic(W)*"'"), border=alpha("black",0.4), col=alpha("gray",0))
+  boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic("W'")), border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###PS
@@ -248,7 +248,7 @@ if (TRUE){
                       R10=lisObv$PS[(l5+1):l10]-lisExv$PS[(l5+1):l10], 
                       R50=lisObv$PS[(l10+1):l50]-lisExv$PS[(l10+1):l50])
   
-  boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic(PS)*"'"), col=alpha("gray",0))
+  boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic("PS'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorPS$R5,errorPS$R10,errorPS$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -262,7 +262,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic(PS)*"'"), border=alpha("black",0.4), col=alpha("gray",0))
+  boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic("PS'")), border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###FT
@@ -271,7 +271,7 @@ if (TRUE){
                       R10=lisObv$FT[(l5+1):l10]-lisExv$FT[(l5+1):l10], 
                       R50=lisObv$FT[(l10+1):l50]-lisExv$FT[(l10+1):l50])
   
-  boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic(FT)*"'"), col=alpha("gray",0))
+  boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic("FT'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorFT$R5,errorFT$R10,errorFT$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -285,7 +285,7 @@ if (TRUE){
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   par(new=T)
-  boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic(FT)*"'"),border=alpha("black",0.4), col=alpha("gray",0))
+  boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic("FT'")),border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###1-d
@@ -316,7 +316,7 @@ if (TRUE){
                        R10=lisObv$gen[(l5+1):l10]-lisExv$gen[(l5+1):l10], 
                        R50=lisObv$gen[(l10+1):l50]-lisExv$gen[(l10+1):l50])
   
-  boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic(gen)*"'"), col=alpha("gray",0))
+  boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic("gen'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorgen$R5,errorgen$R10,errorgen$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -330,7 +330,7 @@ if (TRUE){
   axis(2, at=seq(-1,1, length=5), labels=F)
   axis(1, at=c(1,2,3), labels=c(5,15,55))
   par(new=T)
-  boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic(gen)*"'"),border=alpha("black",0.4),  col=alpha("gray",0))
+  boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic("gen'")),border=alpha("black",0.4),  col=alpha("gray",0))
   par(new=F)
   
   ###Wc
@@ -340,7 +340,7 @@ if (TRUE){
                       R50=lisObvwc[(l10+1):l50]-lisExvwc[(l10+1):l50])
   
   
-  boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic(Wc)*"'"), col=alpha("gray",0))
+  boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic("Wc'")), col=alpha("gray",0))
 
   points(x=x_xit, y=c(errorWc$R5,errorWc$R10,errorWc$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -355,7 +355,7 @@ if (TRUE){
   axis(2, at=seq(-1,1, length=5), labels=F)
   axis(1, at=c(1,2,3), labels=c(5,15,55))
   par(new=T)
-  boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic(Wc)*"'"),border=alpha("black",0.4),  col=alpha("gray",0))
+  boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic("Wc'")),border=alpha("black",0.4),  col=alpha("gray",0))
   par(new=F)
   
   ### X Label
