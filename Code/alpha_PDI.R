@@ -12,7 +12,7 @@
 ### This script sets the alpha_PDI function for further calculations.
 
 
-alpha_PDI<-function(data, abun, corrected=T){
+alpha_PDI<-function(data, abun, corrected=T, m=1){
   
   q<-abun
   
@@ -31,14 +31,15 @@ alpha_PDI<-function(data, abun, corrected=T){
   
   q<-q/sum(q)
   
-  aPDIfun<- function(p,q){
+  aPDIfun<- function(p,q,m){
     #This function calculates aPDI
-    aPDI<-1-(sum(1-(p/(q*max(p/q)))))/(length(q)-1)
+    #aPDI<-1-(sum(1-(p/(q*max(p/q)))))/(length(q)-1)
+    aPDI<-1-((sum((1-(p/(q*max(p/q))))^m))/(length(q)-1))
     return(aPDI)
   }
   
   if (corrected==T){
-    aPDImaxFind <- function(x, q) {
+    aPDImaxFind <- function(x, q, m) {
       #For the given number of observations find the maximum possible value of aPDI
       #This function is similar to the one used in the bipartite package (Dormann et al. 2008) to find dmin and calculate d'
       #expec <- floor(q * (sum(x)-length(x)))
@@ -64,7 +65,7 @@ alpha_PDI<-function(data, abun, corrected=T){
             pen<-pen/max(pen)#
             sort.p.1 <- sort(pen, decreasing = TRUE)
             P1.max <- sort.p.1[1]
-            aPDI.check[i] <- 1-sum(P1.max - sort.p.1[-1])/(length(q) - 1)
+            aPDI.check[i] <- 1-sum((P1.max - sort.p.1[-1])^m)/(length(q) - 1)
           }
           
           i.best <- which.max(aPDI.check)[1]
@@ -73,11 +74,11 @@ alpha_PDI<-function(data, abun, corrected=T){
         
       }
       
-      return(aPDIfun(x.new, q))
+      return(aPDIfun(x.new, q, m))
       
     }
     
-    aPDImaxFind2 <- function(x, q) {
+    aPDImaxFind2 <- function(x, q, m) {
       #For the given number of observations find the maximum possible value of aPDI
       
       
@@ -110,7 +111,7 @@ alpha_PDI<-function(data, abun, corrected=T){
             pen<-pen/max(pen)#
             sort.p.1 <- sort(pen, decreasing = TRUE)
             P1.max <- sort.p.1[1]
-            aPDI.check[i] <- 1-sum(P1.max - sort.p.1[-1])/(length(q) - 1)
+            aPDI.check[i] <- 1-sum((P1.max - sort.p.1[-1])^m)/(length(q) - 1)
           }
           
           i.best <- which.max(aPDI.check)[1]
@@ -119,16 +120,16 @@ alpha_PDI<-function(data, abun, corrected=T){
         
       }
       
-      return(aPDIfun(x.new, q))
+      return(aPDIfun(x.new, q, m))
       
       
       
       
     }
     
-    aPDI.raw<-apply(data, 1, aPDIfun, q)
-    aPDI.max1<-apply(data, 1, aPDImaxFind, q)
-    aPDI.max2<-apply(data, 1, aPDImaxFind2, q)
+    aPDI.raw<-apply(data, 1, aPDIfun, q, m)
+    aPDI.max1<-apply(data, 1, aPDImaxFind, q, m)
+    aPDI.max2<-apply(data, 1, aPDImaxFind2, q, m)
     aPDI.max<-ifelse(aPDI.max1 > aPDI.max2, aPDI.max1, aPDI.max2)
     aPDI.max<-ifelse(aPDI.raw > aPDI.max, aPDI.raw, aPDI.max)
     aPDI.unb<-ifelse(aPDI.max==0,0, aPDI.raw/aPDI.max)
@@ -136,7 +137,7 @@ alpha_PDI<-function(data, abun, corrected=T){
     return(list(corrected_aPDI=aPDI.unb,raw_aPDI=aPDI.raw, max_aPDI=aPDI.max ))
     
   } else{
-    aPDI.raw<-apply(data, 1, aPDIfun, q)
+    aPDI.raw<-apply(data, 1, aPDIfun, q, m)
     return(raw_aPDI=aPDI.raw)
   }
   

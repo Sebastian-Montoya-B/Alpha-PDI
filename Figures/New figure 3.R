@@ -52,7 +52,7 @@ msqerrorfun<-function(error){
 lisUn<-mat1
 if (T){
 
-  lisUexv2<-lapply(lisUn, function(x){ alpha_PDI(t(x$large), x$res_abun)$corrected_aPDI})
+  lisUexv2<-lapply(lisUn, function(x){ alpha_PDI(t(x$preference), rep(1,nrow(x$preference)), corrected=F)})
   lisUexv2<-unlist(lisUexv2)
   
   lisUexv2_10<-lapply(lisUn, function(x){ alpha_PDI(t(x$small1), x$res_abun)$corrected_aPDI})
@@ -85,7 +85,7 @@ summ_aPDI<-data.frame(S10=lisUexv2_10-lisUexv2,
 
 if (T){
   
-  lisUexv2_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$large), x$res_abun, corrected=F)})
+  lisUexv2_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$preference), rep(1,nrow(x$preference)), corrected=F)})
   lisUexv2_raw<-unlist(lisUexv2_raw)
   
   lisUexv2_10_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$small1), x$res_abun, corrected=F)})
@@ -112,7 +112,7 @@ lisUn2<-mat2
 posslm1 <- possibly(.f = wcfun, otherwise = NA)
 if (T){
   
-  lisUwc<-map2(lisUn, lisUn2, ~ posslm1(t(.y$large), .x$res_abun))
+  lisUwc<-map2(lisUn, lisUn2, ~ posslm1(t(.y$preference), rep(1,nrow(.x$preference))))
   lisUwc<-sapply(lisUwc, function(x){ x[[1]]})
   
   lisUwc_10<-map2(lisUn, lisUn2, ~ posslm1(t(.y$small1), .x$res_abun))

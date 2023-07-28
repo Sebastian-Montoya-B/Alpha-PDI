@@ -56,7 +56,7 @@ lisUn<-mat1
 if (T){
   
   #lisUexv2<-lapply(lisUn, function(x){ genfun(t(x$large), x$res_abun)})
-  lisUexv2<-lapply(lisUn, function(x){ genfun(t(x$preference*1000000), x$res_abun)})
+  lisUexv2<-lapply(lisUn, function(x){ genfun(t(x$preference*1000000), rep(1,nrow(x$preference)))})
   lisUexv2<-bind_rows(lisUexv2)
   
   lisUexv2_10<-lapply(lisUn, function(x){ genfun(t(x$small1), x$res_abun)})
@@ -238,7 +238,7 @@ if (T){
   ## Bprime
   
   
-  boxplot(S10~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
+  boxplot(S10~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   abline(h=0, lty=2)
   points(summ_Bprime$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
@@ -259,7 +259,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S50~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions\n")
+  boxplot(S50~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -281,7 +281,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S100~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions\n")
+  boxplot(S100~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -303,7 +303,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S500~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions\n")
+  boxplot(S500~res, data=summ_Bprime, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -326,7 +326,7 @@ if (T){
   
   ## W
   
-  boxplot(S10~res, data=summ_W, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
+  boxplot(S10~res, data=summ_W, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   abline(h=0, lty=2)
   points(summ_W$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
@@ -347,7 +347,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S50~res, data=summ_W, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions\n")
+  boxplot(S50~res, data=summ_W, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -369,7 +369,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S100~res, data=summ_W, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions\n")
+  boxplot(S100~res, data=summ_W, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -391,7 +391,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S500~res, data=summ_W, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions\n")
+  boxplot(S500~res, data=summ_W, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -415,7 +415,7 @@ if (T){
   ### PS
   
   
-  boxplot(S10~res, data=summ_PS, ylim=c(-1,1),  pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
+  boxplot(S10~res, data=summ_PS, ylim=c(-1,1),  pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   abline(h=0, lty=2)
   points(summ_PS$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
@@ -436,7 +436,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S50~res, data=summ_PS, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions\n")
+  boxplot(S50~res, data=summ_PS, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -458,7 +458,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S100~res, data=summ_PS, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions\n")
+  boxplot(S100~res, data=summ_PS, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -480,7 +480,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S500~res, data=summ_PS, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions\n")
+  boxplot(S500~res, data=summ_PS, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -511,7 +511,7 @@ if (T){
   
   par(mar= c(0,0,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.535, y=0.7, labels="Number of potential resources", cex=1)
+  text(x=0.535, y=0.5, labels="Number of potential resources", cex=1)
   
   
   ###### Legend
@@ -659,7 +659,7 @@ if (T){
   ## d
   
   
-  boxplot(S10~res, data=summ_d, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
+  boxplot(S10~res, data=summ_d, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   abline(h=0, lty=2)
   points(summ_d$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
@@ -680,7 +680,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S50~res, data=summ_d, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions\n")
+  boxplot(S50~res, data=summ_d, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -702,7 +702,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S100~res, data=summ_d, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions\n")
+  boxplot(S100~res, data=summ_d, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -724,7 +724,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S500~res, data=summ_d, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions\n")
+  boxplot(S500~res, data=summ_d, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -747,7 +747,7 @@ if (T){
   
   ## gen
   
-  boxplot(S10~res, data=summ_gen, ylim=c(-1,1), yaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
+  boxplot(S10~res, data=summ_gen, ylim=c(-1,1), yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   abline(h=0, lty=2)
   points(summ_gen$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
@@ -768,7 +768,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S50~res, data=summ_gen, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions\n")
+  boxplot(S50~res, data=summ_gen, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -790,7 +790,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S100~res, data=summ_gen, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions\n")
+  boxplot(S100~res, data=summ_gen, ylim=c(-1,1),  yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
@@ -812,7 +812,7 @@ if (T){
   text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
   
-  boxplot(S500~res, data=summ_gen, ylim=c(-1,1), yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions\n")
+  boxplot(S500~res, data=summ_gen, ylim=c(-1,1), yaxt="n", pch=8, col=alpha("gray",0))
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
   abline(h=0, lty=2)
