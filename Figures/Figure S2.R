@@ -56,7 +56,7 @@ for (i in 1:length(x2)){
 y2
 mres2<-do.call(rbind, y2)
 ######################### 3. PLOTTING ##########################################
-png(filename="Figures/Exported/Figure S2l21.png", width=4000, height=5000/3, res=600)
+png(filename="Figures/Exported/Figure S2l21.png", width=4000, height=1590, res=600)
 par(las=1)
 layout(matrix(c(1,2,3), ncol=3))
 bar<-barplot(rep(1,10), xaxt="n", yaxt="n",  ylim=c(0,1.2), 
@@ -185,7 +185,7 @@ abline(h=0.5, lty=2)
 #W
 par(las=1)
 plot(p, lin2$W, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("W")),
+     ylab="", yaxp=c(0,1,2), main=expression(italic("W'")),
      xlab="", xaxt="n", cex.lab=1.2)
 axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
 
