@@ -66,7 +66,8 @@ get_skewabuns <- function(myN, abun_mean=10, abun_sdlog=1.5){
   abun <- qlnorm(seq(0, 1, length.out=myN+2), log(abun_mean), abun_sdlog)[-c(1,myN+2)] 
   #abun <- sort(abun, decr=TRUE)
   abun<- sample(abun) # We added this line so the most abundant resource is not always the first
-  abun * abun_mean / mean(abun)
+  #abun * abun_mean / mean(abun)
+  abun/ sum(abun)
 }
 
 
@@ -79,7 +80,7 @@ get_skewabuns <- function(myN, abun_mean=10, abun_sdlog=1.5){
 ## (beeabun). 
 make_currentweb <- function(web_p, plantabun, beeabun){
   web_relabun <- (plantabun %*% t(beeabun)) / mean(plantabun)
-  web_p * web_relabun
+  web_p * web_relabun/sum(web_p * web_relabun)
 }
 
 
