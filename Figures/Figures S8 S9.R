@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figure 3.
+### This script reproduces Figures S8 and S9.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -132,7 +132,7 @@ spar_col<-as.raster(matrix(colfunc(2000), nrow=1))
 spar_col<-rep(rep(spar_col, each=1), 3)
 
 ############## S1
-png(filename="Figures/Exported/FigureSne1.png", width=6000, height=5000, res=600)
+png(filename="Figures/Exported/FigureS8.png", width=6000, height=5000, res=600)
 if (T){
   
   par(mar= c(1,3,2,0),las=1, xpd=F)
@@ -555,7 +555,7 @@ dev.off()
 
 
 ############## S2 ##########################################################################
-png(filename="Figures/Exported/FigureSne2.png", width=6000, height=4200, res=600)
+png(filename="Figures/Exported/FigureS9.png", width=6000, height=4200, res=600)
 if (T){
   
   par(mar= c(1,3,2,0),las=1, xpd=F)

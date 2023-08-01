@@ -1,3 +1,17 @@
+################################################################################
+#### Ecological Synthesis Lab (SintECO): https://marcomellolab.wordpress.com
+
+#### Authors: Sebastian Montoya-Bustamante, Carsten F. Dormann, 
+####          Boris R. Krasnov, Marco A. R. Mello
+
+#### See README for further info:
+#### https://github.com/Sebastian-Montoya-B/Alpha-PDI#readme
+################################################################################
+
+
+### This script reproduces Figure S11.
+
+
 ######################### 1. SETTINGS ##########################################
 
 
@@ -123,7 +137,7 @@ colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
 spar_col<-as.raster(matrix(colfunc(2000), nrow=1))
 spar_col<-rep(rep(spar_col, each=1), 3)
 
-png(filename="Figures/Exported/newfigsup32.png", width=6000, height=4000, res=600)
+png(filename="Figures/Exported/FigureS11.png", width=6000, height=4000, res=600)
 
 par(mar= c(1,3,2,0),las=1, xpd=F)
 layout(matrix(c(20,16,16,16,16,15,

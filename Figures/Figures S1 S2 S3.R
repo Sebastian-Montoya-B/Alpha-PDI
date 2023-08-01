@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figure S2.
+### This script reproduces Figure S1, S2, and S3.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -56,7 +56,7 @@ for (i in 1:length(x2)){
 y2
 mres2<-do.call(rbind, y2)
 ######################### 3. PLOTTING ##########################################
-png(filename="Figures/Exported/Figure S2l21.png", width=4000, height=1590, res=600)
+png(filename="Figures/Exported/Figure S1.png", width=4000, height=1590, res=600)
 par(las=1)
 layout(matrix(c(1,2,3), ncol=3))
 bar<-barplot(rep(1,10), xaxt="n", yaxt="n",  ylim=c(0,1.2), 
@@ -78,7 +78,7 @@ dev.off()
 
 
 ##################################################################
-png(filename="Figures/Exported/Figure S2l1.png", width=4000, height=4000, res=600)
+png(filename="Figures/Exported/Figure S2.png", width=4000, height=4000, res=600)
 
 #colfunc <- colorRampPalette(c("#df4f00", "lightgray","#00918d"))
 colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
@@ -128,7 +128,7 @@ toplo<-data.frame(p,lin)
 toplo
 mycol<-colfunc(nrow(toplo))
 
-png(filename="Figures/Exported/Figure S2l.png", width=5000, height=3600, res=600)
+png(filename="Figures/Exported/FigureS3.png", width=5000, height=3600, res=600)
 par(mar=c(3,3,2,1))
 layout(matrix(c(11,1,2,3,
                 11,4,5,6,
