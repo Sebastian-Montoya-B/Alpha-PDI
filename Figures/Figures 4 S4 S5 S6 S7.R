@@ -118,16 +118,16 @@ axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"),)
 
 
 
-
-
+x1<-jitter(rep(1, length(class.gen)), factor=5)
+x2<-jitter(rep(2, length(class.spe)), factor=5)
 plot( x=NULL, y=NULL, xlim=c(0.5,2.5), ylim=c(0,1),
       main="B", ylab="Proportion of species in each network", xlab="", xaxt="n", yaxt="n")
 axis(1, at=c(1,2), labels=c("Generalists", "Specialists"))
 for (i in 1:length(class.gen)){
-  lines(x=c(1,2), c(class.gen[[i]],class.spe[[i]]),col=alpha("gray",0.7), lty=2  )
+  lines(x=c(x1[i],x2[i]), c(class.gen[[i]],class.spe[[i]]),col=alpha("gray",0.7), lty=2  )
 }
-points(x=rep(1, length(class.gen)), class.gen, bg=alpha(spar_col[11],0.5), col=alpha(spar_col[11],0.5), pch=24, cex=1.2)
-points(x=rep(2, length(class.spe)), class.spe,bg=alpha(spar_col[1],0.5), col=alpha(spar_col[1],0.5), pch=24, cex=1.2)
+points(x=x1, class.gen, bg=alpha(spar_col[11],0.5), col=alpha(spar_col[11],0.5), pch=24, cex=1.2)
+points(x=x2, class.spe,bg=alpha(spar_col[1],0.5), col=alpha(spar_col[1],0.5), pch=24, cex=1.2)
 axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"),)
 
 dev.off()
