@@ -46,31 +46,31 @@ lisUn<-readRDS("Data/sim_data.rds")
 
 if (T){
   
-  lisUexv2_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$preference), rep(1,nrow(x$preference)), corrected=F)})
-  lisUexv2_raw<-unlist(lisUexv2_raw)
+  lisUexv2_m1<-lapply(lisUn, function(x){ alpha_PDI(t(x$preference), rep(1,nrow(x$preference)), corrected=F)})
+  lisUexv2_m1<-unlist(lisUexv2_m1)
   
-  lisUexv2_10_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$small1), x$res_abun, corrected=T)$corrected_aPDI})
-  lisUexv2_10_raw<-unlist(lisUexv2_10_raw)
+  lisUexv2_10_m1<-lapply(lisUn, function(x){ alpha_PDI(t(x$small1), x$res_abun, corrected=T)$corrected_aPDI})
+  lisUexv2_10_m1<-unlist(lisUexv2_10_m1)
   
-  lisUexv2_50_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$small2), x$res_abun, corrected=T)$corrected_aPDI})
-  lisUexv2_50_raw<-unlist(lisUexv2_50_raw)
+  lisUexv2_50_m1<-lapply(lisUn, function(x){ alpha_PDI(t(x$small2), x$res_abun, corrected=T)$corrected_aPDI})
+  lisUexv2_50_m1<-unlist(lisUexv2_50_m1)
   
-  lisUexv2_100_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$small3), x$res_abun, corrected=T)$corrected_aPDI})
-  lisUexv2_100_raw<-unlist(lisUexv2_100_raw)
+  lisUexv2_100_m1<-lapply(lisUn, function(x){ alpha_PDI(t(x$small3), x$res_abun, corrected=T)$corrected_aPDI})
+  lisUexv2_100_m1<-unlist(lisUexv2_100_m1)
   
-  lisUexv2_500_raw<-lapply(lisUn, function(x){ alpha_PDI(t(x$small4), x$res_abun, corrected=T)$corrected_aPDI})
-  lisUexv2_500_raw<-unlist(lisUexv2_500_raw)
+  lisUexv2_500_m1<-lapply(lisUn, function(x){ alpha_PDI(t(x$small4), x$res_abun, corrected=T)$corrected_aPDI})
+  lisUexv2_500_m1<-unlist(lisUexv2_500_m1)
   
 }
 
-l5<-length(lisUexv2_raw)/3
-l10<-length(lisUexv2_raw)/3*2
-l50<-length(lisUexv2_raw)
+l5<-length(lisUexv2_m1)/3
+l10<-length(lisUexv2_m1)/3*2
+l50<-length(lisUexv2_m1)
 
-summ_aPDI_raw<-data.frame(S10=lisUexv2_10_raw-lisUexv2_raw, 
-                          S50=lisUexv2_50_raw-lisUexv2_raw, 
-                          S100=lisUexv2_100_raw-lisUexv2_raw,
-                          S500=lisUexv2_500_raw-lisUexv2_raw, res=c(rep(5, l5),rep(15, l5), rep(55, l5)))
+summ_aPDI_m1<-data.frame(S10=lisUexv2_10_m1-lisUexv2_m1, 
+                          S50=lisUexv2_50_m1-lisUexv2_m1, 
+                          S100=lisUexv2_100_m1-lisUexv2_m1,
+                          S500=lisUexv2_500_m1-lisUexv2_m1, res=c(rep(5, l5),rep(15, l5), rep(55, l5)))
 
 if (T){
   
@@ -153,87 +153,87 @@ layout(matrix(c(20,16,16,16,16,15,
 
 ## m=1
 par(mar= c(1.5,3,1.5,0),las=1, xpd=F)
-boxplot(S10~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions")
+boxplot(S10~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions")
 axis(1, at=c(1,2,3), labels=F)
 abline(h=0, lty=2)
-points(summ_aPDI_raw$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+points(summ_aPDI_m1$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
 par(new=T)
-boxplot(S10~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
+boxplot(S10~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
-msqe<-round(apply(matrix(summ_aPDI_raw[,1], ncol=3, byrow=F), 2, msqerrorfun),3)
+msqe<-round(apply(matrix(summ_aPDI_m1[,1], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
 text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
 text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
 text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
-Nas<-c(round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==5),1])/l5,2),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==15),1])/l5,2),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==55),1])/l5,2))
+Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),1])/l5,2),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),1])/l5,2),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),1])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
 text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
 text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
 text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
-boxplot(S50~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions")
+boxplot(S50~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions")
 axis(1, at=c(1,2,3), labels=F)
 axis(2, at=seq(-1,1, length=5), labels=F)
 abline(h=0, lty=2)
-points(summ_aPDI_raw$S50~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+points(summ_aPDI_m1$S50~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
 par(new=T)
-boxplot(S50~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
+boxplot(S50~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
-msqe<-round(apply(matrix(summ_aPDI_raw[,2], ncol=3, byrow=F), 2, msqerrorfun),3)
+msqe<-round(apply(matrix(summ_aPDI_m1[,2], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
 text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
 text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
 text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
-Nas<-c(round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==5),2])/l5,2),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==15),2])/l5,2),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==55),2])/l5,2))
+Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),2])/l5,2),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),2])/l5,2),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),2])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
 text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
 text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
 text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
-boxplot(S100~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions")
+boxplot(S100~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions")
 axis(1, at=c(1,2,3), labels=F)
 axis(2, at=seq(-1,1, length=5), labels=F)
 abline(h=0, lty=2)
-points(summ_aPDI_raw$S100~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+points(summ_aPDI_m1$S100~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
 par(new=T)
-boxplot(S100~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
+boxplot(S100~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
-msqe<-round(apply(matrix(summ_aPDI_raw[,3], ncol=3, byrow=F), 2, msqerrorfun),3)
+msqe<-round(apply(matrix(summ_aPDI_m1[,3], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
 text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
 text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
 text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
-Nas<-c(round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==5),3])/l5,2),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==15),3])/l5,2),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==55),3])/l5,2))
+Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),3])/l5,2),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),3])/l5,2),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),3])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
 text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
 text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
 text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
-boxplot(S500~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions")
+boxplot(S500~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions")
 axis(1, at=c(1,2,3), labels=F)
 axis(2, at=seq(-1,1, length=5), labels=F)
 abline(h=0, lty=2)
-points(summ_aPDI_raw$S500~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
+points(summ_aPDI_m1$S500~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
 par(new=T)
-boxplot(S500~res, data=summ_aPDI_raw, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
+boxplot(S500~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
-msqe<-round(apply(matrix(summ_aPDI_raw[,4], ncol=3, byrow=F), 2, msqerrorfun),3)
+msqe<-round(apply(matrix(summ_aPDI_m1[,4], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
 text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
 text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
 text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
-Nas<-c(round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==5),1])/l5,4),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==15),1])/l5,4),
-       round(sum(is.na(summ_aPDI_raw)[which(summ_aPDI_raw$res==55),1])/l5,4))
+Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),1])/l5,4),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),1])/l5,4),
+       round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),1])/l5,4))
 Nas<-sprintf(Nas, fmt='%#.3f')
 text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
 text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
