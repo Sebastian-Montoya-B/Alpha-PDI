@@ -45,7 +45,9 @@ source("Code/alpha_PDI.R")
 
 consumers<-readRDS("Data/Fleas.RDS")
 resources<-readRDS("Data/resource_abundances.RDS")
-
+Rres<-lapply(resources, length)
+Rres<-map2(Rres, consumers, ~rep(.x, nrow(.y)))
+Rres<-do.call(c, Rres)
 ######################### 2. CALCULATIONS ######################################
 
 
@@ -73,6 +75,10 @@ summ_tab<-cbind(summ_samp, do.call(rbind, nam))
 names(summ_tab)[3:4]<-c("site","species")
 names(summ_tab)
 cor.test(summ_tab$aPDI, summ_tab$NI, method="spearman", exact=F)
+
+summ_samp$R<-Rres
+
+cor.test(summ_tab$aPDI, summ_samp$R, method="spearman", exact=F)
 
 color_group<-function(gen_fleas){
   cor.cla<-rep(NA, length(gen_fleas))
@@ -104,31 +110,38 @@ spar_col<-as.raster(matrix(colfunc(11), nrow=1))
 spar_col[c(color_group(summ_samp[,1]))]
 
 
-png(filename="Figures/Exported/Figure4.png", width=7000, height=3000, res=600)
-layout(matrix(c(1,2), ncol=2), widths=c(45,45))
+png(filename="Figures/Exported/Figure4.png", width=5000, height=1500, res=600)
+layout(matrix(c(1,2,3), ncol=3))
 
 
 par(mar=c(4,5,2,2),las=1)
 plot(summ_samp$NI, summ_samp$aPDI,log="x",  pch=21, main="A",
      ylab=expression("Degree of generalization ("*alpha*italic("PDI')")), yaxt="n",
      xlab=expression("Sampling intensity (log("*italic(n)*"))"),
-     bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.5), 
-     col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.5), cex=1.2 )
-axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"),)
+     bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), 
+     col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), cex=1.2 )
+axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"))
 
 
+plot(summ_samp$R, summ_samp$aPDI,  pch=21, main="B",
+     ylab=expression("Degree of generalization ("*alpha*italic("PDI')")), yaxt="n",
+     xlab=expression("Number of potential resources ("*italic(R)*")"),
+     bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), 
+     col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), cex=1.2 )
+axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"))
 
-x1<-jitter(rep(1, length(class.gen)), factor=5)
-x2<-jitter(rep(2, length(class.spe)), factor=5)
+
+x1<-jitter(rep(1, length(class.gen)), factor=6)
+x2<-jitter(rep(2, length(class.spe)), factor=6)
 plot( x=NULL, y=NULL, xlim=c(0.5,2.5), ylim=c(0,1),
-      main="B", ylab="Proportion of species in each network", xlab="", xaxt="n", yaxt="n")
+      main="C", ylab="Proportion of species in each network", xlab="", xaxt="n", yaxt="n")
 axis(1, at=c(1,2), labels=c("Generalists", "Specialists"))
 for (i in 1:length(class.gen)){
   lines(x=c(x1[i],x2[i]), c(class.gen[[i]],class.spe[[i]]),col=alpha("gray",0.7), lty=2  )
 }
-points(x=x1, class.gen, bg=alpha(spar_col[11],0.5), col=alpha(spar_col[11],0.5), pch=24, cex=1.2)
-points(x=x2, class.spe,bg=alpha(spar_col[1],0.5), col=alpha(spar_col[1],0.5), pch=24, cex=1.2)
-axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"),)
+points(x=x1, class.gen, bg=alpha(spar_col[11],0.4), col=alpha(spar_col[11],0.4), pch=24, cex=1.2)
+points(x=x2, class.spe,bg=alpha(spar_col[1],0.4), col=alpha(spar_col[1],0.4), pch=24, cex=1.2)
+axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"))
 
 dev.off()
 
