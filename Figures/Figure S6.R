@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figure S10.
+### This script reproduces Figure S6.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -64,7 +64,7 @@ toplo
 mycol<-colfunc(nrow(toplo))
 
 
-png(filename="Figures/Exported/FigureS10.png", width=5000, height=1300, res=600)
+png(filename="Figures/Exported/FigureS6.png", width=5000, height=1300, res=600)
 
 par(mar=c(3,3,2,1))
 layout(matrix(c(5,1,2,3,

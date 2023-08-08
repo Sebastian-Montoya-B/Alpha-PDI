@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figures S8 and S9.
+### This script reproduces Figures S4 and S5.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -131,8 +131,8 @@ colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
 spar_col<-as.raster(matrix(colfunc(2000), nrow=1))
 spar_col<-rep(rep(spar_col, each=1), 3)
 
-############## S1
-png(filename="Figures/Exported/FigureS8.png", width=6000, height=5000, res=600)
+############## S4
+png(filename="Figures/Exported/FigureS4.png", width=6000, height=5000, res=600)
 if (T){
   
   par(mar= c(1,3,2,0),las=1, xpd=F)
@@ -554,8 +554,8 @@ if (T){
 dev.off()
 
 
-############## S2 ##########################################################################
-png(filename="Figures/Exported/FigureS9.png", width=6000, height=4200, res=600)
+############## S5 ##########################################################################
+png(filename="Figures/Exported/FigureS5.png", width=6000, height=4200, res=600)
 if (T){
   
   par(mar= c(1,3,2,0),las=1, xpd=F)

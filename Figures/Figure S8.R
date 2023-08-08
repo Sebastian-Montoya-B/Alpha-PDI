@@ -9,7 +9,7 @@
 ################################################################################
 
 
-### This script reproduces Figure S12.
+### This script reproduces Figure S8.
 
 
 ######################### 1. SETTINGS ##########################################
@@ -103,7 +103,7 @@ spar_col<-as.raster(matrix(colfunc(2000), nrow=1))
 spar_col<-rep(rep(spar_col, each=1), 3)
 
 
-png(filename="Figures/Exported/FigureS12.png", width=5000, height=1300, res=600)
+png(filename="Figures/Exported/FigureS8.png", width=5000, height=1300, res=600)
 
 if (T) {
   layout(matrix(c(1,2,3), ncol=3))
