@@ -21,13 +21,13 @@ rm(list= ls())
 
 if(!require(purrr)){
   install.packages("purrr")
-  library(purrr)
 }
+library(purrr)
 
 if(!require(scales)){
   install.packages("scales")
-  library(scales)
 }
+library(scales)
 
 
 if(!require(grid)){
@@ -74,12 +74,19 @@ head(nam)
 summ_tab<-cbind(summ_samp, do.call(rbind, nam))
 names(summ_tab)[3:4]<-c("site","species")
 names(summ_tab)
+
+## 2.2. Correlations
 cor.test(summ_tab$aPDI, summ_tab$NI, method="spearman", exact=F)
 
 summ_samp$R<-Rres
 
 cor.test(summ_tab$aPDI, summ_samp$R, method="spearman", exact=F)
 
+
+
+######################### 3. PLOTTING ######################################
+
+## 3.1. Color settings
 color_group<-function(gen_fleas){
   cor.cla<-rep(NA, length(gen_fleas))
   for (i in 1:length(gen_fleas)){
@@ -109,7 +116,7 @@ spar_col<-as.raster(matrix(colfunc(11), nrow=1))
 
 spar_col[c(color_group(summ_samp[,1]))]
 
-
+## 3.2. Plotting Figure 4
 png(filename="Figures/Exported/Figure4.png", width=5000, height=1500, res=600)
 layout(matrix(c(1,2,3), ncol=3))
 

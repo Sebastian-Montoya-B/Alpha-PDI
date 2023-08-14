@@ -55,7 +55,14 @@ for (i in 1:length(x2)){
 }
 y2
 mres2<-do.call(rbind, y2)
+
+
 ######################### 3. PLOTTING ##########################################
+
+
+
+## 3.1. Figure S1
+
 png(filename="Figures/Exported/Figure S1.png", width=4000, height=1590, res=600)
 par(las=1)
 layout(matrix(c(1,2,3), ncol=3))
@@ -77,10 +84,10 @@ axis(2, at=seq(0,1, length=5), labels=c("0.0", "",0.5,"","1.0"))
 dev.off()
 
 
-##################################################################
+## 3.2. Figure S2
+
 png(filename="Figures/Exported/Figure S2.png", width=4000, height=4000, res=600)
 
-#colfunc <- colorRampPalette(c("#df4f00", "lightgray","#00918d"))
 colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
 licol<-colfunc(5)
 par(las=1)
@@ -102,7 +109,10 @@ text(x=0.37, y=0.3, labels=3)
 text(x=0.12, y=0.025, labels=1e+05)
 
 dev.off()
-#########################################
+
+
+
+## 3.3. Figure S3
 p<-sort(c(0.00001*10^(0:10),sfsmisc::lseq(1.2,50,8), seq(0.05,0.9,length=8)))
 
 
@@ -129,166 +139,162 @@ toplo
 mycol<-colfunc(nrow(toplo))
 
 png(filename="Figures/Exported/FigureS3.png", width=5000, height=3600, res=600)
-par(mar=c(3,3,2,1))
-layout(matrix(c(11,1,2,3,
-                11,4,5,6,
-                11,7,8,9,
-                12,10,10,10), byrow=T, ncol=4), heights=c(30,30,30,5), widths=c(5,30,30,30))
-#aPDI
-par(las=1)
-plot(p, lin, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(alpha*italic(PDI)),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
 
+if (T){
+  par(mar=c(3,3,2,1))
+  layout(matrix(c(11,1,2,3,
+                  11,4,5,6,
+                  11,7,8,9,
+                  12,10,10,10), byrow=T, ncol=4), heights=c(30,30,30,5), widths=c(5,30,30,30))
+  #aPDI
+  par(las=1)
+  plot(p, lin, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(alpha*italic(PDI)),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+  
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=toplo$lin[i], x1=toplo$p[i+1], y1=toplo$lin[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #Bs
+  par(las=1)
+  plot(p, lin2$Bs, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("Bs'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+  
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$Bs[i], x1=toplo$p[i+1], y1=lin2$Bs[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #Bprime
+  par(las=1)
+  plot(p, lin2$`B'`, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("B''")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+  
 
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=toplo$lin[i], x1=toplo$p[i+1], y1=toplo$lin[i+1], col=mycol[i], lwd=5)
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$`B'`[i], x1=toplo$p[i+1], y1=lin2$`B'`[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #W
+  par(las=1)
+  plot(p, lin2$W, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("W'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+  
+
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$W[i], x1=toplo$p[i+1], y1=lin2$W[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #PS
+  par(las=1)
+  plot(p, lin2$PS, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("PS'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$PS[i], x1=toplo$p[i+1], y1=lin2$PS[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  text(x=12e-05, y= 0.92, label="Generalist" ,col="#df4f00", cex=1)
+  text(x=8000, y=0.08, "Specialist", col="#00918d", cex=1)
+  
+  
+  #FT
+  par(las=1)
+  plot(p, lin2$FT, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("FT'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$FT[i], x1=toplo$p[i+1], y1=lin2$FT[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #d
+  par(las=1)
+  plot(p, lin2$`1-d'`, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("1-d'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$`1-d'`[i], x1=toplo$p[i+1], y1=lin2$`1-d'`[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #gen
+  par(las=1)
+  plot(p, lin2$gen, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("gen'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin2$gen[i], x1=toplo$p[i+1], y1=lin2$gen[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  
+  #Wc
+  par(las=1)
+  plot(p, lin3, log="x", type="l",
+       ylab="", yaxp=c(0,1,2), main=expression(italic("Wc'")),
+       xlab="", xaxt="n", cex.lab=1.2)
+  axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
+  
+
+  for (i in 1:(nrow(toplo)-1)){
+    segments(x0=toplo$p[i], y0=lin3[i], x1=toplo$p[i+1], y1=lin3[i+1], col=mycol[i], lwd=5)
+  }
+  abline(v=1, lty=2)
+  abline(h=0.5, lty=2)
+  
+  ### X Label
+  
+  par(mar= c(0,0,0,0),las=1)
+  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
+  text(x=0.53, y=0.7, labels=expression("Specialization parameter "*"("*rho*")"), cex=1.3) 
+  
+  ### Y Label
+  
+  par(mar= c(0,0.5,0,0),las=1)
+  plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
+  text(x=0.5, y=0.5, labels="Degree of generalization", cex=1.3, srt=90)
+  
 }
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#Bs
-par(las=1)
-plot(p, lin2$Bs, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("Bs'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$Bs[i], x1=toplo$p[i+1], y1=lin2$Bs[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#Bprime
-par(las=1)
-plot(p, lin2$`B'`, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("B''")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$`B'`[i], x1=toplo$p[i+1], y1=lin2$`B'`[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#W
-par(las=1)
-plot(p, lin2$W, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("W'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$W[i], x1=toplo$p[i+1], y1=lin2$W[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#PS
-par(las=1)
-plot(p, lin2$PS, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("PS'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$PS[i], x1=toplo$p[i+1], y1=lin2$PS[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-text(x=12e-05, y= 0.92, label="Generalist" ,col="#df4f00", cex=1)
-text(x=8000, y=0.08, "Specialist", col="#00918d", cex=1)
-
-
-#FT
-par(las=1)
-plot(p, lin2$FT, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("FT'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$FT[i], x1=toplo$p[i+1], y1=lin2$FT[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#d
-par(las=1)
-plot(p, lin2$`1-d'`, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("1-d'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$`1-d'`[i], x1=toplo$p[i+1], y1=lin2$`1-d'`[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#gen
-par(las=1)
-plot(p, lin2$gen, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("gen'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin2$gen[i], x1=toplo$p[i+1], y1=lin2$gen[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-
-#Wc
-par(las=1)
-plot(p, lin3, log="x", type="l",
-     ylab="", yaxp=c(0,1,2), main=expression(italic("Wc'")),
-     xlab="", xaxt="n", cex.lab=1.2)
-axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
-
-
-#lines(p, lin2, col="red")
-for (i in 1:(nrow(toplo)-1)){
-  segments(x0=toplo$p[i], y0=lin3[i], x1=toplo$p[i+1], y1=lin3[i+1], col=mycol[i], lwd=5)
-}
-abline(v=1, lty=2)
-abline(h=0.5, lty=2)
-
-### X Label
-
-par(mar= c(0,0,0,0),las=1)
-plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.53, y=0.7, labels=expression("Specialization parameter "*"("*rho*")"), cex=1.3) 
-
-### Y Label
-
-par(mar= c(0,0.5,0,0),las=1)
-plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.5, labels="Degree of generalization", cex=1.3, srt=90)
-
 dev.off()

@@ -55,7 +55,6 @@ msqerrorfun<-function(error){
 lisUn<-mat1
 if (T){
   
-  #lisUexv2<-lapply(lisUn, function(x){ genfun(t(x$large), x$res_abun)})
   lisUexv2<-lapply(lisUn, function(x){ genfun(t(x$preference*1000000), rep(1,nrow(x$preference)))})
   lisUexv2<-bind_rows(lisUexv2)
   
@@ -122,6 +121,7 @@ summ_gen<-data.frame(S10=lisUexv2_10$gen-lisUexv2$gen,
 
 ######################### 3. PLOTTING ######################################
 
+## 3.1. Color settings
 x1_xit<-jitter(rep(1, l5), factor=6)
 x2_xit<-jitter(rep(2, l5), factor=6)
 x3_xit<-jitter(rep(3, l5), factor=6)
@@ -131,7 +131,7 @@ colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
 spar_col<-as.raster(matrix(colfunc(2000), nrow=1))
 spar_col<-rep(rep(spar_col, each=1), 3)
 
-############## S4
+## 3.2. Figure S4
 png(filename="Figures/Exported/FigureS4.png", width=6000, height=5000, res=600)
 if (T){
   
@@ -146,7 +146,8 @@ if (T){
                   17,13,14,15,16,19,
                   24,18,18,18,18,19), ncol=6, byrow=T),
          widths=c(6,45/2,45/2,45/2,45/2,11), heights=c(6,40,6,40,6,40,6,40,10))
-  layout.show(25)
+
+  
   ## Bs
   
   boxplot(S10~res, data=summ_Bs, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), main="10 recorded interactions\n")
@@ -554,7 +555,8 @@ if (T){
 dev.off()
 
 
-############## S5 ##########################################################################
+## 3.3. Figure S5
+
 png(filename="Figures/Exported/FigureS5.png", width=6000, height=4200, res=600)
 if (T){
   

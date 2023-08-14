@@ -122,6 +122,7 @@ msqerrorfun<-function(error){
 
 
 png(filename="Figures/Exported/Figure2.png", width=5000, height=3600, res=600)
+
 if (TRUE){
   spen<-length(mat1)/3
   Nbee<-ncol(mat1[[1]]$preference)

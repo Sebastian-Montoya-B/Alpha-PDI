@@ -144,6 +144,7 @@ summ_wc<-data.frame(S10=lisUwc_10-lisUwc,
 ######################### 3. PLOTTING ######################################
 
 png(filename="Figures/Exported/Figure3.png", width=6000, height=4000, res=600)
+
 if (T){
   x1_xit<-jitter(rep(1, l5), factor=6)
   x2_xit<-jitter(rep(2, l5), factor=6)
