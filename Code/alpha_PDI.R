@@ -42,8 +42,7 @@ alpha_PDI<-function(data, abun, corrected=T, m=1){
     aPDImaxFind <- function(x, q, m) {
       #For the given number of observations find the maximum possible value of aPDI
       #This function is similar to the one used in the bipartite package (Dormann et al. 2008) to find dmin and calculate d'
-      #expec <- floor(q * (sum(x)-length(x)))
-      #expec<-expec + 1
+
       
       expec <- floor(q * (sum(x)))
       restuse <- sum(x) - sum(expec)
