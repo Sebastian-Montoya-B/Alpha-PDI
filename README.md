@@ -24,19 +24,27 @@ See further info in each section.
     -   wcfun.R -\> script of the `wcfun` function for calculating the Wc index of generalization (Pierotti et al. 2017).
     -   correlations.R -\> script to reproduce the Spearman correlations used to test for a relationship between the specialization parameter and the indices of generalization. It requires the `alpha_PDI` and `genfun` functions, and the vectors1.RDS data.
     -   example.R -\> script with a detailed description on how to use `alpha_PDI`, `genfun`, and `wcfun`.
-    -	QNM.R -\> script of the quantitative niche model by Fründ et al. (2016) and functions to generate the analized theoretical vectors.
+    -	  QNM.R -\> script of the quantitative niche model by Fründ et al. (2016) and functions to generate the analized theoretical vectors.
+    -   Data generator.R -\> script to generate all the simulated data in our analysis by using the quantitative niche model
 
 
 2.  Data (folder) -\> folder containing the empirical data used in the analyses and figures.
     -   Fleas.RDS -\> list of 74 matrices of flea-mammal interactions.
     -   resource_abundances.RDS -\> list of 74 vectors of resource abundance distribution (mammal abundance) for each matrix in Fleas.RDS.
+    -   sim_data.RDS -\> Data generated with the Data generator script.
+    -   sim_data2.RDS -\> Data generated with the Data generator script to be used exclusively with the `wcfun` function.
 
 
 3.  Figures (folder) -\> folder containing the scripts used to reproduce the unedited versions of the figures presented in the manuscript and supplementary material.
-    -   Figure2.R -\> script used to reproduce the unedited version of Figure 2. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to plot and export the figure.
-    -   Figure3.R -\> script used to reproduce Figure 3 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
-    -   Figure4.R -\> script used to reproduce Figure 4 and Figures S10 to S12. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
-    -   FigureSup.R -\> script used to reproduce the series of figures used for finding the minimum number of observations needed for an accurate estimation of αPDI. They include Figures S1 to S9 of the Appendix S1. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   `Figure 2.R` -\> script used to reproduce Figure 2 and its associated analysis. It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to plot and export the figure.
+    -   `Figure 3.R` -\> script used to reproduce Figure 3 and its associated analysis. It requires the `alpha_PDI` and `wcfun` functions. Follow the sequence given in the script to plot and export the figure.
+    -   `Figures 4 S9-S12.R` -\> script used to reproduce Figure 4 and Figures S9 to S12. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figures.
+    -   `Figures S1 S2 S3.R` -\> script used to reproduce Figure S1 to S3. It requires the It requires the `alpha_PDI`, `genfun`, and `wcfun` functions. Follow the sequence given in the script to plot and export the figures.
+    -   `Figures S4 S5.R` -\> script used to reproduce Figure S4 and S5. It requires the It requires the `genfun` function. Follow the sequence given in the script to plot and export the figures.
+    -   `Figure S6.R` -\> script used to reproduce Figure S6 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   `Figure S7.R` -\> script used to reproduce Figure S7 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   `Figure S8.R` -\> script used to reproduce Figure S8 and its associated analysis. It requires the `alpha_PDI` function. Follow the sequence given in the script to plot and export the figure.
+    -   Exported (folder) -\> folder containing the exported figures.
 
 ## Functionality and origin
 
@@ -48,7 +56,7 @@ The R code provided in this repository was designed to quantify the degree of ge
 
 1.  Open the file `AlphaPDI.Rproj`.
 2.  Run the `alpha_PDI`, `genfun`, and `wcfun` functions. Experiment with them by creating hypothetical interaction matrices and resource abundance vectors, or analyze your own empirical data.
-3.  Use the files `correlations.R`, `Figure2.R`, `Figure3.R`, `Figure4.R`, and `FigureSup.R` to reproduce the respective figures and analyses presented in our paper.
+3.  Use the files `correlations.R`, `Figure 2.R`, `Figure 3.R`, `Figures 4 S9-S12`, `Figures S1 S2 S3.R`, `Figures S4 S5.R`, `Figure S6.R`, `Figure S7.R`, and `Figure S8.R` to reproduce the respective figures and analyses presented in our paper.
 
 ### 2. If you want to make a quick test of our analysis or apply it to your own data:
 
@@ -57,7 +65,7 @@ The R code provided in this repository was designed to quantify the degree of ge
 
 ## (1) alpha_PDI
 
-Computes **αPDI** for an interaction matrix (or vector) and its resource abundance vector.
+Computes **αPDI** or **αPDI'** for an interaction matrix (or vector) and its resource abundance vector.
 
 ### Arguments
 
@@ -66,6 +74,8 @@ Computes **αPDI** for an interaction matrix (or vector) and its resource abunda
 2.  abun -\> vector. It contains the resource abundances of the columns of the interaction matrix.
 
 3.  corrected -\> logical. If "TRUE" it calculates alpha PDI corrected by the maximum possible value given the total number of interactions of the consumer.
+
+4.  m -\> numeric. Symmetry parameter. Default is 1.
 
 ## (2) genfun
 
