@@ -53,6 +53,13 @@ msqerrorfun<-function(error){
 }
 
 lisUn<-mat1
+
+### NOTE: The calculation of d' requires integers in order to estimate d_min.
+### Therefore, the elements of the $preference and $current vectors are 
+### multiplied by 1000000. Since indices transform vector values to 
+### proportions, this multiplication does not change their outcomes, 
+### but allows us to use d'.
+
 if (T){
   
   lisUexv2<-lapply(lisUn, function(x){ genfun(t(x$preference*1000000), rep(1,nrow(x$preference)))})

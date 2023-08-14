@@ -63,10 +63,13 @@ mat2<-readRDS("Data/sim_data2.rds")
 
 if (T) {
   ## Calculating αPDI and other indices
-  ### The calculation of d' requires integers in order to estimate d_min.
-  ### Therefore, the $preference and $current vectors have been multiplied by 1000000.
-  ### Since indices work with proportions, this multiplication does not change
-  ### their results, but allows us to use d'.
+  
+  ### NOTE: The calculation of d' requires integers in order to estimate d_min.
+  ### Therefore, the elements of the $preference and $current vectors are 
+  ### multiplied by 1000000. Since indices transform vector values to 
+  ### proportions, this multiplication does not change their outcomes, 
+  ### but allows us to use d'.
+  
   lisExv<-NULL
   lisObv<-NULL
   for (i in 1:length(mat1)){
