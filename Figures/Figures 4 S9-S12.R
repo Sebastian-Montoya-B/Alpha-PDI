@@ -76,11 +76,11 @@ names(summ_tab)[3:4]<-c("site","species")
 names(summ_tab)
 
 ## 2.2. Correlations
-cor.test(summ_tab$aPDI, summ_tab$NI, method="spearman", exact=F)
+c1<-cor.test(summ_tab$aPDI, summ_tab$NI, method="spearman", exact=F)
 
 summ_samp$R<-Rres
 
-cor.test(summ_tab$aPDI, summ_samp$R, method="spearman", exact=F)
+c2<-cor.test(summ_tab$aPDI, summ_samp$R, method="spearman", exact=F)
 
 
 
@@ -128,7 +128,7 @@ plot(summ_samp$NI, summ_samp$aPDI,log="x",  pch=21, main="A",
      bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), 
      col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), cex=1.2 )
 axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"))
-
+text(x=1e+04, y=1,labels=bquote(italic("rho")*" = "*.(round(c1$estimate,2))*", P < 0.01"))
 
 plot(summ_samp$R, summ_samp$aPDI,  pch=21, main="B",
      ylab=expression("Degree of generalization ("*alpha*italic("PDI')")), yaxt="n",
@@ -136,7 +136,7 @@ plot(summ_samp$R, summ_samp$aPDI,  pch=21, main="B",
      bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), 
      col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), cex=1.2 )
 axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"))
-
+text(x=23, y=1,labels=bquote(italic("rho")*" = "*.(round(c2$estimate,2))*", P = "*.(round(c2$p.value,2))))
 
 x1<-jitter(rep(1, length(class.gen)), factor=6)
 x2<-jitter(rep(2, length(class.spe)), factor=6)
