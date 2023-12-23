@@ -33,7 +33,7 @@ alpha_PDI<-function(data, abun, corrected=T, m=1){
   
   aPDIfun<- function(p,q,m){
     #This function calculates aPDI
-    #aPDI<-1-(sum(1-(p/(q*max(p/q)))))/(length(q)-1)
+    
     aPDI<-1-((sum((1-(p/(q*max(p/q))))^m))/(length(q)-1))
     return(aPDI)
   }

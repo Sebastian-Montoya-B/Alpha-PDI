@@ -26,7 +26,7 @@ if(!require(zCompositions)){
 
 if(!require(emdbook)){
   install.packages("emdbook")
-  }
+}
 library(emdbook)
 
 if(!require(bipartite)){
@@ -73,13 +73,13 @@ if (T) {
   lisExv<-NULL
   lisObv<-NULL
   for (i in 1:length(mat1)){
-
-      
-      ap<-alpha_PDI(t((mat1[[i]]$preference)), rep(1,NROW(mat1[[i]]$preference)),corrected=F)
-      at<-alpha_PDI(t((mat1[[i]]$current)), mat1[[i]]$res_abun, corrected=F)
-      gp<-genfun(t((mat1[[i]]$preference*1000000)), rep(1,NROW(mat1[[i]]$preference)))
-      gt<-genfun(t(mat1[[i]]$current*1000000), mat1[[i]]$res_abun)
-
+    
+    
+    ap<-alpha_PDI(t((mat1[[i]]$preference)), rep(1,NROW(mat1[[i]]$preference)),corrected=F)
+    at<-alpha_PDI(t((mat1[[i]]$current)), mat1[[i]]$res_abun, corrected=F)
+    gp<-genfun(t((mat1[[i]]$preference*1000000)), rep(1,NROW(mat1[[i]]$preference)))
+    gt<-genfun(t(mat1[[i]]$current*1000000), mat1[[i]]$res_abun)
+    
     lisExv[[i]]<-cbind(gp, aPDI=ap)
     lisObv[[i]]<-cbind(gt, aPDI=at)
   }
@@ -87,19 +87,19 @@ if (T) {
   
   lisExv<-dplyr::bind_rows(lisExv)
   lisObv<-dplyr::bind_rows(lisObv)
- 
+  
   
   ## Calculating Wc Pierotti et al. (2017)
-
+  
   lisObvwc<-NULL
   lisExvwc<-NULL
-
+  
   for (i in 1:length(mat2)){
     print(i)
-
-      wcp<-wcfun(t(mat2[[i]]$preference), rep(1,NROW(mat2[[i]]$preference)))
-      wct<-wcfun(t(mat2[[i]]$current), mat1[[i]]$res_abun)
-      
+    
+    wcp<-wcfun(t(mat2[[i]]$preference), rep(1,NROW(mat2[[i]]$preference)))
+    wct<-wcfun(t(mat2[[i]]$current), mat1[[i]]$res_abun)
+    
     lisExvwc[[i]]<-wcp
     lisObvwc[[i]]<-wct
   }
@@ -120,7 +120,12 @@ lisObvwc<-sapply(lisObvwc, function(x){ x[[1]]})
 
 msqerrorfun<-function(error){
   return(sum((error)^2)/length(error))
-}
+} #MSE
+
+biasfun<-function(exp,obs){
+  bias<-(mean(obs)-exp)
+  return(bias)
+} #Bias
 
 
 
@@ -138,7 +143,7 @@ if (TRUE){
   ), ncol=5, byrow=T),
   widths=c(5,30,30,30,15),
   heights=c(5,30,30,30,5))
-
+  
   
   l5<-length(lisObv$aPDI)/3
   l10<-length(lisObv$aPDI)/3*2
@@ -153,7 +158,7 @@ if (TRUE){
   colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
   spar_col<-as.raster(matrix(colfunc(spen), nrow=1))
   spar_col<-rep(rep(spar_col, each=Nbee), 3)
-
+  
   
   ###aPDI
   
@@ -162,14 +167,23 @@ if (TRUE){
                      R50=lisObv$aPDI[(l10+1):l50]-lisExv$aPDI[(l10+1):l50])
   
   boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(error1$R5,error1$R10,error1$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   msqe<-round(apply(as.matrix(error1), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-abs(round(apply(as.matrix(error1), 2, function(x){biasfun(0,x)}),3))
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   par(new=T)
@@ -183,15 +197,24 @@ if (TRUE){
                       "R50"=lisObv$Bs[(l10+1):l50]-lisExv$Bs[(l10+1):l50])
   
   boxplot(errorBS, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("Bs'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorBS$R5,errorBS$R10,errorBS$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorBS), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errorBS), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
@@ -207,16 +230,25 @@ if (TRUE){
                           R50=lisObv$`B'`[(l10+1):l50]-lisExv$`B'`[(l10+1):l50])
   
   boxplot(errorBprime, ylim=c(-1,1), pch=8, xaxt="n", yaxt="n", main=expression(italic("B''")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorBprime$R5,errorBprime$R10,errorBprime$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   
   msqe<-round(apply(as.matrix(errorBprime), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errorBprime), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
@@ -231,15 +263,24 @@ if (TRUE){
                      R50=lisObv$W[(l10+1):l50]-lisExv$W[(l10+1):l50])
   
   boxplot(errorW, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic("W'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorW$R5,errorW$R10,errorW$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorW), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errorW), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   par(new=T)
@@ -253,15 +294,24 @@ if (TRUE){
                       R50=lisObv$PS[(l10+1):l50]-lisExv$PS[(l10+1):l50])
   
   boxplot(errorPS, ylim=c(-1,1),  pch=8, xaxt="n", yaxt="n", main=expression(italic("PS'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorPS$R5,errorPS$R10,errorPS$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorPS), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errorPS), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
@@ -276,15 +326,24 @@ if (TRUE){
                       R50=lisObv$FT[(l10+1):l50]-lisExv$FT[(l10+1):l50])
   
   boxplot(errorFT, ylim=c(-1,1),pch=8, xaxt="n", yaxt="n", main=expression(italic("FT'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorFT$R5,errorFT$R10,errorFT$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorFT), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errorFT), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   axis(2, at=seq(-1,1, length=5), labels=F)
@@ -299,15 +358,24 @@ if (TRUE){
                      R50=lisObv$`1-d'`[(l10+1):l50]-lisExv$`1-d'`[(l10+1):l50])
   
   boxplot(errord, ylim=c(-1,1), pch=8, xaxt="n", main=expression(1 - italic("d'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errord$R5,errord$R10,errord$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errord), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errord), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=c(5,15,55))
   par(new=T)
@@ -321,15 +389,24 @@ if (TRUE){
                        R50=lisObv$gen[(l10+1):l50]-lisExv$gen[(l10+1):l50])
   
   boxplot(errorgen, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n",  main=expression(italic("gen'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorgen$R5,errorgen$R10,errorgen$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   msqe<-round(apply(as.matrix(errorgen), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-round(apply(as.matrix(errorgen), 2, function(x){biasfun(0,x)}),3)
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(2, at=seq(-1,1, length=5), labels=F)
   axis(1, at=c(1,2,3), labels=c(5,15,55))
@@ -345,16 +422,25 @@ if (TRUE){
   
   
   boxplot(errorWc, ylim=c(-1,1), pch=8, yaxt="n", xaxt="n", main=expression(italic("Wc'")), col=alpha("gray",0))
-
+  
   points(x=x_xit, y=c(errorWc$R5,errorWc$R10,errorWc$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
   
   errorWc<-na.omit(errorWc) ## Wc may me unable to estimate the value for some consumers, and it will produce NAs
   msqe<-round(apply(as.matrix(errorWc), 2, msqerrorfun),3)
   msqe<-sprintf(msqe, fmt='%#.3f')
+  
   text(x=1, y=-1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
   text(x=2, y=-1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
   text(x=3, y=-1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+  
+  biasc<-abs(round(apply(as.matrix(errorWc), 2, function(x){biasfun(0,x)}),3))
+  biasc<-sprintf(biasc, fmt='%#.3f')
+  
+  text(x=1, y=-0.9, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+  text(x=2, y=-0.9, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+  text(x=3, y=-0.9, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+  
   abline(h=0, lty=2)
   axis(2, at=seq(-1,1, length=5), labels=F)
   axis(1, at=c(1,2,3), labels=c(5,15,55))
@@ -415,7 +501,7 @@ if (TRUE){
        xaxt="n", yaxt="n",  cex=1.1, bty="l", col=colfunc(5)[[1]])
   
   par(new=F)
-
+  
 }
 
 
