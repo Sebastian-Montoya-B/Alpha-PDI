@@ -124,6 +124,11 @@ msqerrorfun<-function(error){
   return(sum((error)^2)/length(error))
 }
 
+biasfun<-function(exp,obs){
+  bias<-(mean(obs)-exp)
+  return(bias)
+} #Bias
+
 
 ######################### 3. PLOTTING ######################################
 
@@ -160,18 +165,26 @@ points(summ_aPDI_m1$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_c
 par(new=T)
 boxplot(S10~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m1[,1], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m1[,1], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),1])/l5,2),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),1])/l5,2),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),1])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S50~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="50 recorded interactions")
@@ -182,18 +195,26 @@ points(summ_aPDI_m1$S50~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_c
 par(new=T)
 boxplot(S50~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m1[,2], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m1[,2], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),2])/l5,2),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),2])/l5,2),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),2])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S100~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="100 recorded interactions")
@@ -204,18 +225,26 @@ points(summ_aPDI_m1$S100~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_
 par(new=T)
 boxplot(S100~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m1[,3], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m1[,3], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),3])/l5,2),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),3])/l5,2),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),3])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S500~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), main="500 recorded interactions")
@@ -226,18 +255,26 @@ points(summ_aPDI_m1$S500~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_
 par(new=T)
 boxplot(S500~res, data=summ_aPDI_m1, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m1[,4], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m1[,4], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==5),1])/l5,4),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==15),1])/l5,4),
        round(sum(is.na(summ_aPDI_m1)[which(summ_aPDI_m1$res==55),1])/l5,4))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 ## m = 5
 
@@ -249,18 +286,26 @@ points(summ_aPDI_m5$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_c
 par(new=T)
 boxplot(S10~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m5[,1], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m5[,1], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==5),1])/l5,2),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==15),1])/l5,2),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==55),1])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S50~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
@@ -271,18 +316,26 @@ points(summ_aPDI_m5$S50~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_c
 par(new=T)
 boxplot(S50~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m5[,2], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m5[,2], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==5),2])/l5,2),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==15),2])/l5,2),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==55),2])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S100~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
@@ -293,18 +346,26 @@ points(summ_aPDI_m5$S100~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_
 par(new=T)
 boxplot(S100~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m5[,3], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m5[,3], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==5),3])/l5,2),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==15),3])/l5,2),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==55),3])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S500~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
@@ -315,18 +376,26 @@ points(summ_aPDI_m5$S500~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_
 par(new=T)
 boxplot(S500~res, data=summ_aPDI_m5, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m5[,4], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m5[,4], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==5),1])/l5,4),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==15),1])/l5,4),
        round(sum(is.na(summ_aPDI_m5)[which(summ_aPDI_m5$res==55),1])/l5,4))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 ## m = 10
@@ -338,18 +407,26 @@ points(summ_aPDI_m10$S10~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_
 par(new=T)
 boxplot(S10~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m10[,1], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m10[,1], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==5),1])/l5,2),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==15),1])/l5,2),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==55),1])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S50~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
@@ -360,18 +437,26 @@ points(summ_aPDI_m10$S50~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_
 par(new=T)
 boxplot(S50~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m10[,2], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m10[,2], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==5),2])/l5,2),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==15),2])/l5,2),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==55),2])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S100~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
@@ -382,18 +467,26 @@ points(summ_aPDI_m10$S100~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar
 par(new=T)
 boxplot(S100~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m10[,3], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m10[,3], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==5),3])/l5,2),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==15),3])/l5,2),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==55),3])/l5,2))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 boxplot(S500~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0))
@@ -404,18 +497,26 @@ points(summ_aPDI_m10$S500~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar
 par(new=T)
 boxplot(S500~res, data=summ_aPDI_m10, ylim=c(-1,1), xaxt="n", yaxt="n", pch=8, col=alpha("gray",0), border=alpha("black",0.4))
 par(new=F)
+
 msqe<-round(apply(matrix(summ_aPDI_m10[,4], ncol=3, byrow=F), 2, msqerrorfun),3)
 msqe<-sprintf(msqe, fmt='%#.3f')
-text(x=1, y=1, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
-text(x=2, y=1, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
-text(x=3, y=1, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+text(x=1, y=0.9, labels=bquote("MSE = "*.(msqe[1])), cex=0.7)
+text(x=2, y=0.9, labels=bquote("MSE = "*.(msqe[2])), cex=0.7)
+text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
+
+biasc<-round(apply(matrix(summ_aPDI_m10[,4], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
+biasc<-sprintf(biasc, fmt='%#.3f')
+text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
+text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
+text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
+
 Nas<-c(round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==5),1])/l5,4),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==15),1])/l5,4),
        round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==55),1])/l5,4))
 Nas<-sprintf(Nas, fmt='%#.3f')
-text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
 
 
 ### Y Label
