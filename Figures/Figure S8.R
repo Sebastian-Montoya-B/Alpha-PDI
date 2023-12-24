@@ -56,9 +56,10 @@ if (T){
 l5<-length(lisUexv2_m1)/3
 l10<-length(lisUexv2_m1)/3*2
 l50<-length(lisUexv2_m1)
-
+res<-c(rep(5, l5),rep(15, l5), rep(55, l5))
 
 summ_aPDI_m1<-data.frame(dif=lisUexv2_curr_m1-lisUexv2_m1, res=c(rep(5, l5),rep(15, l5), rep(55, l5)))
+
 
 if (T){
   
@@ -130,7 +131,7 @@ if (T) {
   text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
   
   biasc<-round(apply(matrix(summ_aPDI_m1[,1], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
-  biasc<-sprintf(biasc, fmt='%#.3f')
+  biasc<-sprintf(abs(biasc), fmt='%#.3f')
   text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
   text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
   text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
@@ -160,7 +161,7 @@ if (T) {
   text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
   
   biasc<-round(apply(matrix(summ_aPDI_m5[,1], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
-  biasc<-sprintf(biasc, fmt='%#.3f')
+  biasc<-sprintf(abs(biasc), fmt='%#.3f')
   text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
   text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
   text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
@@ -190,7 +191,7 @@ if (T) {
   text(x=3, y=0.9, labels=bquote("MSE = "*.(msqe[3])), cex=0.7)
   
   biasc<-round(apply(matrix(summ_aPDI_m10[,1], ncol=3, byrow=F), 2, function(x){biasfun(0,x)}),3)
-  biasc<-sprintf(biasc, fmt='%#.3f')
+  biasc<-sprintf(abs(biasc), fmt='%#.3f')
   text(x=1, y=1, labels=bquote("Bias = "*.(biasc[1])), cex=0.7)
   text(x=2, y=1, labels=bquote("Bias = "*.(biasc[2])), cex=0.7)
   text(x=3, y=1, labels=bquote("Bias = "*.(biasc[3])), cex=0.7)
@@ -200,9 +201,9 @@ if (T) {
          round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==15),1])/l5,2),
          round(sum(is.na(summ_aPDI_m10)[which(summ_aPDI_m10$res==55),1])/l5,2))
   Nas<-sprintf(Nas, fmt='%#.3f')
-  text(x=1, y=0.9, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
-  text(x=2, y=0.9, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
-  text(x=3, y=0.9, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
+  text(x=1, y=0.8, labels=bquote("NA = "*.(Nas[1])), cex=0.7)
+  text(x=2, y=0.8, labels=bquote("NA = "*.(Nas[2])), cex=0.7)
+  text(x=3, y=0.8, labels=bquote("NA = "*.(Nas[3])), cex=0.7)
   
 }
 
