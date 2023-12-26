@@ -1,6 +1,6 @@
 # Alpha-PDI
 
-Supplement to the paper Montoya-Bustamante et al. A new index to estimate ecological generalization in consumer-resource interactions. Methods in Ecology and Evolution.
+Supplement to the paper Montoya-Bustamante et al. A new index to estimate ecological generalization in consumer-resource interactions. *Methods in Ecology and Evolution*.
 
 [Ecological Synthesis Lab](https://marcomellolab.wordpress.com) (SintECO).
 
@@ -8,9 +8,9 @@ Authors: Sebastián Montoya-Bustamante, Carsten F. Dormann, Boris R. Krasnov & M
 
 E-mail: [s.montoyabustamante\@gmail.com](mailto:s.montoyabustamante@gmail.com).
 
-Published originally on June 24th, 2022 (English version).
+Published originally on December 26th, 2023 (English version).
 
-Run in R version 4.2.0 (2022-04-22) -- "Vigorous Calisthenics".
+Run in R version 4.2.3 -- "Shortstop Beagle".
 
 Disclaimer: You may use this script freely for commercial or non-commercial purposes at your own risk. We assume no responsibility or liability for the use of this software, convey no license or title under any patent, copyright, or mask work right to the product. We reserve the right to make changes in the software without notification. We also make no representation or warranty that such application will be suitable for the specified use without further testing or modification. If this script helps you produce any academic work (software, paper, book, chapter, dissertation, thesis, monograph, report, lecture, keynote, talk, poster etc.), please acknowledge the authors and cite this repo and the respective publication.
 
@@ -99,7 +99,7 @@ Computes the *Wc* index of generalization proposed by Pierotti et al. (2017) for
 
 ## Acknowledgements
 
-We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Mariana Bender, Natalya Zapata-Mesa, Nico Blüthgen, Paula Lemos, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about generalization indices that inspired us to carry out this study. Special thanks go to Jochen Fründ for his recommendations on how to use his quantitative niche model, and Daniela Arenas for helping us with mammalian taxonomy. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Convocatoria Doctorados en el Exterior 860) and Coordination for the Improvement of Higher Education Personnel (CAPES, 88887.388097/2019-00) for the doctoral scholarships. MARM was funded by the Alexander von Humboldt Foundation (AvH, 1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7 and 2023/02881-6), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the Stack Overflow community (https://stackoverflow.com/), where we solve most of our coding dilemmas.
+We thank Baltazar González, Cristina A. Kita, Diego P. Vázquez, Francisco A. Rodrigues, Guillermo Flórez-Montero, José C. Motta Jr., Mariana Bender, Natalya Zapata-Mesa, Nico Blüthgen, Paula Lemos, Paulo R. Guimarães Jr., and Tiago B. Quental for the exciting discussions about generalization indices that inspired us to carry out this study. Special thanks go to Jochen Fründ for his recommendations on how to use his quantitative niche model, and Daniela Arenas for helping us with mammalian taxonomy. SMB thanks Ministerio de Ciencia, Tecnología e Innovación de Colombia (MinCiencias, Doctorados en el Exterior 860) for the scholarship. This study was financed in part by the Coordenação de Aperfeiçoamento de Pessoal de Nível Superior – Brasil (CAPES) – Finance Code 001 (88887.388097/2019-00). MARM was funded by the Alexander von Humboldt Foundation (AvH, 1134644), National Council for Scientific and Technological Development (CNPq, 304498/2019-0), São Paulo Research Foundation (FAPESP, 2018/20695-7 and 2023/02881-6), and Dean of Research of the University of São Paulo (PRP-USP, 18.1.660.41.7). We also thank the Stack Overflow community (https://stackoverflow.com/), where we solve most of our coding dilemmas. Finally, we thank S. Dray and an anonymous reviewer for their helpful comments.
 
 
 ## Feedback
@@ -109,7 +109,7 @@ If you have any questions, corrections, or suggestions, please feel free to open
 
 ## Reference
 
--   Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. A new index to estimate ecological generalization in consumer-resource interactions. *In prep*.
+-   Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. A new index to estimate ecological generalization in consumer-resource interactions. *Methods in Ecology and Evolution*.
 
 
 ## Source repos
