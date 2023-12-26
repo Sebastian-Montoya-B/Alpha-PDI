@@ -8,7 +8,7 @@ Authors: Sebastián Montoya-Bustamante, Carsten F. Dormann, Boris R. Krasnov & M
 
 E-mail: [s.montoyabustamante\@gmail.com](mailto:s.montoyabustamante@gmail.com).
 
-Published originally on December 26th, 2023 (English version).
+Published originally on December 26th, 2023 (English version). [![DOI](https://zenodo.org/badge/507125337.svg)](https://zenodo.org/doi/10.5281/zenodo.10433150)
 
 Run in R version 4.2.3 -- "Shortstop Beagle".
 
