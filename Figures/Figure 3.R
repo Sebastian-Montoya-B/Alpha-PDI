@@ -539,7 +539,7 @@ if (T){
   
   par(mar= c(0,0.5,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.5, y=0.5, labels="Difference between the observed and expected degree of generalization", cex=1, srt=90)
+  text(x=0.5, y=0.5, labels="Difference between the observed and expected degree of generalisation", cex=1, srt=90)
   
   ### X Label
   
@@ -551,7 +551,7 @@ if (T){
   ###### Legend
   
   par(mar= c(4,2,4,0),las=1)
-  plot(y=c(0,1),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main= "Specialization\nparameter",
+  plot(y=c(0,1),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main= "Specialisation\nparameter",
        cex.main=1, ylim=c(0,1))
   legend_image <- as.raster(rev(colfunc(20)))
   grid.raster(legend_image, width=0.03, height = 0.8, x = unit(0.94, "npc"))
@@ -593,13 +593,13 @@ if (T){
   
   par(mar= c(0,0,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.535, y=0.5, labels=expression(alpha*italic("PDI'")), cex=2)
+  text(x=0.535, y=0.5, labels=expression(alpha*"PDI'"), cex=2)
   
   ### aPDI main
   
   par(mar= c(0,0,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.535, y=0.3, labels=expression(alpha*italic("PDI")), cex=2)
+  text(x=0.535, y=0.3, labels=expression(alpha*"PDI"), cex=2)
   
   ### Wc main
   

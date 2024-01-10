@@ -133,7 +133,7 @@ lin2<-genfun(t(pr)*1000000, rep(1,nrow(pr)))
 lin2
 
 lin3<-wcfun(t(pr), rep(1,nrow(pr)))
-
+colfunc <- colorRampPalette(c("#df4f00","#f1f1f1","#00918d"))
 toplo<-data.frame(p,lin)
 toplo
 mycol<-colfunc(nrow(toplo))
@@ -149,7 +149,7 @@ if (T){
   #aPDI
   par(las=1)
   plot(p, lin, log="x", type="l",
-       ylab="", yaxp=c(0,1,2), main=expression(alpha*italic(PDI)),
+       ylab="", yaxp=c(0,1,2), main=expression(alpha*"PDI"),
        xlab="", xaxt="n", cex.lab=1.2)
   axis(1, at=c(1e-04,1e-02,1,1e02,1e04), labels=c(expression(10^-4),expression(10^-2),1,expression(10^2),expression(10^4)))
   
@@ -288,13 +288,13 @@ if (T){
   
   par(mar= c(0,0,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.53, y=0.7, labels=expression("Specialization parameter "*"("*rho*")"), cex=1.3) 
+  text(x=0.53, y=0.7, labels=expression("Specialisation parameter "*"("*rho*")"), cex=1.3) 
   
   ### Y Label
   
   par(mar= c(0,0.5,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.5, y=0.5, labels="Degree of generalization", cex=1.3, srt=90)
+  text(x=0.5, y=0.5, labels="Degree of generalisation", cex=1.3, srt=90)
   
 }
 dev.off()

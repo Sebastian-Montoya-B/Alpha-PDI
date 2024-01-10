@@ -111,12 +111,12 @@ abline(h=0.5, lty=2)
 
 par(mar= c(0,0,0,0),las=1)
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.53, y=0.7, labels=expression("Specialization parameter "*"("*rho*")"), cex=1.3) 
+text(x=0.53, y=0.7, labels=expression("Specialisation parameter "*"("*rho*")"), cex=1.3) 
 
 ### Y Label
 
 par(mar= c(0,0.5,0,0),las=1)
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.53, y=0.53, labels=expression(alpha*italic(PDI)), cex=1.3, srt=90)
+text(x=0.53, y=0.53, labels=expression(alpha*"PDI"), cex=1.3, srt=90)
 
 dev.off()

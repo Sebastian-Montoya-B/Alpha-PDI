@@ -117,7 +117,7 @@ if (T) {
   
   par(las=1, mar=c(4,5,2,1))
   boxplot(summ_aPDI_m1$dif~res, ylim=c(-1,1), pch=8, xaxt="n", main=expression(italic("m")*" = 1"), col=alpha("gray",0), 
-          ylab=expression("   Difference between the observed\nand expected degree of generalization"), xlab="")
+          ylab=expression("   Difference between the observed\nand expected degree of generalisation"), xlab="")
   points(summ_aPDI_m1$dif~x_xit, bg= alpha(spar_col,0.3), pch=21, col=alpha(spar_col,0.3), cex=0.8)
   axis(1, at=c(1,2,3), labels=c(5,15,55))
   par(new=T)

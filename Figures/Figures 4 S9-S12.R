@@ -122,16 +122,16 @@ layout(matrix(c(1,2,3), ncol=3))
 
 
 par(mar=c(4,5,2,2),las=1)
-plot(summ_samp$NI, summ_samp$aPDI,log="x",  pch=21, main="A",
-     ylab=expression("Degree of generalization ("*alpha*italic("PDI')")), yaxt="n",
+plot(summ_samp$NI, summ_samp$aPDI,log="x",  pch=21, main="(a)",
+     ylab=expression("Degree of generalisation ("*alpha*"PDI')"), yaxt="n",
      xlab=expression("Sampling intensity (log("*italic(n)*"))"),
      bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), 
      col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), cex=1.2 )
 axis(2, at=c(0,0.25,0.5,0.75,1), labels=c("0.0","",0.5,"","1.0"))
 text(x=1e+04, y=1,labels=bquote(italic("rho")*" = "*.(round(c1$estimate,2))*", P < 0.001"))
 
-plot(summ_samp$R, summ_samp$aPDI,  pch=21, main="B",
-     ylab=expression("Degree of generalization ("*alpha*italic("PDI')")), yaxt="n",
+plot(summ_samp$R, summ_samp$aPDI,  pch=21, main="(b)",
+     ylab=expression("Degree of generalisation ("*alpha*"PDI')"), yaxt="n",
      xlab=expression("Number of potential resources ("*italic(R)*")"),
      bg=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), 
      col=alpha(spar_col[c(color_group(summ_samp[,1]))],0.4), cex=1.2 )
@@ -141,7 +141,7 @@ text(x=22.5, y=1,labels=bquote(italic("rho")*" = "*.(round(c2$estimate,2))*", P 
 x1<-jitter(rep(1, length(class.gen)), factor=6)
 x2<-jitter(rep(2, length(class.spe)), factor=6)
 plot( x=NULL, y=NULL, xlim=c(0.5,2.5), ylim=c(0,1),
-      main="C", ylab="Proportion of species in each network", xlab="", xaxt="n", yaxt="n")
+      main="(c)", ylab="Proportion of species in each network", xlab="", xaxt="n", yaxt="n")
 axis(1, at=c(1,2), labels=c("Generalists", "Specialists"))
 for (i in 1:length(class.gen)){
   lines(x=c(x1[i],x2[i]), c(class.gen[[i]],class.spe[[i]]),col=alpha("gray",0.7), lty=2  )
@@ -173,7 +173,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.55, labels=expression("Sampling intensity ("*italic("n")*")"), srt=90, cex=1.5)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.5)
+text(x=0.5, y=0.6, labels=expression(alpha*"PDI’"), cex=1.5)
 
 dev.off()
 
@@ -198,7 +198,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.55, labels=expression("Sampling intensity ("*italic("n")*")"), srt=90, cex=1.5)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.5)
+text(x=0.5, y=0.6, labels=expression(alpha*"PDI’"), cex=1.5)
 dev.off()
 
 ## 3.5. Plotting Figure S11
@@ -222,7 +222,7 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.55, labels=expression("Sampling intensity ("*italic("n")*")"), srt=90, cex=1.5)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.6, labels=expression(alpha*italic(PDI)*"’"), cex=1.5)
+text(x=0.5, y=0.6, labels=expression(alpha*"PDI’"), cex=1.5)
 dev.off()
 
 
@@ -251,6 +251,6 @@ plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n
 text(x=0.5, y=0.65, labels=expression("Sampling intensity ("*italic("n")*")"), srt=90, cex=1.5)
 
 plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-text(x=0.5, y=0.95, labels=expression(alpha*italic(PDI)*"’"), cex=1.5)
+text(x=0.5, y=0.95, labels=expression(alpha*"PDI’"), cex=1.5)
 dev.off()
 

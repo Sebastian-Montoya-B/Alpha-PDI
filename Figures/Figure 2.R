@@ -166,7 +166,7 @@ if (TRUE){
                      R10=lisObv$aPDI[(l5+1):l10]-lisExv$aPDI[(l5+1):l10], 
                      R50=lisObv$aPDI[(l10+1):l50]-lisExv$aPDI[(l10+1):l50])
   
-  boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), col=alpha("gray",0))
+  boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*"PDI"), col=alpha("gray",0))
   
   points(x=x_xit, y=c(error1$R5,error1$R10,error1$R50),
          bg= alpha(spar_col,0.0), pch=21, col=alpha(spar_col,0.2), cex=0.6)
@@ -187,7 +187,7 @@ if (TRUE){
   abline(h=0, lty=2)
   axis(1, at=c(1,2,3), labels=F)
   par(new=T)
-  boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*italic(PDI)), border=alpha("black",0.4), col=alpha("gray",0))
+  boxplot(error1, ylim=c(-1,1), pch=8, xaxt="n", main=expression(alpha*"PDI"), border=alpha("black",0.4), col=alpha("gray",0))
   par(new=F)
   
   ###Bs
@@ -458,12 +458,12 @@ if (TRUE){
   
   par(mar= c(0,0.5,0,0),las=1)
   plot(x=NULL, y=NULL, ann=F,xaxt="n", yaxt="n", xlim=c(0,1), ylim=c(0,1), type="n", bty="n")
-  text(x=0.5, y=0.5, labels="Difference between the observed and expected degree of generalization", cex=1, srt=90)
+  text(x=0.5, y=0.5, labels="Difference between the observed and expected degree of generalisation", cex=1, srt=90)
   
   ###### Legend
   
   par(mar= c(4,2,4,0),las=1)
-  plot(y=c(0,1),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main= "Specialization\nparameter",
+  plot(y=c(0,1),x=c(0,1),type = 'n', axes = F,xlab = '', ylab = '', main= "Specialisation\nparameter",
        cex.main=1, ylim=c(0,1))
   legend_image <- as.raster(rev(colfunc(20)))
   grid.raster(legend_image, width=0.04, height = 0.8, x = unit(0.92, "npc"))
