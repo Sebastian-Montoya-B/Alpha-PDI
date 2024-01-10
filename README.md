@@ -109,7 +109,7 @@ If you have any questions, corrections, or suggestions, please feel free to open
 
 ## Reference
 
--   Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. A new index to estimate ecological generalization in consumer-resource interactions. *Methods in Ecology and Evolution*.
+-   Montoya-Bustamante S., Dormann C. F., Krasnov B. R., Mello M. A. R. A new index to estimate ecological generalisation in consumer-resource interactions. *Methods in Ecology and Evolution*.
 
 
 ## Source repos
