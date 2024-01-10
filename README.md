@@ -1,6 +1,6 @@
 # Alpha-PDI
 
-Supplement to the paper Montoya-Bustamante et al. A new index to estimate ecological generalization in consumer-resource interactions. *Methods in Ecology and Evolution*.
+Supplement to the paper Montoya-Bustamante et al. A new index to estimate ecological generalisation in consumer-resource interactions. *Methods in Ecology and Evolution*.
 
 [Ecological Synthesis Lab](https://marcomellolab.wordpress.com) (SintECO).
 
